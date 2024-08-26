@@ -1,20 +1,20 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "@user/Home";
-import Introduction from "@user/Introduction";
-import LawNews from "@user/LawNews";
-import LawNewsDetail from "@user/LawNewsDetail";
-import Professional from "@user/Professional";
-import ProfessionalDetail from "@user/ProfessionalDetail";
-import ProfessionalSearch from "@user/ProfessionalSearch";
-import Field from "@user/Field";
+import Home from "@userPages/Home";
+import Introduction from "@userPages/Introduction";
+import LawNews from "@userPages/LawNews";
+import LawNewsDetail from "@userPages/LawNewsDetail";
+import Professional from "@userPages/Professional";
+import ProfessionalDetail from "@userPages/ProfessionalDetail";
+import ProfessionalSearch from "@userPages/ProfessionalSearch";
+import Field from "@userPages/Field";
 
 export default function UserLayout() {
   return (
     <div>
       UserLayout
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="introduction" element={<Introduction />} />
         <Route path="lawNews" element={<LawNews />} />
         <Route path="lawNews/detail" element={<LawNewsDetail />} />

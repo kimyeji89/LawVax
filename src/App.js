@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./common/GlobalStyles.css";
 import UserLayout from "./layouts/UserLayout";
-import AdminLayout from "./layouts/UserLayout";
+import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
   return (
@@ -13,4 +13,3 @@ function App() {
 }
 
 export default App;
-

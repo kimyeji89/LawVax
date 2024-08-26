@@ -87,6 +87,7 @@ video {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
+  text-decoration: none;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -150,8 +151,10 @@ table {
   --keyword-bd-all: 2px solid #1676bc;
   --input-bd-bottom: 1px solid #c1c7cd;
   --input-bd-all: 1px solid #d9d9d9;
+  --btn-bd: 2px solid #8fb6ff;
   /* shadow */
-  --shadow-default: 6px 6px 54px 0px #0000000d;
+  --shadow-1: 6px 6px 54px 0px #0000000d;
+  --shadow-2: 0px 0px 10px 0px #0000001a;
 }
 /* font */
 * {
@@ -159,4 +162,6 @@ table {
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color: var(--mono-gray-txt-dark);
+  font-weight: 500;
 }
