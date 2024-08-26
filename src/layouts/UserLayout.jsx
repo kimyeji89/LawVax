@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "@user/Home";
@@ -8,11 +10,13 @@ import Professional from "@user/Professional";
 import ProfessionalDetail from "@user/ProfessionalDetail";
 import ProfessionalSearch from "@user/ProfessionalSearch";
 import Field from "@user/Field";
+import HeaderUser from "../components/user/HeaderUser";
+import FooterUser from "../components/user/FooterUser";
 
 export default function UserLayout() {
   return (
-    <div>
-      UserLayout
+    <div css={layout_wrap}>
+      <HeaderUser />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="introduction" element={<Introduction />} />
@@ -23,6 +27,12 @@ export default function UserLayout() {
         <Route path="professional/search" element={<ProfessionalSearch />} />
         <Route path="field" element={<Field />} />
       </Routes>
+      <FooterUser />
     </div>
   );
 }
+
+const layout_wrap = css`
+  max-width: 1024px;
+  margin: 0 auto;
+`;

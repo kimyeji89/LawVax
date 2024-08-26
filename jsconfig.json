@@ -21,7 +21,8 @@
       "@layouts/*": ["./src/layouts/*"],
       "@pages/*": ["./src/pages/*"],
       "@user/*": ["./src/pages/user/*"],
-      "@admin/*": ["./src/pages/admin/*"]
+      "@admin/*": ["./src/pages/admin/*"],
+      "@images/*": ["./src/assets/images/*"]
     }
   },
   "include": ["./*"],
