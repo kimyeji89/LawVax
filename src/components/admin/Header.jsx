@@ -6,10 +6,11 @@ export default function Header() {
   return (
     <header css={headerStyle}>
       <Link to="/admin/PostManage">
+        <h1 css={title}>LawVax</h1>
         <img
           css={logoStyle}
           src="/assets/images/lawvax_signature_en 1.png"
-          alt="logo"
+          alt="LawVax logo"
           className="logo"
         />
       </Link>
@@ -28,6 +29,10 @@ const headerStyle = css`
   background-color: var(--mono-white);
   box-shadow: var(--shadow-2);
   z-index: 10;
+`;
+
+const title = css`
+  display: none;
 `;
 
 const logoStyle = css`

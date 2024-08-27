@@ -6,7 +6,7 @@ import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
 
 export default function AdminLogin() {
   return (
-    <div css={ctn}>
+    <main css={ctn}>
       <img
         css={logo}
         src="/assets/images/lawvax_signature_en 2.png"
@@ -38,6 +38,8 @@ export default function AdminLogin() {
             css={textInput}
             placeholder="비밀번호를 입력해주세요."
           />
+          <EyeOn css={eyeOn} />
+          <EyeOff css={eyeOff} />
         </div>
         <div css={checkboxCtn}>
           <label htmlFor="auto" css={checkboxCustom}>
@@ -52,7 +54,7 @@ export default function AdminLogin() {
           </p>
         </button>
       </form>
-    </div>
+    </main>
   );
 }
 
@@ -91,6 +93,7 @@ const inputCtn = css`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
 `;
 
 const label = css`
@@ -116,6 +119,21 @@ const textInput = css`
     line-height: 24px;
     text-align: left;
   }
+`;
+
+const eyeOn = css`
+  top: calc(32px + ((100% - 32px) / 2));
+  transform: translateY(-50%);
+  right: 14px;
+  position: absolute;
+`;
+
+const eyeOff = css`
+  display: none;
+  top: calc(32px + ((100% - 32px) / 2));
+  transform: translateY(-50%);
+  right: 14px;
+  position: absolute;
 `;
 
 const checkboxCtn = css`

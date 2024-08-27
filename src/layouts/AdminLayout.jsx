@@ -50,7 +50,10 @@ const login = css`
 `;
 
 const others = css`
-  width: 100%;
-  min-height: 100vh;
+  margin: 72px 0px 0px 238px;
+  box-sizing: border-box;
+  padding: 30px;
+  width: calc(100% - 238px);
+  min-height: calc(100vh - 72px);
   background-color: var(--mono-gray-bg-1);
 `;
