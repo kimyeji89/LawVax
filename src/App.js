@@ -6,11 +6,10 @@ import AdminLayout from "./layouts/UserLayout";
 function App() {
   return (
     <Routes>
-      <Route path="/user/*" element={<UserLayout />} />
+      <Route path="/*" element={<UserLayout />} />
       <Route path="/admin/*" element={<AdminLayout />} />
     </Routes>
   );
 }
 
 export default App;
-
