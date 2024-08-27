@@ -2,6 +2,21 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
+export default function Header() {
+  return (
+    <header css={headerStyle}>
+      <Link to="/admin/PostManage">
+        <img
+          css={logoStyle}
+          src="/assets/images/lawvax_signature_en 1.png"
+          alt="logo"
+          className="logo"
+        />
+      </Link>
+    </header>
+  );
+}
+
 const headerStyle = css`
   position: fixed;
   top: 0;
@@ -13,22 +28,9 @@ const headerStyle = css`
   background-color: var(--mono-white);
   box-shadow: var(--shadow-2);
   z-index: 10;
-  .logo {
-    width: 163px;
-    height: 48px;
-  }
 `;
 
-export default function Header() {
-  return (
-    <header css={headerStyle}>
-      <Link to="/admin/PostManage">
-        <img
-          src="/assets/images/lawvax_signature_en 1.png"
-          alt="logo"
-          className="logo"
-        />
-      </Link>
-    </header>
-  );
-}
+const logoStyle = css`
+  width: 163px;
+  height: 48px;
+`;

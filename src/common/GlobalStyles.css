@@ -151,12 +151,12 @@ table {
   --keyword-bd-all: 2px solid #1676bc;
   --input-bd-bottom: 1px solid #c1c7cd;
   --input-bd-all: 1px solid #d9d9d9;
-  --btn-bd: 2px solid #8fb6ff;
+  --btn-bd: 0 0 0 2px #8fb6ff inset;
   /* shadow */
   --shadow-1: 6px 6px 54px 0px #0000000d;
   --shadow-2: 0px 0px 10px 0px #0000001a;
 }
-/* font */
+
 * {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
@@ -164,4 +164,9 @@ table {
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: var(--mono-gray-txt-dark);
   font-weight: 500;
+}
+
+button {
+  cursor: pointer;
+  border: none;
 }

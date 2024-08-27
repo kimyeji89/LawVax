@@ -14,7 +14,7 @@ export default function UserLayout() {
     <div>
       UserLayout
       <Routes>
-        <Route path="home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="introduction" element={<Introduction />} />
         <Route path="lawNews" element={<LawNews />} />
         <Route path="lawNews/detail" element={<LawNewsDetail />} />

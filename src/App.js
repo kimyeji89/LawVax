@@ -6,7 +6,7 @@ import AdminLayout from "./layouts/AdminLayout";
 function App() {
   return (
     <Routes>
-      <Route path="/user/*" element={<UserLayout />} />
+      <Route path="/*" element={<UserLayout />} />
       <Route path="/admin/*" element={<AdminLayout />} />
     </Routes>
   );
