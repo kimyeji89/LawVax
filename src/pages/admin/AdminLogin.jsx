@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ReactComponent as Check } from "@images/check-icon.svg";
+import { ReactComponent as EyeOff } from "@images/eye-off-outline.svg";
+import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
 
 export default function AdminLogin() {
   return (
