@@ -48,7 +48,7 @@ const footer_wrap = css`
 `;
 
 const footer_container = css`
-  min-width: 398px;
+  // min-width: 398px;
   height: 181px;å
   margin: 14px 16px;
 `;
@@ -71,7 +71,7 @@ const sns_icons = css`
 `;
 
 const hr = css`
-width:100%
+  width:100%
   margin: 14px;
 `;
 

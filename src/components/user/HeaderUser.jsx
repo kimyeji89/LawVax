@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import SiderBtn from "./SiderBtn";
+import SideBarUser from "./SideBarUser";
 
 function HeaderUser() {
   return (
     <div css={header_wrap}>
-      <SiderBtn />
+      <SideBarUser />
     </div>
   );
 }
@@ -16,10 +16,10 @@ const header_wrap = css`
   width: 100%;    
   height 96px;
   background-color: transparent;
-  position: fixed; /* 헤더를 항상 위에 고정 */
+  position: fixed; 
   top: 0; 
-//   left: 0; 
   display: flex; 
+  z-index: 1000;
   align-items: center; 
   justify-content: flex-start; 
 `;
