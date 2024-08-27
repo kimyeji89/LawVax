@@ -18,10 +18,13 @@
     "paths": {
       "@common/*": ["./src/common/*"],
       "@components/*": ["./src/components/*"],
+      "@userComponents/*": ["./src/components/user/*"],
+      "@adminComponents/*": ["./src/components/admin/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@pages/*": ["./src/pages/*"],
-      "@user/*": ["./src/pages/user/*"],
-      "@admin/*": ["./src/pages/admin/*"]
+      "@userPages/*": ["./src/pages/user/*"],
+      "@adminPages/*": ["./src/pages/admin/*"],
+      "@images/*": ["./src/assets/images/*"]
     }
   },
   "include": ["./*"],
