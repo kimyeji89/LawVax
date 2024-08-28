@@ -1,6 +1,6 @@
 import Title from "@components/user/Title";
 
-function Field() {
+function FieldDetail() {
   return (
     <>
       <Title
@@ -17,4 +17,4 @@ function Field() {
   );
 }
 
-export default Field;
+export default FieldDetail;

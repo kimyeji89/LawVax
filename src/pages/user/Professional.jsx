@@ -1,5 +1,11 @@
+import Title from "@components/user/Title";
+
 function Professional() {
-  return <>구성원 Professional</>;
+  return (
+    <>
+      <Title titleFirst="P" title="ROFESSIONAL " />
+    </>
+  );
 }
 
 export default Professional;

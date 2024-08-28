@@ -19,6 +19,36 @@ import busIcon2 from "@images/bus-outline-green.svg";
 import subwayIcon from "@images/subway-3.svg";
 import forwardIcon from "@images/chevron-forward-outline.svg";
 import nextIcon from "@images/chevron-next-outline.svg";
+import NewsSlide from "../../components/user/NewsSlide";
+import SlideCard from "../../components/user/SlideCard";
+
+const slideData = [
+  {
+    category: "회계 법률",
+    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
+    date: "2024.07.01",
+  },
+  {
+    category: "회계 법률",
+    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
+    date: "2024.07.01",
+  },
+  {
+    category: "회계 법률",
+    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
+    date: "2024.07.01",
+  },
+  {
+    category: "회계 법률",
+    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
+    date: "2024.07.01",
+  },
+  {
+    category: "회계 법률",
+    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
+    date: "2024.07.01",
+  },
+];
 
 function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -105,7 +135,7 @@ function Home() {
         </div>
       </section>
 
-      <section css={sec_2}>
+      <section css={sec_3}>
         <Title
           showMore
           titleFirst="N"
@@ -117,6 +147,16 @@ function Home() {
             </>
           }
         />
+        <NewsSlide>
+          {slideData.map((slide, index) => (
+            <SlideCard
+              key={index}
+              category={slide.category}
+              title={slide.title}
+              date={slide.date}
+            />
+          ))}
+        </NewsSlide>
       </section>
 
       <section css={sec_2}>
@@ -417,7 +457,6 @@ const news_item_active = css`
 
 const new_list_wrap = css`
   display: flex;
-  // justify-content: center;
 `;
 
 const news_slide = css`
@@ -510,6 +549,11 @@ const slide_link = css`
   font-weight: 500;
   color: var(--mono-gray-txt-light);
   text-decoration: underline var(--mono-gray-txt-light);
+`;
+
+const sec_3 = css`
+  padding: 0 0 0 16px;
+  margin: 130px 0;
 `;
 
 const sec_5 = css`

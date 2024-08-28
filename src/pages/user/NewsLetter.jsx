@@ -1,5 +1,20 @@
+import Title from "@components/user/Title";
+
 function NewLetter() {
-  return <>뉴스레터 NewLetter</>;
+  return (
+    <>
+      <Title
+        titleFirst="N"
+        title={
+          <>
+            EWS
+            <br />
+            LETTER
+          </>
+        }
+      />
+    </>
+  );
 }
 
 export default NewLetter;

@@ -1,5 +1,11 @@
+import Title from "@components/user/Title";
+
 function LawNews() {
-  return <>법인소식 LawNews</>;
+  return (
+    <>
+      <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
+    </>
+  );
 }
 
 export default LawNews;
