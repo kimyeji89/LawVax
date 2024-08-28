@@ -1,10 +1,23 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as Check } from "@images/check-icon.svg";
 import { ReactComponent as EyeOff } from "@images/eye-off-outline.svg";
 import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
 
 export default function AdminLogin() {
+  const [email, setEmail] = useState("");
+  const [errorMassage, setErrorMassage] = useState(null);
+
+  const validateEmail = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email.match(emailPattern)) {
+      setErrorMassage("잘못된 아이디입니다.");
+    } else {
+      setErrorMassage(null);
+    }
+  };
+
   return (
     <main css={ctn}>
       <img
@@ -19,13 +32,23 @@ export default function AdminLogin() {
             아이디
           </label>
           <input
-            type="email"
+            type="text"
             name="id"
             id="id"
             css={textInput}
-            pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
             placeholder="아이디를 입력해주세요."
+            required
+            onChange={(e) => {
+              setEmail(e.target.value);
+              validateEmail(e.target.value);
+            }}
+            onBlur={() => validateEmail(email)}
           />
+          {errorMassage && (
+            <span className="error" css={error}>
+              잘못된 아이디 입니다.
+            </span>
+          )}
         </div>
         <div css={inputCtn}>
           <label htmlFor="pw" css={label}>
@@ -37,6 +60,7 @@ export default function AdminLogin() {
             id="pw"
             css={textInput}
             placeholder="비밀번호를 입력해주세요."
+            required
           />
           <EyeOn css={eyeOn} />
           <EyeOff css={eyeOff} />
@@ -104,6 +128,7 @@ const label = css`
 `;
 
 const textInput = css`
+  position: relative;
   width: 602px;
   height: 48px;
   padding: 14px;
@@ -119,6 +144,21 @@ const textInput = css`
     line-height: 24px;
     text-align: left;
   }
+  &::invalid,
+  &.invalid {
+    box-shadow: 0px -1px 0px 0px var(--other-red) inset;
+  }
+`;
+
+const error = css`
+  position: absolute;
+  bottom: -4px;
+  transform: translateY(100%);
+  left: 0;
+  opacity: 100%;
+  color: var(--other-red);
+  font-size: 12px;
+  line-height: 12px;
 `;
 
 const eyeOn = css`
