@@ -17,6 +17,8 @@ import callIcon from "@images/call-outline.svg";
 import busIcon1 from "@images/bus-outline.svg";
 import busIcon2 from "@images/bus-outline-green.svg";
 import subwayIcon from "@images/subway-3.svg";
+import forwardIcon from "@images/chevron-forward-outline.svg";
+import nextIcon from "@images/chevron-next-outline.svg";
 
 function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -79,20 +81,26 @@ function Home() {
           <span css={news_item}>인재영입</span>
         </div>
 
-        <div css={news_slide}>
-          <div>
-            <img src={ellipse} css={ellipse_1} />
-            <img src={ellipseImg} css={ellipse_2} />
-          </div>
-
-          <div css={news_slide_des}>
-            <div css={slide_btn}>1/ 10</div>
-            <div css={slide_text}>
-              중대재해처벌법 시행
-              <br />
-              2년,무엇이 달라졌을까
+        <div css={new_list_wrap}>
+          <div css={news_slide}>
+            <div css={new_slide_img}>
+              <img src={ellipse} css={ellipse_1} />
+              <img src={ellipseImg} css={ellipse_2} />
             </div>
-            <div css={slide_link}>자세히 보기</div>
+
+            <div css={news_slide_des}>
+              <div css={slide_btn}>
+                <img src={forwardIcon} />
+                <span>1/10</span>
+                <img src={nextIcon} />
+              </div>
+              <div css={slide_text}>
+                중대재해처벌법 시행
+                <br />
+                2년,무엇이 달라졌을까
+              </div>
+              <div css={slide_link}>자세히 보기</div>
+            </div>
           </div>
         </div>
       </section>
@@ -369,7 +377,6 @@ const circleButton_active = css`
 
 const sec_2 = css`
   padding: 0 16px;
-  // border: 1px solid orange;
   margin: 130px 0;
 `;
 
@@ -408,15 +415,35 @@ const news_item_active = css`
   }
 `;
 
+const new_list_wrap = css`
+  display: flex;
+  // justify-content: center;
+`;
+
 const news_slide = css`
   position: relative;
   height: 179px;
   display: flex;
-  justify-content: space-between;
+`;
+
+const new_slide_img = css`
+  display: flex;
+  align-items: end;
 `;
 
 const ellipse_1 = css`
   width: 178px;
+  margin-right: 54px;
+
+  @media (max-width: 420px) {
+    width: 166px;
+    margin-right: 44px;
+  }
+
+  @media (max-width: 375px) {
+    width: 152px;
+    margin-right: 36px;
+  }
 `;
 
 const ellipse_2 = css`
@@ -424,28 +451,58 @@ const ellipse_2 = css`
   left: 66px;
   bottom: 0;
   width: 150px;
+
+  @media (max-width: 420px) {
+    width: 130px;
+  }
+
+  @media (max-width: 375px) {
+    width: 120px;
+    left: 58px;
+  }
 `;
 
 const news_slide_des = css`
   width: 166px;
+
+  @media (max-width: 420px) {
+    width: 120px;
+  }
+
+  @media (max-width: 375px) {
+    width: 90px;
+  }
 `;
 
 const slide_btn = css`
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
   width: 111px;
+  height: 28px;
   font-size: 14px;
   line-height: 28px;
-  color: var(--point-color-2);
   margin: 37px 0px 16px 0px;
+
+  span {
+    color: var(--point-color-2);
+  }
 `;
 
 const slide_text = css`
   margin: 0 0 26px 0;
-  width: 166px;
+  width: 164px;
   height: 48px;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
   color: var(--mono-gray-txt-dark);
+
+  @media (max-width: 375px) {
+    width: 150px;
+    font-size: 14px;
+  }
 `;
 
 const slide_link = css`
