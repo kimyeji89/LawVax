@@ -217,6 +217,12 @@ const overlay = css`
     margin-bottom: 48px;
     color: var(--mono-white);
   }
+
+  @media (max-width: 420px) {
+    p {
+      font-size: 26px;
+    }
+  }
 `;
 
 const overlay_contents = css`
@@ -244,6 +250,10 @@ const searchBar = css`
 
   @media (max-width: 420px) {
     padding: 12px 0px 12px 12px;
+    select,
+    input {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -327,6 +337,12 @@ const circleButton = css`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 375px) {
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+  }
 `;
 
 const circleButton_active = css`
@@ -343,6 +359,12 @@ const circleButton_active = css`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 375px) {
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+  }
 `;
 
 const sec_2 = css`
