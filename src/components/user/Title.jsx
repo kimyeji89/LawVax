@@ -22,6 +22,7 @@ export default Title;
 
 const fontImport = css`
   @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+  padding: 0 0 48px 0 ;
 `;
 
 const sub_title = css`

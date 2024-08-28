@@ -3,10 +3,20 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import homeImg1 from "@images/home_img-1.png";
 import searchIcon from "@images/search-outline.svg";
+import searchBlack from "@images/search-outline-black.svg";
 import dropDownIcon from "@images/drop-down-icon.svg";
 import ellipse from "@images/news-ellipse-28.png";
 import ellipseImg from "@images/news-ellipse-26.png";
-import Title from "../../components/user/Title";
+import Title from "@components/user/Title";
+import mapImg from "@images/map-img.png";
+import deleteIcon from "@images/x-icon.svg";
+import shareIcon from "@images/share-social-outline.svg";
+import copyIcon from "@images/copy-outline.svg";
+import receiptIcon from "@images/receipt-outline.svg";
+import callIcon from "@images/call-outline.svg";
+import busIcon1 from "@images/bus-outline.svg";
+import busIcon2 from "@images/bus-outline-green.svg";
+import subwayIcon from "@images/subway-3.svg";
 
 function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -105,8 +115,65 @@ function Home() {
         <Title titleFirst="P" title="ROFESSIONAL" showMore />
       </section>
 
-      <section css={sec_2}>
+      <section css={sec_5}>
         <Title subTitle="Lawvax" titleFirst="M" title="AP" />
+        <p css={map_text}>경로 탐색</p>
+        <div css={map_search}>
+          <div css={map_search_inner}>
+            <img src={searchBlack} />
+            <input placeholder="출발지를 입력해주세요." />
+            <img src={deleteIcon} />
+          </div>
+        </div>
+        <img src={mapImg} alt="로백스 지도 이미지" css={map_img} />
+
+        <div css={share_btn_wrap}>
+          <button css={share_btn}>
+            <img src={shareIcon} />
+            공유하기
+          </button>
+        </div>
+
+        <div css={map_des}>
+          <div css={map_address}>
+            <h3>주소</h3>
+            <div css={map_address_des}>
+              <span>지번: 서울특별시 서초구 서초동 1596-3</span>
+              <img src={copyIcon} />
+            </div>
+            <p>서울특별시 서초구 사임당로 18 석오빌딩 3층, 9층</p>
+          </div>
+
+          <h3>연락처</h3>
+          <div css={contact}>
+            <span css={contact_inner}>
+              <img src={callIcon} />
+              <span>대표번호</span>
+              <span>02-583-6300</span>
+            </span>
+            <span css={contact_inner}>
+              <img src={receiptIcon} />
+              <span>팩스</span>
+              <span>02-583-6303</span>
+            </span>
+          </div>
+
+          <div css={map_transport}>
+            <h3>대중교통</h3>
+            <p>
+              <img src={busIcon1} />
+              <span>350, 742 서울교대사거리 정류장 22160</span>
+            </p>
+            <p>
+              <img src={busIcon2} />
+              서초21청호나이스 정류장 22935
+            </p>
+            <p>
+              <img src={subwayIcon} />
+              남부터미널역 6번 출구 하차
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );
@@ -286,7 +353,7 @@ const sec_2 = css`
 
 const news_list = css`
   width: 264px;
-  padding: 48px 0;
+  padding: 0 0 48px 0;
   display: flex;
   justify-content: space-between;
   gap: 48px;
@@ -364,4 +431,139 @@ const slide_link = css`
   font-weight: 500;
   color: var(--mono-gray-txt-light);
   text-decoration: underline var(--mono-gray-txt-light);
+`;
+
+const sec_5 = css`
+  padding: 0 16px;
+  margin: 130px 0;
+`;
+
+const map_text = css`
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--mono-gray-txt-dark);
+  padding: 0 0 12px 0;
+`;
+
+const map_search = css`
+  width: 100%;
+  height: 48px;
+  border: 2px solid var(--mono-gray-txt-light);
+  margin: 0 0 16px 0;
+  box-sizing: border-box;
+`;
+
+const map_search_inner = css`
+  height: 24px;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+
+  img {
+    height: 24px;
+  }
+
+  input {
+    width: 100%;
+    border: 0;
+    font-size: 16px;
+  }
+
+  input::placeholder {
+    color: var(--mono-gray-txt-light);
+  }
+`;
+
+const map_img = css`
+  width: 100%;
+`;
+
+const share_btn_wrap = css`
+  display: flex;
+  justify-content: end;
+`;
+
+const share_btn = css`
+  margin: 24px 0;
+  width: 106px;
+  height: 40px;
+  border: 2px solid var(--point-color-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--point-color-2);
+  background-color: var(--mono-white);
+  cursor: pointer;
+  margin-right: 0;
+`;
+
+const map_des = css`
+  color: var(--mono-gray-txt-dark);
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+  }
+
+  p {
+    font-size: 16px;
+    height: 24px;
+  }
+`;
+
+const map_address = css`
+  margin: 0 0 12px 0;
+`;
+
+const map_address_des = css`
+  display: flex;
+  align-items: center;
+  height: 24px;
+  margin: 0 0 6px 0;
+
+  span {
+    margin: 0 12px 0px 0;
+    color: var(--mono-gray-txt-light);
+    font-size: 16px;
+    font-weight: 400;
+  }
+`;
+
+const contact = css`
+  display: flex;
+  align-items: center;
+  margin: 0 0 12px 0;
+
+  img {
+    height: 24px;
+  }
+
+  @media (max-width: 420px) {
+    display: block;
+    margin: 0 0 12px 0;
+
+    & > span {
+      margin-bottom: 4px;
+    }
+  }
+`;
+
+const contact_inner = css`
+  display: flex;
+  align-items: center;
+  margin: 0 12px 0 0;
+  gap: 8px;
+`;
+
+const map_transport = css`
+  p {
+    display: flex;
+    align-items: center;
+    margin: 0 0 6px 0;
+  }
 `;
