@@ -1,28 +1,55 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
-import {
-  ProfessionalManageBtn,
-  PostManageBtn,
-  SettingsBtn,
-  LogoutBtn,
-} from "@adminComponents/SideBtns";
+import { Link, useLocation } from "react-router-dom";
+import { ReactComponent as People } from "@images/people-outline.svg";
+import { ReactComponent as Tray } from "@images/file-tray-full-outline.svg";
+import { ReactComponent as Settings } from "@images/settings-outline.svg";
+import { ReactComponent as Power } from "@images/power-outline.svg";
+import { SideBtn } from "@adminComponents/SideBtns";
 
 export default function SideBar() {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <nav css={nav}>
       <div className="top" css={top}>
         <Link to="/admin/professional">
-          <ProfessionalManageBtn />
+          <SideBtn
+            selected={
+              location.pathname === "/admin/professional" ? true : false
+            }
+          >
+            <People className="icon" css={icon} />
+            <p className="text" css={text}>
+              구성원 관리
+            </p>
+          </SideBtn>
         </Link>
         <Link to="/admin/post">
-          <PostManageBtn />
+          <SideBtn
+            selected={location.pathname === "/admin/post" ? true : false}
+          >
+            <Tray className="icon" css={icon} />
+            <p className="text" css={text}>
+              게시글 관리
+            </p>
+          </SideBtn>
         </Link>
       </div>
       <span className="divider" css={divider}></span>
       <div className="bottom" css={bottom}>
-        <SettingsBtn />
-        <LogoutBtn />
+        <SideBtn>
+          <Settings className="icon" css={icon} />
+          <p className="text" css={text}>
+            설정
+          </p>
+        </SideBtn>
+        <SideBtn>
+          <Power className="icon" css={icon} />
+          <p className="text" css={text}>
+            로그아웃
+          </p>
+        </SideBtn>
       </div>
     </nav>
   );
@@ -59,4 +86,13 @@ const divider = css`
   bottom: 238px;
   width: 100%;
   border: 0.6px solid #e0e0e0;
+`;
+
+const icon = css`
+  fill: var(--mono-black-icon-1);
+`;
+const text = css`
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--mono-gray-txt-dark);
 `;
