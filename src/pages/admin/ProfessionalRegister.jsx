@@ -9,7 +9,6 @@ import {
 } from "@adminComponents/ControlField";
 import { ReactComponent as Camera } from "@images/camera-icon.svg";
 import { ReactComponent as Check } from "@images/check-icon.svg";
-import { ReactComponent as DropDown } from "@images/Drop Down.svg";
 import { useState } from "react";
 
 export default function ProfessionalRegister() {
@@ -568,65 +567,4 @@ const checkbox = css`
   position: absolute;
   opacity: 0;
   cursor: pointer;
-`;
-
-const selectBoxCustom = css`
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  padding: 14px 16px;
-  box-sizing: border-box;
-  background-color: var(--mono-gray-bg-1);
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
-  border: none;
-  border-radius: 8px;
-  color: var(--mono-gray-txt-dark);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  .placeholder {
-    font-weight: 400;
-    line-height: 24px;
-    color: var(--mono-gray-input-ph);
-  }
-  .selectedLang {
-    display: none;
-  }
-`;
-
-const dropDown = css`
-  * {
-    fill: var(--mono-gray-txt-light);
-  }
-`;
-
-const optionBoxCustom = css`
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  z-index: 2;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  height: 320px;
-  overflow-y: auto;
-  padding: 8px 0;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
-  transform: translateY(100%);
-  box-sizing: border-box;
-  background-color: var(--mono-gray-bg-1);
-  border-radius: 8px;
-  &.view {
-    display: flex;
-  }
-  li {
-    width: calc(100% - 1.2px);
-    box-sizing: border-box;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-  li.selected {
-    color: var(--point-color-1);
-  }
 `;
