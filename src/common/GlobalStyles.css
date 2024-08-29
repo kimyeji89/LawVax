@@ -149,10 +149,13 @@ table {
   --mono-gray-normal: #ededed;
   --mono-black-icon-1: #21272a;
   --mono-black-icon-2: #111111;
+  /* other color */
+  --other-red: #da1e28;
   /* border */
   --keyword-bd-all: 2px solid #1676bc;
   --input-bd-bottom: 1px solid #c1c7cd;
   --input-bd-all: 1px solid #d9d9d9;
+  --table-bd: 1px solid var(--mono-gray-line-2);
   --btn-bd: 0 0 0 2px #8fb6ff inset;
   /* shadow */
   --shadow-1: 6px 6px 54px 0px #0000000d;
@@ -171,4 +174,15 @@ table {
 button {
   cursor: pointer;
   border: none;
+}
+
+/* admin */
+
+.admin-pageTitle {
+  font-family: Nunito Sans;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  color: var(--mono-black-title);
+  margin-bottom: 20px;
 }
