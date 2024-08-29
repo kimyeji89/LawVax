@@ -10,8 +10,10 @@ import Professional from "@userPages/Professional";
 import ProfessionalDetail from "@userPages/ProfessionalDetail";
 import ProfessionalSearch from "@userPages/ProfessionalSearch";
 import Field from "@userPages/Field";
+import NewsLetter from "@userPages/NewsLetter";
 import HeaderUser from "../components/user/HeaderUser";
 import FooterUser from "../components/user/FooterUser";
+import FieldDetail from "../pages/user/FieldDetail";
 
 export default function UserLayout() {
   return (
@@ -21,11 +23,13 @@ export default function UserLayout() {
         <Route path="/" element={<Home />} />
         <Route path="introduction" element={<Introduction />} />
         <Route path="lawNews" element={<LawNews />} />
+        <Route path="newsLetter" element={<NewsLetter />} />
         <Route path="lawNews/detail" element={<LawNewsDetail />} />
         <Route path="professional" element={<Professional />} />
         <Route path="professional/detail" element={<ProfessionalDetail />} />
         <Route path="professional/search" element={<ProfessionalSearch />} />
         <Route path="field" element={<Field />} />
+        <Route path="field/detail" element={<FieldDetail />} />
       </Routes>
       <FooterUser />
     </div>

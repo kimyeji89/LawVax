@@ -48,7 +48,6 @@ const footer_wrap = css`
 `;
 
 const footer_container = css`
-  // min-width: 398px;
   height: 181px;å
   margin: 14px 16px;
 `;
@@ -83,6 +82,10 @@ const text_container = css`
   gap: 14px;
   color: var(--mono-white);
   font-size: 14px;
+
+  @media (max-width: 375px) {
+    font-size: 12px;
+  }
 `;
 
 const text = css`

@@ -1,5 +1,8 @@
+import Title from "../../components/user/Title";
+import { StyledTitleWrap } from "./NewsLetter";
+
 function ProfessionalDetail() {
-  return <>구성원 상세페이지 ProfessionalDetail</>;
+  return <>ProfessionalDetail</>;
 }
 
 export default ProfessionalDetail;
