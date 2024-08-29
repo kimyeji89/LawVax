@@ -175,3 +175,14 @@ button {
   cursor: pointer;
   border: none;
 }
+
+/* admin */
+
+.admin-pageTitle {
+  font-family: Nunito Sans;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  color: var(--mono-black-title);
+  margin-bottom: 20px;
+}

@@ -2,12 +2,26 @@
 import { css } from "@emotion/react";
 import SearchBar from "@adminComponents/SearchBar";
 import { ReactComponent as Add } from "@images/add-icon.svg";
+import { ReactComponent as Change } from "@images/repeat-outline.svg";
 import sampleData from "@data/sampleData.json";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ProfessionalManage() {
+  const [isChange, setIsChange] = useState(false);
+
+  function handleChange(e) {
+    if (e.currentTarget.classList.contains("selected")) {
+      e.currentTarget.classList.remove("selected");
+    } else {
+      e.currentTarget.classList.add("selected");
+    }
+    setIsChange(!isChange);
+  }
+
   return (
     <main>
-      <h2 css={pageTitle}>구성원 관리</h2>
+      <h2 className="admin-pageTitle">구성원 관리</h2>
       <section className="cardCtn" css={cardCtn}>
         <div css={card}>
           <p css={cardTitle} className="cardTitle">
@@ -57,20 +71,29 @@ export default function ProfessionalManage() {
       </section>
       <section className="controlCtn" css={controlCtn}>
         <div className="btnCtn" css={btnCtn}>
-          <button type="button" css={btn}>
-            <Add className="icon" />
-            <p className="text" css={btnText}>
-              등록하기
-            </p>
-          </button>
-          <button type="button" css={btn}>
-            <Add className="icon" />
+          <Link to="/admin/professional/register">
+            <button type="button" css={btn}>
+              <Add className="icon" />
+              <p className="text" css={btnText}>
+                등록하기
+              </p>
+            </button>
+          </Link>
+
+          <button type="button" css={btn} onClick={handleChange}>
+            <Change className="icon" />
             <p className="text" css={btnText}>
               순서 바꾸기
             </p>
           </button>
+          {isChange && (
+            <button type="button" css={btn}>
+              <p className="text" css={btnText}>
+                적용하기
+              </p>
+            </button>
+          )}
         </div>
-
         <SearchBar />
       </section>
       <table className="table" css={table}>
@@ -88,7 +111,7 @@ export default function ProfessionalManage() {
         </thead>
         <tbody>
           {sampleData.map((item, idx) => (
-            <tr css={tr}>
+            <tr css={tr} key={item.name + idx}>
               <td css={td}>{idx + 1}</td>
               <td css={tdImage}>
                 <img css={profileImg} src={item.img} alt="profile image" />
@@ -112,22 +135,13 @@ export default function ProfessionalManage() {
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="8" css={tfoot}></td>
+            <td colSpan="8" css={tfoot}></td>
           </tr>
         </tfoot>
       </table>
     </main>
   );
 }
-
-const pageTitle = css`
-  font-family: Nunito Sans;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 44px;
-  color: var(--mono-black-title);
-  margin-bottom: 20px;
-`;
 
 const cardCtn = css`
   display: flex;
@@ -190,6 +204,16 @@ const btn = css`
   height: 44px;
   background-color: var(--point-color-1);
   border-radius: 8px;
+  &.selected {
+    background-color: var(--mono-white);
+    border: 2px solid var(--point-color-1);
+    .icon * {
+      fill: var(--point-color-1);
+    }
+    .text {
+      color: var(--point-color-1);
+    }
+  }
 `;
 
 const btnText = css`

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { ReactComponent as Check } from "@images/check-icon.svg";
 import { ReactComponent as EyeOff } from "@images/eye-off-outline.svg";
 import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
@@ -11,10 +11,14 @@ export default function AdminLogin() {
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!email.match(emailPattern)) {
-      setErrorMassage("잘못된 아이디입니다.");
-    } else {
+    if (email === "") {
       setErrorMassage(null);
+    } else {
+      if (!email.match(emailPattern)) {
+        setErrorMassage("잘못된 아이디입니다.");
+      } else {
+        setErrorMassage(null);
+      }
     }
   };
 
@@ -68,7 +72,7 @@ export default function AdminLogin() {
         <div css={checkboxCtn}>
           <label htmlFor="auto" css={checkboxCustom}>
             <input type="checkbox" name="auto" id="auto" css={checkbox} />
-            <Check css={checkIcon} />
+            <Check />
           </label>
           <span css={checkboxLabel}>자동 로그인</span>
         </div>
@@ -84,6 +88,7 @@ export default function AdminLogin() {
 
 const ctn = css`
   display: flex;
+  align-items: center;
   gap: 210px;
 `;
 
@@ -205,5 +210,3 @@ const checkbox = css`
   opacity: 0;
   cursor: pointer;
 `;
-
-const checkIcon = css``;
