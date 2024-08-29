@@ -1,5 +1,14 @@
+import Title from "../../components/user/Title";
+import { StyledTitleWrap } from "./NewsLetter";
+
 function ProfessionalSearch() {
-  return <>구성원 검색 ProfessionalSearch</>;
+  return (
+    <>
+      <StyledTitleWrap>
+        <Title titleFirst="P" title="ROFESSIONAL " />
+      </StyledTitleWrap>
+    </>
+  );
 }
 
 export default ProfessionalSearch;

@@ -1,18 +1,21 @@
 import Title from "@components/user/Title";
+import { StyledTitleWrap } from "./NewsLetter";
 
 function FieldDetail() {
   return (
     <>
-      <Title
-        titleFirst="F"
-        title={
-          <>
-            IELD
-            <br />
-            OF WORK
-          </>
-        }
-      />
+      <StyledTitleWrap>
+        <Title
+          titleFirst="F"
+          title={
+            <>
+              IELD
+              <br />
+              OF WORK
+            </>
+          }
+        />
+      </StyledTitleWrap>
     </>
   );
 }

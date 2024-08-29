@@ -1,9 +1,12 @@
 import Title from "@components/user/Title";
+import { StyledTitleWrap } from "./NewsLetter";
 
 function Professional() {
   return (
     <>
-      <Title titleFirst="P" title="ROFESSIONAL " />
+      <StyledTitleWrap>
+        <Title titleFirst="P" title="ROFESSIONAL " />
+      </StyledTitleWrap>
     </>
   );
 }
