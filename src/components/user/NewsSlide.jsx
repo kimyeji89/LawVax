@@ -12,7 +12,6 @@ function NewsSlide({ children }) {
 export default NewsSlide;
 
 const slider_wrapper = css`
-  //   border: 1px solid red;
   overflow-x: auto;
   white-space: nowrap;
 
@@ -37,7 +36,6 @@ const slider_container = css`
   overflow-x: auto;
 
   &::-webkit-scrollbar {
-    // width: 398px;
     height: 2px;
   }
 
@@ -47,6 +45,5 @@ const slider_container = css`
 
   &::-webkit-scrollbar-track {
     background: var(--mono-gray-line-1);
-    // width: 398px;
   }
 `;

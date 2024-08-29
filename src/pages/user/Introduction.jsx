@@ -6,13 +6,14 @@ import introImg1 from "@images/introduction/intro-img-1.png";
 import introImg2 from "@images/introduction/intro-img-2.png";
 import introImg3 from "@images/introduction/intro-img-3.png";
 import introImg4 from "@images/introduction/intro-img-4.png";
+import { StyledTitleWrap } from "./NewsLetter";
 
 function Introduction() {
   return (
     <div css={container}>
-      <div css={title_wrap}>
+      <StyledTitleWrap>
         <Title subTitle={"Introduction"} titleFirst="L" title="AWVAX" />
-      </div>
+      </StyledTitleWrap>
       <p css={title_under}>Introduce ourselves</p>
 
       <div css={gradient}></div>
@@ -67,10 +68,6 @@ export default Introduction;
 
 const container = css`
   position: relative;
-`;
-
-const title_wrap = css`
-  padding: 172px 16px 0 16px;
 `;
 
 const title_under = css`

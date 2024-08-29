@@ -148,6 +148,10 @@ const nav_style = (isNavVisible) => css`
   span {
     cursor: pointer;
   }
+
+  @media (min-width: 1024px) {
+    display: ${isNavVisible ? "block" : "none"};
+  }
 `;
 
 const btn_container = css`

@@ -21,8 +21,9 @@ import forwardIcon from "@images/chevron-forward-outline.svg";
 import nextIcon from "@images/chevron-next-outline.svg";
 import NewsSlide from "../../components/user/NewsSlide";
 import SlideCard from "../../components/user/SlideCard";
+import NewsCategory from "../../components/user/NewsCategory";
 
-const slideData = [
+export const slideData = [
   {
     category: "회계 법률",
     title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
@@ -105,11 +106,7 @@ function Home() {
 
       <section css={sec_2}>
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" showMore />
-        <div css={news_list}>
-          <span css={news_item_active}>법인소식</span>
-          <span css={news_item}>언론보도</span>
-          <span css={news_item}>인재영입</span>
-        </div>
+        <NewsCategory />
 
         <div css={new_list_wrap}>
           <div css={news_slide}>
@@ -361,13 +358,18 @@ const search_icon = css`
 const buttonContainer = css`
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 24px;
   justify-content: center;
   background-color: white;
   padding: 26px 18px;
 
   @media (max-width: 420px) {
     gap: 14px;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 20px;
+    padding: 26px 88px;
   }
 `;
 
@@ -418,41 +420,6 @@ const circleButton_active = css`
 const sec_2 = css`
   padding: 0 16px;
   margin: 130px 0;
-`;
-
-const news_list = css`
-  width: 264px;
-  padding: 0 0 48px 0;
-  display: flex;
-  justify-content: space-between;
-  gap: 48px;
-  margin: 0 auto;
-
-  span {
-    font-size: 16px;
-  }
-`;
-
-const news_item = css`
-  color: var(--mono-gray-txt-light);
-`;
-
-const news_item_active = css`
-  color: var(--mono-gray-txt-dark);
-  font-weight: 700;
-
-  position: relative;
-  padding-bottom: 8px;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background-color: var(--mono-gray-txt-dark);
-  }
 `;
 
 const new_list_wrap = css`
