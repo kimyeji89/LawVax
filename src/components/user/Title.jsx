@@ -39,6 +39,10 @@ const main_title = css`
   font-family: "Prata";
   display: inline;
   line-height: 1;
+
+  @media (max-width: 400px) {
+    font-size: 58px;
+  }
 `;
 
 const main_span = css`
@@ -46,6 +50,10 @@ const main_span = css`
   font-family: "Prata";
   color: #222222;
   margin: 0;
+
+  @media (max-width: 400px) {
+    font-size: 28px;
+  }
 `;
 
 const more_btn = css`

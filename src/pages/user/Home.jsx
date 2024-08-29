@@ -22,6 +22,7 @@ import nextIcon from "@images/chevron-next-outline.svg";
 import NewsSlide from "../../components/user/NewsSlide";
 import SlideCard from "../../components/user/SlideCard";
 import NewsCategory from "../../components/user/NewsCategory";
+import SlideProfessional from "../../components/user/SlideProfessional";
 
 export const slideData = [
   {
@@ -158,6 +159,7 @@ function Home() {
 
       <section css={sec_2}>
         <Title titleFirst="P" title="ROFESSIONAL" showMore />
+        <SlideProfessional />
       </section>
 
       <section css={sec_5}>
