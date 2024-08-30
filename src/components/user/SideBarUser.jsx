@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import closeBtn from "@images/close-outline.svg";
 
@@ -43,39 +44,57 @@ function SideBarBtn() {
         <span css={line(isMainPage, isScrolled)}></span>
       </div>
 
-      {isNavVisible && (
-        <nav css={nav_style}>
-          <div css={btn_container}>
-            <span css={kor_btn}>KOR</span>
-            <span css={eng_btn}>ENG</span>
-            <button css={close_btn} onClick={closeNav}>
-              <img src={closeBtn} alt="닫기 버튼" />
-            </button>
-          </div>
+      <nav css={nav_style(isNavVisible)}>
+        <div css={btn_container}>
+          <span css={kor_btn}>KOR</span>
+          <span css={eng_btn}>ENG</span>
+          <button css={close_btn} onClick={closeNav}>
+            <img src={closeBtn} alt="닫기 버튼" />
+          </button>
+        </div>
 
-          <ul css={link_1}>
-            <li>LawVax</li>
-            <li>업무분야</li>
-            <li>구성원</li>
-            <li>법인소식</li>
-            <li>뉴스레터</li>
-          </ul>
+        <ul css={link_1}>
+          <li>
+            <Link to="/introduction" onClick={closeNav}>
+              LawVax
+            </Link>
+          </li>
+          <li>
+            <Link to="/field" onClick={closeNav}>
+              업무분야
+            </Link>
+          </li>
+          <li>
+            <Link to="/professional" onClick={closeNav}>
+              구성원
+            </Link>
+          </li>
+          <li>
+            <Link to="/lawNews" onClick={closeNav}>
+              법인소식
+            </Link>
+          </li>
+          <li>
+            <Link to="/newsLetter" onClick={closeNav}>
+              뉴스레터
+            </Link>
+          </li>
+        </ul>
 
-          <hr />
+        <hr />
 
-          <ul css={link_2}>
-            <li>기업 감사/내부통제 지원</li>
-            <li>기술보호센터</li>
-          </ul>
+        <ul css={link_2}>
+          <li>기업 감사/내부통제 지원</li>
+          <li>기술보호센터</li>
+        </ul>
 
-          <hr />
+        <hr />
 
-          <ul css={link_2}>
-            <li>오시는 길</li>
-            <li>연락처</li>
-          </ul>
-        </nav>
-      )}
+        <ul css={link_2}>
+          <li>오시는 길</li>
+          <li>연락처</li>
+        </ul>
+      </nav>
     </>
   );
 }
@@ -103,7 +122,7 @@ const line = (isMainPage, isScrolled) => css`
   border-radius: 30px;
 `;
 
-const nav_style = css`
+const nav_style = (isNavVisible) => css`
   position: fixed;
   top: 0;
   width: 100%;
@@ -112,9 +131,13 @@ const nav_style = css`
   background-color: var(--mono-white);
   padding: 28px 16px 0 16px;
 
+  transform: ${isNavVisible ? "translateX(0)" : "translateX(-100%)"};
+  transition: transform 0.3s ease-in-out;
+
   justify-content: flex-start;
   overflow-y: auto;
   box-sizing: border-box;
+  z-index: 1000;
 
   hr {
     border: 1px solid var(--mono-gray-line-1);
@@ -124,6 +147,10 @@ const nav_style = css`
   li,
   span {
     cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    display: ${isNavVisible ? "block" : "none"};
   }
 `;
 
@@ -167,6 +194,12 @@ const link_1 = css`
   li {
     font-size: 32px;
     font-weight: 400;
+
+    a {
+      font-weight: 400;
+      text-decoration: none;
+      color: inherit;
+    }
   }
 `;
 

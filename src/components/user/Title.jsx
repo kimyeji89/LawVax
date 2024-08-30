@@ -21,7 +21,7 @@ function Title({ titleFirst, title, subTitle, showMore }) {
 export default Title;
 
 const fontImport = css`
-  @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+  padding: 0 0 48px 0;
 `;
 
 const sub_title = css`
@@ -39,6 +39,10 @@ const main_title = css`
   font-family: "Prata";
   display: inline;
   line-height: 1;
+
+  @media (max-width: 400px) {
+    font-size: 58px;
+  }
 `;
 
 const main_span = css`
@@ -46,6 +50,10 @@ const main_span = css`
   font-family: "Prata";
   color: #222222;
   margin: 0;
+
+  @media (max-width: 400px) {
+    font-size: 28px;
+  }
 `;
 
 const more_btn = css`

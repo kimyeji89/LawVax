@@ -1,5 +1,14 @@
+import Title from "@components/user/Title";
+import { StyledTitleWrap } from "./NewsLetter";
+
 function Professional() {
-  return <>구성원 Professional</>;
+  return (
+    <>
+      <StyledTitleWrap>
+        <Title titleFirst="P" title="ROFESSIONAL " />
+      </StyledTitleWrap>
+    </>
+  );
 }
 
 export default Professional;

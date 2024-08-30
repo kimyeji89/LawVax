@@ -1,7 +1,7 @@
 import Title from "@components/user/Title";
 import { StyledTitleWrap } from "./NewsLetter";
 
-function Field() {
+function FieldDetail() {
   return (
     <>
       <StyledTitleWrap>
@@ -20,4 +20,4 @@ function Field() {
   );
 }
 
-export default Field;
+export default FieldDetail;
