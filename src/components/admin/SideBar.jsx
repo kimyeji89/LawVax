@@ -9,15 +9,14 @@ import { SideBtn } from "@adminComponents/SideBtns";
 
 export default function SideBar() {
   const location = useLocation();
+  function isIncludes(path) {
+    return location.pathname.includes(path);
+  }
   return (
     <nav css={nav}>
       <div className="top" css={top}>
         <Link to="/admin/professional">
-          <SideBtn
-            selected={
-              location.pathname === "/admin/professional" ? true : false
-            }
-          >
+          <SideBtn selected={isIncludes("/admin/professional")}>
             <People className="icon" css={icon} />
             <p className="text" css={text}>
               구성원 관리
@@ -25,9 +24,7 @@ export default function SideBar() {
           </SideBtn>
         </Link>
         <Link to="/admin/post">
-          <SideBtn
-            selected={location.pathname === "/admin/post" ? true : false}
-          >
+          <SideBtn selected={isIncludes("/admin/post")}>
             <Tray className="icon" css={icon} />
             <p className="text" css={text}>
               게시글 관리
