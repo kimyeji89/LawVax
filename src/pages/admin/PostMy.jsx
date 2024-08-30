@@ -1,5 +1,21 @@
-function PostMy() {
-  return <>게시글 관리 - 내가 쓴 글 PostMy</>;
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import AsideMenu from "@adminComponents/AsideMenu";
+import PostTable from "@adminComponents/PostTable";
+
+export default function PostMy() {
+  return (
+    <main>
+      <h2 className="admin-pageTitle">게시글 관리</h2>
+      <div css={ctn}>
+        <AsideMenu />
+        <PostTable />
+      </div>
+    </main>
+  );
 }
 
-export default PostMy;
+const ctn = css`
+  display: flex;
+  gap: 30px;
+`;

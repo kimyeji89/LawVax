@@ -82,14 +82,31 @@ export default function ProfessionalManage() {
       <table className="table" css={table}>
         <thead>
           <tr css={tr}>
-            <th css={th}>번호</th>
-            <th css={th}>이미지</th>
-            <th css={th}>직책</th>
-            <th css={th}>이름</th>
-            <th css={th}>이메일</th>
-            <th css={th}>공개여부</th>
-            <th css={th}>수정</th>
-            <th css={th}>삭제</th>
+            <th css={th} className="num">
+              번호
+            </th>
+            <th css={th} className="img">
+              이미지
+            </th>
+            <th css={th} className="position">
+              직책
+            </th>
+            <th css={th} className="name">
+              이름
+            </th>
+            <th css={th} className="email">
+              이메일
+            </th>
+            <th css={th} className="empty"></th>
+            <th css={th} className="isPublic">
+              공개여부
+            </th>
+            <th css={th} className="edit">
+              수정
+            </th>
+            <th css={th} className="delete">
+              삭제
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -103,6 +120,7 @@ export default function ProfessionalManage() {
                 <td css={td}>{item.position}</td>
                 <td css={td}>{item.name}</td>
                 <td css={td}>{item.email}</td>
+                <td css={td}></td>
                 <td css={td}>{item.isPublic ? "공개" : "비공개"}</td>
                 <td css={td}>
                   <button className="editBtn" css={[tableBtn, edit]}>
@@ -128,6 +146,7 @@ export default function ProfessionalManage() {
                   <td css={td}>{item.position}</td>
                   <td css={td}>{item.name}</td>
                   <td css={td}>{item.email}</td>
+                  <td css={td}></td>
                   <td css={td}>{item.isPublic ? "공개" : "비공개"}</td>
                   <td css={td}>
                     <button className="editBtn" css={[tableBtn, edit]}>
@@ -179,6 +198,7 @@ function Card({ title, num, IsSelected, onSelect }) {
 const cardCtn = css`
   display: flex;
   gap: 30px;
+  width: 1543px;
 `;
 
 const card = css`
@@ -219,6 +239,7 @@ const cardContent = css`
 `;
 
 const controlCtn = css`
+  width: 1543px;
   margin: 30px 0 20px 0;
   display: flex;
   justify-content: space-between;
@@ -229,36 +250,8 @@ const btnCtn = css`
   gap: 20px;
 `;
 
-const btn = css`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 44px;
-  background-color: var(--point-color-1);
-  border-radius: 8px;
-  &.selected {
-    background-color: var(--mono-white);
-    border: 2px solid var(--point-color-1);
-    .icon * {
-      fill: var(--point-color-1);
-    }
-    .text {
-      color: var(--point-color-1);
-    }
-  }
-`;
-
-const btnText = css`
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 24px;
-  color: var(--mono-white);
-`;
-
 const table = css`
-  width: 100%;
+  width: 1543px;
   border-collapse: collapse;
   background-color: var(--mono-white);
   border-top: var(--table-bd);
@@ -267,11 +260,39 @@ const table = css`
 `;
 
 const th = css`
-  padding: 20px 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 64px;
+  vertical-align: middle;
   font-weight: 700;
   line-height: 24px;
   opacity: 90%;
   text-align: center;
+  &.num {
+    width: 129px;
+  }
+  &.img {
+    width: 78.79px;
+  }
+  &.position {
+    width: 160.21px;
+  }
+  &.name {
+    width: 120px;
+  }
+  &.email {
+  }
+  &.empty {
+    width: 562px;
+  }
+  &.isPublic {
+    width: 100px;
+  }
+  &.edit,
+  &.delete {
+    width: 100px;
+  }
 `;
 
 const tr = css`
@@ -279,7 +300,9 @@ const tr = css`
 `;
 
 const td = css`
-  padding: 14px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: 500;
   line-height: 24px;
   opacity: 90%;
