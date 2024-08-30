@@ -1,15 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
+import ImgInput from "@adminComponents/ImgInput";
+import { Btn274 } from "@adminComponents/Btns";
 import { TextField, TextArea } from "@adminComponents/TextField";
-import SelectBox from "@adminComponents/SelectBox";
+import { SelectBox } from "@adminComponents/SelectBox";
+import { v4 as uuidv4 } from "uuid";
 import {
   ControlField,
   ControlSelectField,
   ControlPeriodField,
 } from "@adminComponents/ControlField";
-import { ReactComponent as Camera } from "@images/camera-icon.svg";
-import { ReactComponent as Check } from "@images/check-icon.svg";
-import { useState } from "react";
+import CheckBox from "@adminComponents/CheckBox";
 
 export default function ProfessionalRegister() {
   const [image, setImage] = useState(null);
@@ -74,11 +76,12 @@ export default function ProfessionalRegister() {
   }
 
   function renderField(type, componentList, id, placeholder) {
-    return componentList.map((component) => {
+    return componentList.map((component, index) => {
       switch (type) {
         case "education":
           return (
             <ControlSelectField
+              key={`${component.id}-${index}`}
               id={component.id}
               placeholder={component.placeholder}
               addField={() => addField(type, id, placeholder)}
@@ -87,6 +90,7 @@ export default function ProfessionalRegister() {
         case "career":
           return (
             <ControlPeriodField
+              key={`${component.id}-${index}`}
               id={component.id}
               placeholder={component.placeholder}
               addField={() => addField(type, id, placeholder)}
@@ -95,6 +99,7 @@ export default function ProfessionalRegister() {
         case "cases":
           return (
             <ControlPeriodField
+              key={`${component.id}-${index}`}
               id={component.id}
               placeholder={component.placeholder}
               addField={() => addField(type, id, placeholder)}
@@ -103,6 +108,7 @@ export default function ProfessionalRegister() {
         case "etc":
           return (
             <ControlField
+              key={`${component.id}-${index}`}
               id={component.id}
               placeholder={component.placeholder}
               addField={() => addField(type, id, placeholder)}
@@ -114,7 +120,7 @@ export default function ProfessionalRegister() {
     });
   }
 
-  const handleSelect = (type, value) => {
+  function handleSelect(type, value) {
     switch (type) {
       case "Position":
         setSelectedPosition(value);
@@ -140,19 +146,6 @@ export default function ProfessionalRegister() {
       default:
         break;
     }
-  };
-
-  function handleImageUpload(event) {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert("Please upload a valid image file.");
-    }
   }
 
   return (
@@ -160,23 +153,12 @@ export default function ProfessionalRegister() {
       <h2 className="admin-pageTitle">구성원 등록</h2>
       <form action="GET" css={form}>
         <div className="top" css={top}>
-          <input
-            type="file"
-            id="imgUpload"
-            css={imgUploadInput}
-            onChange={handleImageUpload}
-            accept="image/*"
+          <ImgInput
+            gap="16"
+            onChange={setImage}
+            image={image}
+            label="사진 등록"
           />
-          <label htmlFor="imgUpload" css={labelCtn}>
-            <div className="iconCtn" css={imgCtn}>
-              {image ? (
-                <img src={image} alt="profile image" css={uploadedImg} />
-              ) : (
-                <Camera />
-              )}
-            </div>
-            <p css={labelText}>사진 등록</p>
-          </label>
         </div>
         <div className="middle" css={middle}>
           <div className="left" css={left}>
@@ -353,16 +335,8 @@ export default function ProfessionalRegister() {
           </div>
         </div>
         <div className="bottom" css={bottom}>
-          <button type="submit" css={btn}>
-            <p>저장</p>
-          </button>
-          <div css={checkboxCtn}>
-            <label htmlFor="auto" css={checkboxCustom}>
-              <input type="checkbox" name="auto" id="auto" css={checkbox} />
-              <Check />
-            </label>
-            <span css={checkboxLabel}>비공개</span>
-          </div>
+          <Btn274 text="저장" />
+          <CheckBox label="비공개" />
         </div>
       </form>
     </main>
@@ -370,21 +344,21 @@ export default function ProfessionalRegister() {
 }
 
 const positionData = [
-  { value: "대표 변호사", text: "대표 변호사" },
-  { value: "파트너 변호사", text: "파트너 변호사" },
-  { value: "변호사", text: "변호사" },
-  { value: "고문", text: "고문" },
+  { value: "대표 변호사", text: "대표 변호사", key: uuidv4() },
+  { value: "파트너 변호사", text: "파트너 변호사", key: uuidv4() },
+  { value: "변호사", text: "변호사", key: uuidv4() },
+  { value: "고문", text: "고문", key: uuidv4() },
 ];
 
 const taskData = [
-  { value: "기업분야", text: "기업분야" },
-  { value: "개인분야", text: "개인분야" },
+  { value: "기업분야", text: "기업분야", key: uuidv4() },
+  { value: "개인분야", text: "개인분야", key: uuidv4() },
 ];
 
 const langData = [
-  { value: "한국어", text: "한국어" },
-  { value: "영어", text: "영어" },
-  { value: "일본어", text: "일본어" },
+  { value: "한국어", text: "한국어", key: uuidv4() },
+  { value: "영어", text: "영어", key: uuidv4() },
+  { value: "일본어", text: "일본어", key: uuidv4() },
 ];
 
 const form = css`
@@ -399,46 +373,6 @@ const form = css`
 
 const top = css`
   margin-bottom: 30px;
-`;
-
-const labelCtn = css`
-  width: 80px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  cursor: pointer;
-`;
-
-const imgUploadInput = css`
-  display: none;
-`;
-
-const imgCtn = css`
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ececee;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
-  border-radius: 8px;
-`;
-
-const uploadedImg = css`
-  max-width: 80px;
-  max-height: 80px;
-  object-fit: contain;
-`;
-
-const labelText = css`
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 16px;
-  color: var(--point-color-1);
 `;
 
 const middle = css`
@@ -489,10 +423,6 @@ const multiInputCtnSmall = css`
   }
 `;
 
-const selectBoxCtn = css`
-  position: relative;
-`;
-
 const textInputLabel = css`
   font-size: 14px;
   font-weight: 500;
@@ -521,50 +451,4 @@ const bottom = css`
   display: flex;
   justify-content: center;
   position: relative;
-`;
-
-const btn = css`
-  width: 274px;
-  height: 56px;
-  background-color: var(--point-color-1);
-  border-radius: 8px;
-  p {
-    color: var(--mono-white);
-  }
-`;
-
-const checkboxCtn = css`
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 165px);
-  transform: translateY(-50%);
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`;
-
-const checkboxLabel = css`
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
-  color: var(--mono-gray-txt-dark);
-`;
-
-const checkboxCustom = css`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  background-color: #1a6cb5;
-  box-shadow: 0 0 0 1px #8fc0ec inset;
-`;
-
-const checkbox = css`
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
 `;

@@ -9,7 +9,6 @@ import { SideBtn } from "@adminComponents/SideBtns";
 
 export default function SideBar() {
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <nav css={nav}>
       <div className="top" css={top}>

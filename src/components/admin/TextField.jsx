@@ -54,6 +54,24 @@ function TextField({ id, label, size, placeholder, isSingle }) {
   }
 }
 
+function TextFieldPost({ id, label, placeholder }) {
+  return (
+    <div>
+      <label htmlFor={id} css={textInputLabelPost} className="label">
+        {label}
+      </label>
+      <input
+        type="text"
+        name={id}
+        id={id}
+        css={[textInputPost]}
+        required
+        placeholder={placeholder}
+      />
+    </div>
+  );
+}
+
 function TextArea({ id, label, placeholder }) {
   return (
     <div css={textAreaCtn}>
@@ -82,6 +100,16 @@ const textInputLabel = css`
   display: block;
 `;
 
+const textInputLabelPost = css`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.71px;
+  color: var(--mono-gray-txt-dark);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  display: block;
+`;
+
 const textInput = css`
   height: 52px;
   padding: 14px 16px;
@@ -98,6 +126,27 @@ const textInput = css`
   }
 `;
 
+const textInputPost = css`
+  width: 1272px;
+  height: 28px;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  background-color: var(--mono-white);
+  box-shadow: 0 0 0 1px #d5d5d5 inset;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--mono-gray-txt-dark);
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--mono-gray-input-ph);
+  }
+`;
+
 const textAreaCtn = css`
   height: 275px;
 `;
@@ -108,4 +157,4 @@ const textArea = css`
   resize: none;
 `;
 
-export { TextField, TextArea };
+export { TextField, TextArea, TextFieldPost };
