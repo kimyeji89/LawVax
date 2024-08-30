@@ -13,7 +13,7 @@ import {
 } from "@adminComponents/ControlField";
 import CheckBox from "@adminComponents/CheckBox";
 
-export default function ProfessionalRegister() {
+export default function SuperMemberRegister() {
   const [image, setImage] = useState(null);
   const [selectedPosition, setSelectedPosition] = useState("");
   const [selectedTasks, setSelectedTasks] = useState([]);

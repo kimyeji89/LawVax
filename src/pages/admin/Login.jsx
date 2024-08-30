@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-import CheckBox from "@adminComponents/CheckBox";
 import { ReactComponent as Check } from "@images/check-icon.svg";
 import { ReactComponent as EyeOff } from "@images/eye-off-outline.svg";
 import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
 
-export default function AdminLogin() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [errorMassage, setErrorMassage] = useState(null);
   const [viewPw, setViewPw] = useState(false);

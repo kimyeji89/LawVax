@@ -8,7 +8,7 @@ import sampleProfileData from "@data/sampleProfileData.json";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ProfessionalManage() {
+export default function SuperMember() {
   const [category, setCategory] = useState("전체");
   const [isChange, setIsChange] = useState(false);
 
@@ -67,7 +67,7 @@ export default function ProfessionalManage() {
       </section>
       <section className="controlCtn" css={controlCtn}>
         <div className="btnCtn" css={btnCtn}>
-          <Link to="/admin/professional/register">
+          <Link to="/admin/super/member/register">
             <Btn120 text="등록하기">
               <Add className="icon" />
             </Btn120>

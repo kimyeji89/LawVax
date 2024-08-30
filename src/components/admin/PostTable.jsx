@@ -16,7 +16,7 @@ export default function PostTable() {
   return (
     <section css={content}>
       <div css={top}>
-        <Link to="/admin/post/register">
+        <Link to="/admin/super/post/register">
           <Btn120 text="글쓰기">
             <Add className="icon" />
           </Btn120>

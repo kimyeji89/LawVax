@@ -9,7 +9,7 @@ import { TextFieldPost } from "@adminComponents/TextField";
 import FileInput from "../../components/admin/FileInput";
 import { v4 as uuidv4 } from "uuid";
 
-export default function PostRegister() {
+export default function SuperPostRegister() {
   const [image, setImage] = useState(null);
   const [catrgory, setCategory] = useState("");
   const [file, setFile] = useState(null);
