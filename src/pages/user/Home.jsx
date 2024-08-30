@@ -23,34 +23,7 @@ import NewsSlide from "../../components/user/NewsSlide";
 import SlideCard from "../../components/user/SlideCard";
 import NewsCategory from "../../components/user/NewsCategory";
 import SlideProfessional from "../../components/user/SlideProfessional";
-
-export const slideData = [
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-];
+import newsSlideData from "@data/newsSlideData.json";
 
 function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -146,7 +119,7 @@ function Home() {
           }
         />
         <NewsSlide>
-          {slideData.map((slide, index) => (
+          {newsSlideData.map((slide, index) => (
             <SlideCard
               key={index}
               category={slide.category}
@@ -426,6 +399,10 @@ const sec_2 = css`
 
 const new_list_wrap = css`
   display: flex;
+
+  @media (min-width: 1024px) {
+    justify-content: center;
+  }
 `;
 
 const news_slide = css`

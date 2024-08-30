@@ -105,6 +105,10 @@ const swiperStyle = css`
   margin: 0 auto;
   height: 168px;
 
+  @media (min-width: 450px) {
+    width: 430px;
+  }
+
   .swiper-pagination-progressbar {
     position: absolute;
     bottom: 0px;
@@ -134,6 +138,7 @@ const swiperStyle = css`
     height: 150px;
     display: flex;
     padding: 0 0 16px 0;
+    // margin: 0;
   }
 
   .swiper-slide.swiper-slide-active {
