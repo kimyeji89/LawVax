@@ -12,8 +12,8 @@ export default function AsideMenu() {
           <AsideMenuBtn
             title="전체보기"
             num={1253}
-            selected={location.pathname === "/admin/post" ? true : false}
-            link="/admin/post"
+            selected={location.pathname === "/admin/super/post" ? true : false}
+            link="/admin/super/post"
           />
         </ul>
         <span css={divider}></span>
@@ -22,7 +22,7 @@ export default function AsideMenu() {
             title="뉴스레터"
             num={0}
             selected={false}
-            link="/admin/post"
+            link="/admin/super/post"
           />
         </ul>
         <span css={divider}></span>
@@ -31,31 +31,33 @@ export default function AsideMenu() {
             title="소식"
             num={0}
             selected={false}
-            link="/admin/post"
+            link="/admin/super/post"
           />
           <AsideMenuBtn
             title="언론보도"
             num={0}
             selected={false}
-            link="/admin/post"
+            link="/admin/super/post"
           />
           <AsideMenuBtn
             title="인재영입"
             num={0}
             selected={false}
-            link="/admin/post"
+            link="/admin/super/post"
           />
           <AsideMenuBtn
             title="내가 쓴 글"
             num={0}
-            selected={location.pathname === "/admin/post/my" ? true : false}
-            link="/admin/post/my"
+            selected={
+              location.pathname === "/admin/general/post/my" ? true : false
+            }
+            link="/admin/general/post/my"
           />
           <AsideMenuBtn
             title="비공개"
             num={0}
             selected={false}
-            link="/admin/post"
+            link="/admin/super/post"
           />
         </ul>
       </div>

@@ -1,12 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import AdminLogin from "@adminPages/AdminLogin";
-import ProfessionalManage from "@adminPages/ProfessionalManage";
-import ProfessionalRegister from "@adminPages/ProfessionalRegister";
-import PostManage from "@adminPages/PostManage";
-import PostRegister from "@adminPages/PostRegister";
-import PostMy from "@adminPages/PostMy";
+import Login from "@adminPages/Login";
+import SuperMember from "@adminPages/SuperMember";
+import GeneralMember from "../pages/admin/GeneralMember";
+import SuperMemberRegister from "@adminPages/SuperMemberRegister";
+import GeneralMemberRegister from "../pages/admin/GeneralMemberRegister";
+import SuperPost from "@adminPages/SuperPost";
+import GeneralPost from "../pages/admin/GeneralPost";
+import SuperPostRegister from "@adminPages/SuperPostRegister";
+import GeneralPostRegister from "../pages/admin/GeneralPostRegister";
+import GeneralPostMy from "../pages/admin/GeneralPostMy";
 import Header from "@adminComponents/Header";
 import SideBar from "@adminComponents/SideBar";
 
@@ -16,7 +20,7 @@ export default function AdminLayout() {
     return (
       <div css={login}>
         <Routes>
-          <Route path="login" element={<AdminLogin />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </div>
     );
@@ -26,14 +30,26 @@ export default function AdminLayout() {
         <Header />
         <SideBar />
         <Routes>
-          <Route path="professional" element={<ProfessionalManage />} />
+          {/* super 통합 관리자*/}
+          <Route path="super/member" element={<SuperMember />} />
           <Route
-            path="professional/register"
-            element={<ProfessionalRegister />}
+            path="super/member/register"
+            element={<SuperMemberRegister />}
           />
-          <Route path="post" element={<PostManage />} />
-          <Route path="post/register" element={<PostRegister />} />
-          <Route path="post/my" element={<PostMy />} />
+          <Route path="super/post" element={<SuperPost />} />
+          <Route path="super/post/register" element={<SuperPostRegister />} />
+          {/* general 일반 관리자*/}
+          <Route path="general/member" element={<GeneralMember />} />
+          <Route
+            path="general/member/register"
+            element={<GeneralMemberRegister />}
+          />
+          <Route path="general/post" element={<GeneralPost />} />
+          <Route
+            path="general/post/register"
+            element={<GeneralPostRegister />}
+          />
+          <Route path="general/post/my" element={<GeneralPostMy />} />
         </Routes>
       </div>
     );

@@ -15,16 +15,16 @@ export default function SideBar() {
   return (
     <nav css={nav}>
       <div className="top" css={top}>
-        <Link to="/admin/professional">
-          <SideBtn selected={isIncludes("/admin/professional")}>
+        <Link to="/admin/super/member">
+          <SideBtn selected={isIncludes("/member")}>
             <People className="icon" css={icon} />
             <p className="text" css={text}>
               구성원 관리
             </p>
           </SideBtn>
         </Link>
-        <Link to="/admin/post">
-          <SideBtn selected={isIncludes("/admin/post")}>
+        <Link to="/admin/super/post">
+          <SideBtn selected={isIncludes("/post")}>
             <Tray className="icon" css={icon} />
             <p className="text" css={text}>
               게시글 관리

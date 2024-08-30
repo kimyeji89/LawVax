@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import AsideMenu from "@adminComponents/AsideMenu";
 import PostTable from "@adminComponents/PostTable";
 
-export default function PostMy() {
+export default function SuperPost() {
   return (
     <main>
       <h2 className="admin-pageTitle">게시글 관리</h2>
