@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
+import CheckBox from "@adminComponents/CheckBox";
 import { ReactComponent as Check } from "@images/check-icon.svg";
 import { ReactComponent as EyeOff } from "@images/eye-off-outline.svg";
 import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
@@ -8,6 +9,7 @@ import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [errorMassage, setErrorMassage] = useState(null);
+  const [viewPw, setViewPw] = useState(false);
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -58,16 +60,41 @@ export default function AdminLogin() {
           <label htmlFor="pw" css={label}>
             비밀번호
           </label>
-          <input
-            type="password"
-            name="pw"
-            id="pw"
-            css={textInput}
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <EyeOn css={eyeOn} />
-          <EyeOff css={eyeOff} />
+          {viewPw ? (
+            <input
+              type="text"
+              name="pw"
+              id="pw"
+              css={textInput}
+              placeholder="비밀번호를 입력해주세요."
+              required
+            />
+          ) : (
+            <input
+              type="password"
+              name="pw"
+              id="pw"
+              css={textInput}
+              placeholder="비밀번호를 입력해주세요."
+              required
+            />
+          )}
+
+          {viewPw ? (
+            <EyeOff
+              css={eye}
+              onClick={() => {
+                setViewPw(false);
+              }}
+            />
+          ) : (
+            <EyeOn
+              css={eye}
+              onClick={() => {
+                setViewPw(true);
+              }}
+            />
+          )}
         </div>
         <div css={checkboxCtn}>
           <label htmlFor="auto" css={checkboxCustom}>
@@ -166,15 +193,8 @@ const error = css`
   line-height: 12px;
 `;
 
-const eyeOn = css`
-  top: calc(32px + ((100% - 32px) / 2));
-  transform: translateY(-50%);
-  right: 14px;
-  position: absolute;
-`;
-
-const eyeOff = css`
-  display: none;
+const eye = css`
+  cursor: pointer;
   top: calc(32px + ((100% - 32px) / 2));
   transform: translateY(-50%);
   right: 14px;

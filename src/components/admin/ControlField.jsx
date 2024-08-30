@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { TextField } from "@adminComponents/TextField";
-import SelectBox from "@adminComponents/SelectBox";
+import { Btn36 } from "@adminComponents/Btns";
+import { SelectBox } from "@adminComponents/SelectBox";
 import { ReactComponent as Add } from "@images/add-outline.svg";
 import { ReactComponent as Trash } from "@images/trash-outline.svg";
-import { ReactComponent as DropDown } from "@images/Drop Down.svg";
+import { v4 as uuidv4 } from "uuid";
 
 function ControlField({ id, placeholder, addField }) {
   function removeField() {
@@ -23,18 +24,28 @@ function ControlField({ id, placeholder, addField }) {
         placeholder={placeholder}
         isSingle={true}
       />
-      <button type="button" css={addNdelBtn} onClick={addField}>
+      <Btn36 event={addField}>
         <Add />
-      </button>
-      <button type="button" css={addNdelBtn} onClick={removeField}>
+      </Btn36>
+      <Btn36 event={removeField}>
         <Trash />
-      </button>
+      </Btn36>
     </div>
   );
 }
 
 function ControlSelectField({ id, placeholder, addField }) {
   const [selected, setSelected] = useState("");
+
+  const dataWithKeys = useMemo(
+    () =>
+      yearData.map((year) => ({
+        value: year,
+        text: year,
+        key: `${id}-${uuidv4()}`,
+      })),
+    [id]
+  );
 
   function removeField() {
     let target = document.querySelector(`#${id}row`);
@@ -43,7 +54,7 @@ function ControlSelectField({ id, placeholder, addField }) {
     }
   }
 
-  const handleSelect = (value) => {
+  const handleSelect = (id, value) => {
     setSelected(value);
   };
 
@@ -54,7 +65,7 @@ function ControlSelectField({ id, placeholder, addField }) {
         placeholder="선택"
         size={small159}
         selectedValue={selected}
-        data={yearData}
+        data={dataWithKeys}
         onSelect={handleSelect}
         id={`select${id}`}
         isMulti={false}
@@ -66,12 +77,12 @@ function ControlSelectField({ id, placeholder, addField }) {
         placeholder={placeholder}
         isSingle={true}
       />
-      <button type="button" css={addNdelBtn} onClick={addField}>
+      <Btn36 event={addField}>
         <Add />
-      </button>
-      <button type="button" css={addNdelBtn} onClick={removeField}>
+      </Btn36>
+      <Btn36 event={removeField}>
         <Trash />
-      </button>
+      </Btn36>
     </div>
   );
 }
@@ -109,12 +120,12 @@ function ControlPeriodField({ id, placeholder, addField }) {
         placeholder={placeholder[1]}
         isSingle={true}
       />
-      <button type="button" css={addNdelBtn} onClick={addField}>
+      <Btn36 event={addField}>
         <Add />
-      </button>
-      <button type="button" css={addNdelBtn} onClick={removeField}>
+      </Btn36>
+      <Btn36 event={removeField}>
         <Trash />
-      </button>
+      </Btn36>
     </div>
   );
 }
