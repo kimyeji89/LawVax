@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import openIcon from "@images/open-btn.svg";
-import closeIcon from "@images/close-btn.svg";
+import openIcon from "@images/field/open-btn.svg";
+import closeIcon from "@images/field/close-btn.svg";
 import { useState } from "react";
 
 function FieldList({ title, children }) {

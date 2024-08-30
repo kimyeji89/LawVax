@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import linkBtn from "@images/chevron-next-black.svg";
+import linkBtn from "@images/field/chevron-next-black.svg";
 import { Link } from "react-router-dom";
 
 function FieldItem({ title, link }) {
