@@ -131,7 +131,7 @@ function SelectBoxPost({
   const handleSelect = (e) => {
     const value = e.target.getAttribute("data-value");
 
-    onSelect(id, value);
+    onSelect(value);
     if (!isMulti) {
       setIsOpen(false);
     }

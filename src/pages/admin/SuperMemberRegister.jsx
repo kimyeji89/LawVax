@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { ImgInput } from "@adminComponents/ImgInput";
 import { Btn274 } from "@adminComponents/Btns";
-import { TextField, TextArea } from "@adminComponents/TextField";
+import { TextField, TextArea, PasswordField } from "@adminComponents/TextField";
 import { SelectBox } from "@adminComponents/SelectBox";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -14,61 +14,186 @@ import {
 import CheckBox from "@adminComponents/CheckBox";
 
 export default function SuperMemberRegister() {
-  const [image, setImage] = useState(null);
-  const [selectedPosition, setSelectedPosition] = useState("");
-  const [selectedTasks, setSelectedTasks] = useState([]);
-  const [selectedLangs, setSelectedLangs] = useState([]);
-  const [educationFields, setEducationFields] = useState([
-    { id: "education1", placeholder: "OO대학교 졸업" },
-    { id: "education2", placeholder: "OO대학교 졸업" },
-    { id: "education3", placeholder: "OO대학교 졸업" },
-  ]);
-  const [careerFields, setCareerFields] = useState([
-    { id: "career1", placeholder: ["1990", "제31회 사법시험 합격"] },
-    { id: "career2", placeholder: ["1990", "제31회 사법시험 합격"] },
-    { id: "career3", placeholder: ["1990", "제31회 사법시험 합격"] },
-  ]);
-  const [casesFields, setCasesFields] = useState([
-    {
-      id: "cases1",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-    {
-      id: "cases2",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-    {
-      id: "cases3",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-  ]);
-  const [etcFields, setEtcFields] = useState([
-    { id: "etc1", placeholder: "아시아경제 등 칼럼 게재" },
-    { id: "etc2", placeholder: "아시아경제 등 칼럼 게재" },
-    { id: "etc3", placeholder: "아시아경제 등 칼럼 게재" },
-  ]);
+  const [formData, setFormData] = useState({
+    image: null,
+    nameKR: "",
+    nameCH: "",
+    birth: { year: "", month: "", date: "" },
+    position: "",
+    tasks: [],
+    email: "",
+    langs: [],
+    phone: "",
+    fax: "",
+    id: "",
+    pw: "",
+    introduce: "",
+    education: [
+      { year: "", text: "" },
+      { year: "", text: "" },
+      { year: "", text: "" },
+    ],
+    career: [
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+    ],
+    cases: [
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+    ],
+    etc: [""],
+  });
 
-  function addField(type, id, placeholder) {
-    let newComponent = {
+  function handleImage(image) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      image: image,
+    }));
+  }
+
+  function handleNameKR(nameKR) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      nameKR: nameKR,
+    }));
+  }
+
+  function handleNameCH(nameCH) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      nameCH: nameCH,
+    }));
+  }
+
+  function handleBirthYear(year) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birth: { ...prevFormData.birth, year: year },
+    }));
+  }
+
+  function handleBirthMonth(month) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birth: { ...prevFormData.birth, month: month },
+    }));
+  }
+
+  function handleBirthDate(date) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birth: { ...prevFormData.birth, date: date },
+    }));
+  }
+
+  function handleEmail(email) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      email: email,
+    }));
+  }
+
+  function handlePhone(phone) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      phone: phone,
+    }));
+  }
+
+  function handleFax(fax) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      fax: fax,
+    }));
+  }
+
+  function handleId(id) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       id: id,
-      placeholder: placeholder,
-    };
+    }));
+  }
 
+  function handlePw(pw) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      pw: pw,
+    }));
+  }
+
+  function handleIntroduce(introduce) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      introduce: introduce,
+    }));
+  }
+
+  function handleSelect(type, value) {
+    switch (type) {
+      case "Position":
+        setFormData((prevFormData) => ({ ...prevFormData, position: value }));
+        break;
+      case "Task":
+        if (formData.tasks.includes(value)) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            tasks: prevFormData.tasks.filter((item) => item !== value),
+          }));
+        } else {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            tasks: [...prevFormData.tasks, value],
+          }));
+        }
+        break;
+      case "Lang":
+        if (formData.langs.includes(value)) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            langs: prevFormData.langs.filter((item) => item !== value),
+          }));
+        } else {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            langs: [...prevFormData.langs, value],
+          }));
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  function addField(type) {
     switch (type) {
       case "education":
-        setEducationFields((prevComponents) => [
-          ...prevComponents,
-          newComponent,
-        ]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          education: [...formData.education, { year: "", text: "" }],
+        }));
         break;
       case "career":
-        setCareerFields((prevComponents) => [...prevComponents, newComponent]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          career: [
+            ...formData.career,
+            { yearStart: "", yearEnd: "", text: "" },
+          ],
+        }));
         break;
       case "cases":
-        setCasesFields((prevComponents) => [...prevComponents, newComponent]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          cases: [...formData.cases, { yearStart: "", yearEnd: "", text: "" }],
+        }));
         break;
       case "etc":
-        setEtcFields((prevComponents) => [...prevComponents, newComponent]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          etc: [...formData.etc, ""],
+        }));
         break;
       default:
         break;
@@ -81,37 +206,37 @@ export default function SuperMemberRegister() {
         case "education":
           return (
             <ControlSelectField
-              key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         case "career":
           return (
             <ControlPeriodField
-              key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         case "cases":
           return (
             <ControlPeriodField
-              key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         case "etc":
           return (
             <ControlField
-              key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         default:
@@ -120,43 +245,15 @@ export default function SuperMemberRegister() {
     });
   }
 
-  function handleSelect(type, value) {
-    switch (type) {
-      case "Position":
-        setSelectedPosition(value);
-        break;
-      case "Task":
-        if (selectedTasks.includes(value)) {
-          setSelectedTasks(
-            selectedTasks.filter((selected) => selected !== value)
-          );
-        } else {
-          setSelectedTasks([...selectedTasks, value]);
-        }
-        break;
-      case "Lang":
-        if (selectedLangs.includes(value)) {
-          setSelectedLangs(
-            selectedLangs.filter((selected) => selected !== value)
-          );
-        } else {
-          setSelectedLangs([...selectedLangs, value]);
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
   return (
     <main>
       <h2 className="admin-pageTitle">구성원 등록</h2>
-      <form action="GET" css={form}>
+      <form action="POST" css={form}>
         <div className="top" css={top}>
           <ImgInput
             gap="16"
-            onChange={setImage}
-            image={image}
+            onChange={handleImage}
+            image={formData.image}
             label="사진 등록"
           />
         </div>
@@ -169,6 +266,7 @@ export default function SuperMemberRegister() {
                 size={full}
                 placeholder={"홍길동"}
                 isSingle={true}
+                onChange={handleNameKR}
               />
               <TextField
                 id={"nameCH"}
@@ -176,6 +274,7 @@ export default function SuperMemberRegister() {
                 size={full}
                 placeholder={"洪吉童"}
                 isSingle={true}
+                onChange={handleNameCH}
               />
             </div>
             <div className="row" css={row}>
@@ -188,6 +287,7 @@ export default function SuperMemberRegister() {
                     size={triple}
                     placeholder={"0000"}
                     isSingle={false}
+                    onChange={handleBirthYear}
                   />
                   <TextField
                     id={"month"}
@@ -195,6 +295,7 @@ export default function SuperMemberRegister() {
                     size={triple}
                     placeholder={"00"}
                     isSingle={false}
+                    onChange={handleBirthMonth}
                   />
                   <TextField
                     id={"date"}
@@ -202,6 +303,7 @@ export default function SuperMemberRegister() {
                     size={triple}
                     placeholder={"00"}
                     isSingle={false}
+                    onChange={handleBirthDate}
                   />
                 </div>
               </div>
@@ -210,7 +312,7 @@ export default function SuperMemberRegister() {
                   label="직책"
                   placeholder="선택"
                   size={half}
-                  selectedValue={selectedPosition}
+                  selectedValue={formData.position}
                   data={positionData}
                   onSelect={handleSelect}
                   id="Position"
@@ -220,7 +322,7 @@ export default function SuperMemberRegister() {
                   label="주요업무"
                   placeholder="선택"
                   size={half}
-                  selectedValue={selectedTasks}
+                  selectedValue={formData.tasks}
                   data={taskData}
                   onSelect={handleSelect}
                   id="Task"
@@ -235,12 +337,13 @@ export default function SuperMemberRegister() {
                 size={full}
                 placeholder={"hongildong@lawvax.co.kr"}
                 isSingle={true}
+                onChange={handleEmail}
               />
               <SelectBox
                 label="언어(선택)"
                 placeholder="한국어"
                 size={full}
-                selectedValue={selectedLangs}
+                selectedValue={formData.langs}
                 data={langData}
                 onSelect={handleSelect}
                 id="Lang"
@@ -254,6 +357,7 @@ export default function SuperMemberRegister() {
                 size={full}
                 placeholder={"010-0000-0000"}
                 isSingle={true}
+                onChange={handlePhone}
               />
               <TextField
                 id={"fax"}
@@ -261,6 +365,7 @@ export default function SuperMemberRegister() {
                 size={full}
                 placeholder={"00-0000-0000"}
                 isSingle={true}
+                onChange={handleFax}
               />
             </div>
             <div className="row" css={row}>
@@ -270,13 +375,15 @@ export default function SuperMemberRegister() {
                 size={full}
                 placeholder={"입력"}
                 isSingle={true}
+                onChange={handleId}
               />
-              <TextField
+              <PasswordField
                 id={"pw"}
                 label={"비밀번호"}
                 size={full}
                 placeholder={"입력"}
                 isSingle={true}
+                onChange={handlePw}
               />
             </div>
             <div className="row" css={row}>
@@ -284,6 +391,7 @@ export default function SuperMemberRegister() {
                 id={"introduce"}
                 label={"소개"}
                 placeholder={"간단한 소개 글을 작성해주세요."}
+                onChange={handleIntroduce}
               />
             </div>
           </div>
@@ -293,8 +401,8 @@ export default function SuperMemberRegister() {
               <div css={column}>
                 {renderField(
                   "education",
-                  educationFields,
-                  `education${educationFields.length}`,
+                  formData.education,
+                  `education${formData.education.length}`,
                   "OO대학교 졸업"
                 )}
               </div>
@@ -304,8 +412,8 @@ export default function SuperMemberRegister() {
               <div css={column}>
                 {renderField(
                   "career",
-                  careerFields,
-                  `career${careerFields.length}`,
+                  formData.career,
+                  `career${formData.career.length}`,
                   ["1990", "제31회 사법시험 합격"]
                 )}
               </div>
@@ -315,8 +423,8 @@ export default function SuperMemberRegister() {
               <div css={column}>
                 {renderField(
                   "cases",
-                  casesFields,
-                  `cases${casesFields.length}`,
+                  formData.cases,
+                  `cases${formData.cases.length}`,
                   ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"]
                 )}
               </div>
@@ -326,8 +434,8 @@ export default function SuperMemberRegister() {
               <div css={column}>
                 {renderField(
                   "etc",
-                  etcFields,
-                  `etc${etcFields.length}`,
+                  formData.etc,
+                  `etc${formData.etc.length}`,
                   "아시아경제 등 칼럼 게재"
                 )}
               </div>
