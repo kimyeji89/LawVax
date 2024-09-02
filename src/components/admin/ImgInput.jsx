@@ -28,7 +28,7 @@ function ImgInput({ onChange, image, label, gap }) {
       <label htmlFor="imgUpload" css={[labelCtn, gap === "16" ? gap16 : gap8]}>
         <div className="iconCtn" css={imgCtn}>
           {image ? (
-            <img src={image} alt="profile image" css={uploadedImg} />
+            <img src={image} alt="profile" css={uploadedImg} />
           ) : (
             <Camera />
           )}
@@ -43,7 +43,7 @@ function ImgInputReadOnly({ image, label, gap }) {
   return (
     <div htmlFor="imgUpload" css={[labelCtn, gap === "16" ? gap16 : gap8]}>
       <div className="iconCtn" css={imgCtn}>
-        <img src={image} alt="profile image" css={uploadedImg} />
+        <img src={image} alt="profile" css={uploadedImg} />
       </div>
       <p css={labelText}>{label}</p>
     </div>

@@ -54,7 +54,7 @@ export default function MemberTable({ level, category }) {
             <tr css={tr} key={item.name + idx}>
               <td css={td}>{idx + 1}</td>
               <td css={tdImage}>
-                <img css={profileImg} src={item.img} alt="profile image" />
+                <img css={profileImg} src={item.img} alt="profile" />
               </td>
               <td css={td}>{item.position}</td>
               <td css={td}>{item.name}</td>
@@ -93,7 +93,7 @@ export default function MemberTable({ level, category }) {
               <tr css={tr} key={item.name + idx}>
                 <td css={td}>{idx + 1}</td>
                 <td css={tdImage}>
-                  <img css={profileImg} src={item.img} alt="profile image" />
+                  <img css={profileImg} src={item.img} alt="profile" />
                 </td>
                 <td css={td}>{item.position}</td>
                 <td css={td}>{item.name}</td>
