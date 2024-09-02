@@ -14,7 +14,7 @@ export default function MemberControl({ level, onChange, isChange }) {
     >
       {level === "super" && (
         <div className="btnCtn" css={btnCtn}>
-          <Link to="/admin/super/member/register">
+          <Link to="/admin/super/register">
             <Btn120 text="등록하기">
               <Add className="icon" />
             </Btn120>

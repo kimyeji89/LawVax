@@ -9,14 +9,27 @@ import { SideBtn } from "@adminComponents/SideBtns";
 
 export default function SideBar() {
   const location = useLocation();
-  function isIncludes(path) {
+
+  function includeLocation(path) {
     return location.pathname.includes(path);
+  }
+
+  function checkLocation(path1, path2) {
+    if (location.pathname === path1) {
+      return true;
+    } else if (location.pathname === path2) {
+      return true;
+    } else {
+      return false;
+    }
   }
   return (
     <nav css={nav}>
       <div className="top" css={top}>
-        <Link to="/admin/super/member">
-          <SideBtn selected={isIncludes("/member")}>
+        <Link to="/admin/super/">
+          <SideBtn
+            selected={checkLocation("/admin/super/", "/admin/super/register")}
+          >
             <People className="icon" css={icon} />
             <p className="text" css={text}>
               구성원 관리
@@ -24,7 +37,7 @@ export default function SideBar() {
           </SideBtn>
         </Link>
         <Link to="/admin/super/post">
-          <SideBtn selected={isIncludes("/post")}>
+          <SideBtn selected={includeLocation("post")}>
             <Tray className="icon" css={icon} />
             <p className="text" css={text}>
               게시글 관리
