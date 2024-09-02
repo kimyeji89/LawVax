@@ -48,14 +48,17 @@ function HeaderUser() {
 
       <nav css={nav_style(isNavVisible)}>
         <div css={btn_container}>
-          <span css={kor_btn}>KOR</span>
-          <span css={eng_btn}>ENG</span>
           <button css={close_btn} onClick={closeNav}>
             <img src={closeBtn} alt="닫기 버튼" />
           </button>
         </div>
 
         <ul css={link_1}>
+          <li>
+            <Link to="/" onClick={closeNav}>
+              Home
+            </Link>
+          </li>
           <li>
             <Link to="/introduction" onClick={closeNav}>
               LawVax
@@ -170,7 +173,7 @@ const nav_style = (isNavVisible) => css`
 const btn_container = css`
   display: flex;
   align-items: start;
-  justify-content: space-between;
+  justify-content: end;
   font-size: 20px;
   line-height: 26px;
   font-weight: 400;
@@ -198,7 +201,7 @@ const close_btn = css`
 `;
 
 const link_1 = css`
-  padding: 18px 32px 48px;
+  padding: 28px 32px 48px;
   color: var(--mono-gray-txt-dark);
   display: flex;
   flex-direction: column;
