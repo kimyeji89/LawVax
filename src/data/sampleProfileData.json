@@ -20,8 +20,8 @@
       { "year": "1995", "text": "서울대학교 대학원 법학과 수료" }
     ],
     "career": [
-      { "yearStart": "1990", "yearEnd": null, "text": "제31회 사법시험 합격" },
-      { "yearStart": "1992", "yearEnd": null, "text": "제31회 사법시험 합격" },
+      { "yearStart": "1990", "yearEnd": "", "text": "제31회 사법시험 합격" },
+      { "yearStart": "1992", "yearEnd": "", "text": "제31회 사법시험 합격" },
       {
         "yearStart": "2022",
         "yearEnd": "2024",

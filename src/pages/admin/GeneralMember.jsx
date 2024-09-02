@@ -1,7 +1,7 @@
 import { useState } from "react";
-import MemberControl from "../../components/admin/MemberControl";
-import MemberTable from "../../components/admin/MemberTable";
-import MemberCard from "../../components/admin/MemberCard";
+import MemberControl from "@adminComponents/MemberControl";
+import MemberTable from "@adminComponents/MemberTable";
+import MemberCard from "@adminComponents/MemberCard";
 
 export default function GeneralMember() {
   const [category, setCategory] = useState("전체");

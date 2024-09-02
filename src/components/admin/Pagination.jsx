@@ -20,7 +20,10 @@ export default function Pagination({ currentPage, setCurrentPage, pageAmt }) {
                 fontWeight: "700",
                 lineHeight: "26px",
                 textAlign: "center",
-                color: page === currentPage ? "#1676BC" : "#999999",
+                color:
+                  page === currentPage
+                    ? "var(--point-color-2)"
+                    : "var(--mono-gray-txt-light)",
                 backgroundColor: "transparent",
               }}
             >
@@ -52,5 +55,5 @@ const divider = css`
   width: 2px;
   display: block;
   height: 18px;
-  background: #d9d9d9;
+  background: var(--mono-gray-line-1);
 `;

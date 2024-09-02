@@ -7,8 +7,8 @@ import { SelectBox } from "@adminComponents/SelectBox";
 import { ReactComponent as Add } from "@images/add-outline.svg";
 import { ReactComponent as Trash } from "@images/trash-outline.svg";
 import { v4 as uuidv4 } from "uuid";
-import { SelectBoxReadOnly } from "./SelectBox";
-import { TextFieldReadOnly } from "./TextField";
+import { SelectBoxReadOnly } from "@adminComponents/SelectBox";
+import { TextFieldReadOnly } from "@adminComponents/TextField";
 
 function ControlField({ id, placeholder, addField }) {
   function removeField() {

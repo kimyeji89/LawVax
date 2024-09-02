@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useLocationControl from "@hooks/useLocationControl";
 
 export default function AsideMenu() {
-  const location = useLocation();
+  const { checkLocation } = useLocationControl();
   return (
     <aside css={aside}>
       <p css={asideTitle}>게시글</p>
@@ -12,53 +13,29 @@ export default function AsideMenu() {
           <AsideMenuBtn
             title="전체보기"
             num={1253}
-            selected={location.pathname === "/admin/super/post" ? true : false}
+            selected={checkLocation([
+              "/admin/super/post",
+              "/admin/general/post",
+            ])}
             link="/admin/super/post"
           />
         </ul>
         <span css={divider}></span>
         <ul css={menuCtn}>
-          <AsideMenuBtn
-            title="뉴스레터"
-            num={0}
-            selected={false}
-            link="/admin/super/post"
-          />
+          <AsideMenuBtn title="뉴스레터" num={0} selected={false} />
         </ul>
         <span css={divider}></span>
         <ul css={menuCtn}>
-          <AsideMenuBtn
-            title="소식"
-            num={0}
-            selected={false}
-            link="/admin/super/post"
-          />
-          <AsideMenuBtn
-            title="언론보도"
-            num={0}
-            selected={false}
-            link="/admin/super/post"
-          />
-          <AsideMenuBtn
-            title="인재영입"
-            num={0}
-            selected={false}
-            link="/admin/super/post"
-          />
+          <AsideMenuBtn title="소식" num={0} selected={false} />
+          <AsideMenuBtn title="언론보도" num={0} selected={false} />
+          <AsideMenuBtn title="인재영입" num={0} selected={false} />
           <AsideMenuBtn
             title="내가 쓴 글"
             num={0}
-            selected={
-              location.pathname === "/admin/general/post/my" ? true : false
-            }
+            selected={checkLocation(["/admin/general/post/my"])}
             link="/admin/general/post/my"
           />
-          <AsideMenuBtn
-            title="비공개"
-            num={0}
-            selected={false}
-            link="/admin/super/post"
-          />
+          <AsideMenuBtn title="비공개" num={0} selected={false} />
         </ul>
       </div>
     </aside>
@@ -101,7 +78,6 @@ const asideMenuBtn = css`
   width: 238px;
   height: 44px;
   border-radius: 6px;
-
   background-color: var(--mono-white);
   p {
     font-size: 14px;
@@ -128,7 +104,7 @@ const aside = css`
   box-sizing: border-box;
   background-color: var(--mono-white);
   border-radius: 16px;
-  box-shadow: 0 0 0 0.3px #b9b9b9 inset;
+  box-shadow: var(--ctn-bd-inner);
 `;
 
 const divider = css`
@@ -136,7 +112,7 @@ const divider = css`
   width: 100%;
   height: 0.6px;
   padding: 0.2px 0;
-  background-color: #e0e0e0;
+  background-color: var(--mono-gray-line-3);
 `;
 const asideTitle = css`
   font-family: Nunito Sans;

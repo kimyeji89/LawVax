@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useLocationControl from "@hooks/useLocationControl";
 import { ReactComponent as People } from "@images/people-outline.svg";
 import { ReactComponent as Tray } from "@images/file-tray-full-outline.svg";
 import { ReactComponent as Settings } from "@images/settings-outline.svg";
@@ -8,17 +9,8 @@ import { ReactComponent as Power } from "@images/power-outline.svg";
 import { SideBtn } from "@adminComponents/SideBtns";
 
 export default function SideBar() {
-  const location = useLocation();
+  const { includeLocation, checkLocation } = useLocationControl();
 
-  function includeLocation(path) {
-    return location.pathname.includes(path);
-  }
-
-  function checkLocation(pathArr) {
-    return pathArr
-      .map((path) => (location.pathname === path ? true : false))
-      .includes(true);
-  }
   return (
     <nav css={nav}>
       <div className="top" css={top}>
@@ -27,6 +19,7 @@ export default function SideBar() {
             selected={checkLocation([
               "/admin/super/",
               "/admin/super/register",
+              "/admin/general/",
               "/admin/general/view",
             ])}
           >
@@ -47,12 +40,21 @@ export default function SideBar() {
       </div>
       <span className="divider" css={divider}></span>
       <div className="bottom" css={bottom}>
-        <SideBtn>
-          <Settings className="icon" css={icon} />
-          <p className="text" css={text}>
-            설정
-          </p>
-        </SideBtn>
+        {checkLocation([
+          "/admin/general/view",
+          "/admin/general/post/register",
+          "/admin/general/post/my",
+        ]) === true ? (
+          ""
+        ) : (
+          <SideBtn>
+            <Settings className="icon" css={icon} />
+            <p className="text" css={text}>
+              설정
+            </p>
+          </SideBtn>
+        )}
+
         <SideBtn>
           <Power className="icon" css={icon} />
           <p className="text" css={text}>
