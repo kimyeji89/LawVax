@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import Pagination from "@adminComponents/Pagination";
 import sampleProfileData from "@data/sampleProfileData.json";
+import { Link } from "react-router-dom";
 
 export default function MemberTable({ level, category }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -76,9 +77,11 @@ export default function MemberTable({ level, category }) {
               )}
               {level === "general" && (
                 <td css={td}>
-                  <button className="editBtn" css={[tableBtn, blue]}>
-                    보기
-                  </button>
+                  <Link to="/admin/general/view">
+                    <button className="editBtn" css={[tableBtn, blue]}>
+                      보기
+                    </button>
+                  </Link>
                 </td>
               )}
             </tr>
@@ -113,9 +116,11 @@ export default function MemberTable({ level, category }) {
                 )}
                 {level === "general" && (
                   <td css={td}>
-                    <button className="editBtn" css={[tableBtn, blue]}>
-                      보기
-                    </button>
+                    <Link to="/admin/general/view">
+                      <button className="editBtn" css={[tableBtn, blue]}>
+                        보기
+                      </button>
+                    </Link>
                   </td>
                 )}
               </tr>

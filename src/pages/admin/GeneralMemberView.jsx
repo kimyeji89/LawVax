@@ -1,117 +1,71 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { ImgInput } from "@adminComponents/ImgInput";
+import sampleProfileData from "@data/sampleProfileData.json";
+import { ImgInputReadOnly } from "@adminComponents/ImgInput";
 import { Btn274 } from "@adminComponents/Btns";
-import { TextField, TextArea } from "@adminComponents/TextField";
-import { SelectBox } from "@adminComponents/SelectBox";
+import {
+  TextAreaReadOnly,
+  TextFieldReadOnly,
+  TextArea,
+} from "@adminComponents/TextField";
+import { SelectBox, SelectBoxReadOnly } from "@adminComponents/SelectBox";
 import { v4 as uuidv4 } from "uuid";
 import {
-  ControlField,
-  ControlSelectField,
-  ControlPeriodField,
+  ControlFieldReadOnly,
+  ControlSelectFieldReadOnly,
+  ControlPeriodFieldReadOnly,
 } from "@adminComponents/ControlField";
 import CheckBox from "@adminComponents/CheckBox";
 
-export default function SuperMemberRegister() {
-  const [image, setImage] = useState(null);
-  const [selectedPosition, setSelectedPosition] = useState("");
-  const [selectedTasks, setSelectedTasks] = useState([]);
-  const [selectedLangs, setSelectedLangs] = useState([]);
-  const [educationFields, setEducationFields] = useState([
-    { id: "education1", placeholder: "OO대학교 졸업" },
-    { id: "education2", placeholder: "OO대학교 졸업" },
-    { id: "education3", placeholder: "OO대학교 졸업" },
-  ]);
-  const [careerFields, setCareerFields] = useState([
-    { id: "career1", placeholder: ["1990", "제31회 사법시험 합격"] },
-    { id: "career2", placeholder: ["1990", "제31회 사법시험 합격"] },
-    { id: "career3", placeholder: ["1990", "제31회 사법시험 합격"] },
-  ]);
-  const [casesFields, setCasesFields] = useState([
-    {
-      id: "cases1",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-    {
-      id: "cases2",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-    {
-      id: "cases3",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-  ]);
-  const [etcFields, setEtcFields] = useState([
-    { id: "etc1", placeholder: "아시아경제 등 칼럼 게재" },
-    { id: "etc2", placeholder: "아시아경제 등 칼럼 게재" },
-    { id: "etc3", placeholder: "아시아경제 등 칼럼 게재" },
-  ]);
+export default function GeneralMemberView() {
+  let image = "/assets/images/profile_view.png";
+  let selectedPosition = sampleProfileData[0].position;
+  let selectedTasks = sampleProfileData[0].task;
+  let selectedLangs = sampleProfileData[0].lang;
+  let educationFields = sampleProfileData[0].education;
+  let careerFields = sampleProfileData[0].career;
+  let casesFields = sampleProfileData[0].cases;
+  let etcFields = sampleProfileData[0].etc;
 
-  function addField(type, id, placeholder) {
-    let newComponent = {
-      id: id,
-      placeholder: placeholder,
-    };
-
-    switch (type) {
-      case "education":
-        setEducationFields((prevComponents) => [
-          ...prevComponents,
-          newComponent,
-        ]);
-        break;
-      case "career":
-        setCareerFields((prevComponents) => [...prevComponents, newComponent]);
-        break;
-      case "cases":
-        setCasesFields((prevComponents) => [...prevComponents, newComponent]);
-        break;
-      case "etc":
-        setEtcFields((prevComponents) => [...prevComponents, newComponent]);
-        break;
-      default:
-        break;
-    }
-  }
-
-  function renderField(type, componentList, id, placeholder) {
+  function renderField(type, componentList) {
     return componentList.map((component, index) => {
       switch (type) {
         case "education":
           return (
-            <ControlSelectField
+            <ControlSelectFieldReadOnly
               key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              id={`eduction${index + 1}`}
+              selectedValue={component.year}
+              textValue={component.text}
             />
           );
         case "career":
           return (
-            <ControlPeriodField
+            <ControlPeriodFieldReadOnly
               key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              id={`career${index + 1}`}
+              yearStartValue={component.yearStart}
+              yearEndValue={component.yearEnd}
+              textValue={component.text}
             />
           );
         case "cases":
           return (
-            <ControlPeriodField
+            <ControlPeriodFieldReadOnly
               key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              id={`career${index + 1}`}
+              yearStartValue={component.yearStart}
+              yearEndValue={component.yearEnd}
+              textValue={component.text}
             />
           );
         case "etc":
           return (
-            <ControlField
+            <ControlFieldReadOnly
               key={`${component.id}-${index}`}
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              id={`etc${index + 1}`}
+              textValue={component}
             />
           );
         default:
@@ -120,61 +74,28 @@ export default function SuperMemberRegister() {
     });
   }
 
-  function handleSelect(type, value) {
-    switch (type) {
-      case "Position":
-        setSelectedPosition(value);
-        break;
-      case "Task":
-        if (selectedTasks.includes(value)) {
-          setSelectedTasks(
-            selectedTasks.filter((selected) => selected !== value)
-          );
-        } else {
-          setSelectedTasks([...selectedTasks, value]);
-        }
-        break;
-      case "Lang":
-        if (selectedLangs.includes(value)) {
-          setSelectedLangs(
-            selectedLangs.filter((selected) => selected !== value)
-          );
-        } else {
-          setSelectedLangs([...selectedLangs, value]);
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
   return (
     <main>
-      <h2 className="admin-pageTitle">구성원 등록</h2>
+      <h2 className="admin-pageTitle">구성원 보기</h2>
       <form action="GET" css={form}>
         <div className="top" css={top}>
-          <ImgInput
-            gap="16"
-            onChange={setImage}
-            image={image}
-            label="사진 등록"
-          />
+          <ImgInputReadOnly gap="16" image={image} label="사진 등록" />
         </div>
         <div className="middle" css={middle}>
           <div className="left" css={left}>
             <div className="row" css={row}>
-              <TextField
+              <TextFieldReadOnly
                 id={"nameKR"}
                 label={"이름(한글)"}
                 size={full}
-                placeholder={"홍길동"}
+                value={sampleProfileData[0].name}
                 isSingle={true}
               />
-              <TextField
+              <TextFieldReadOnly
                 id={"nameCH"}
                 label={"이름(한문)"}
                 size={full}
-                placeholder={"洪吉童"}
+                value={sampleProfileData[0].nameCH}
                 isSingle={true}
               />
             </div>
@@ -182,108 +103,99 @@ export default function SuperMemberRegister() {
               <div>
                 <p css={textInputLabel}>생년월일</p>
                 <div css={multiInputCtn}>
-                  <TextField
+                  <TextFieldReadOnly
                     id={"year"}
                     label={"년"}
                     size={triple}
-                    placeholder={"0000"}
+                    value={sampleProfileData[0].birth.year}
                     isSingle={false}
                   />
-                  <TextField
+                  <TextFieldReadOnly
                     id={"month"}
                     label={"월"}
                     size={triple}
-                    placeholder={"00"}
+                    value={sampleProfileData[0].birth.month}
                     isSingle={false}
                   />
-                  <TextField
+                  <TextFieldReadOnly
                     id={"date"}
                     label={"일"}
                     size={triple}
-                    placeholder={"00"}
+                    value={sampleProfileData[0].birth.date}
                     isSingle={false}
                   />
                 </div>
               </div>
               <div css={multiInputCtnSmall}>
-                <SelectBox
+                <SelectBoxReadOnly
                   label="직책"
-                  placeholder="선택"
                   size={half}
                   selectedValue={selectedPosition}
-                  data={positionData}
-                  onSelect={handleSelect}
                   id="Position"
                   isMulti={false}
                 />
-                <SelectBox
+                <SelectBoxReadOnly
                   label="주요업무"
-                  placeholder="선택"
                   size={half}
                   selectedValue={selectedTasks}
-                  data={taskData}
-                  onSelect={handleSelect}
                   id="Task"
                   isMulti={true}
                 />
               </div>
             </div>
             <div className="row" css={row}>
-              <TextField
+              <TextFieldReadOnly
                 id={"email"}
                 label={"E-mail"}
                 size={full}
-                placeholder={"hongildong@lawvax.co.kr"}
+                value={sampleProfileData[0].email}
                 isSingle={true}
               />
-              <SelectBox
+              <SelectBoxReadOnly
                 label="언어(선택)"
-                placeholder="한국어"
                 size={full}
                 selectedValue={selectedLangs}
-                data={langData}
-                onSelect={handleSelect}
                 id="Lang"
                 isMulti={true}
               />
             </div>
             <div className="row" css={row}>
-              <TextField
+              <TextFieldReadOnly
                 id={"phone"}
                 label={"전화번호"}
                 size={full}
-                placeholder={"010-0000-0000"}
+                value={sampleProfileData[0].phone}
                 isSingle={true}
               />
-              <TextField
+              <TextFieldReadOnly
                 id={"fax"}
                 label={"팩스번호"}
                 size={full}
-                placeholder={"00-0000-0000"}
+                value={sampleProfileData[0].fax}
                 isSingle={true}
               />
             </div>
             <div className="row" css={row}>
-              <TextField
+              <TextFieldReadOnly
                 id={"id"}
                 label={"아이디"}
                 size={full}
-                placeholder={"입력"}
+                value={sampleProfileData[0].id}
                 isSingle={true}
               />
-              <TextField
+              <TextFieldReadOnly
                 id={"pw"}
                 label={"비밀번호"}
                 size={full}
-                placeholder={"입력"}
+                value={sampleProfileData[0].pw}
                 isSingle={true}
               />
             </div>
             <div className="row" css={row}>
-              <TextArea
+              <TextAreaReadOnly
                 id={"introduce"}
                 label={"소개"}
-                placeholder={"간단한 소개 글을 작성해주세요."}
+                value={sampleProfileData[0].introduce}
               />
             </div>
           </div>
@@ -291,46 +203,20 @@ export default function SuperMemberRegister() {
             <div>
               <p css={textInputLabel}>학력</p>
               <div css={column}>
-                {renderField(
-                  "education",
-                  educationFields,
-                  `education${educationFields.length}`,
-                  "OO대학교 졸업"
-                )}
+                {renderField("education", educationFields)}
               </div>
             </div>
             <div>
               <p css={textInputLabel}>경력</p>
-              <div css={column}>
-                {renderField(
-                  "career",
-                  careerFields,
-                  `career${careerFields.length}`,
-                  ["1990", "제31회 사법시험 합격"]
-                )}
-              </div>
+              <div css={column}>{renderField("career", careerFields)}</div>
             </div>
             <div>
               <p css={textInputLabel}>주요 처리사례</p>
-              <div css={column}>
-                {renderField(
-                  "cases",
-                  casesFields,
-                  `cases${casesFields.length}`,
-                  ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"]
-                )}
-              </div>
+              <div css={column}>{renderField("cases", casesFields)}</div>
             </div>
             <div>
               <p css={textInputLabel}>저서/활동/기타</p>
-              <div css={column}>
-                {renderField(
-                  "etc",
-                  etcFields,
-                  `etc${etcFields.length}`,
-                  "아시아경제 등 칼럼 게재"
-                )}
-              </div>
+              <div css={column}>{renderField("etc", etcFields)}</div>
             </div>
           </div>
         </div>

@@ -14,21 +14,21 @@ export default function SideBar() {
     return location.pathname.includes(path);
   }
 
-  function checkLocation(path1, path2) {
-    if (location.pathname === path1) {
-      return true;
-    } else if (location.pathname === path2) {
-      return true;
-    } else {
-      return false;
-    }
+  function checkLocation(pathArr) {
+    return pathArr
+      .map((path) => (location.pathname === path ? true : false))
+      .includes(true);
   }
   return (
     <nav css={nav}>
       <div className="top" css={top}>
         <Link to="/admin/super/">
           <SideBtn
-            selected={checkLocation("/admin/super/", "/admin/super/register")}
+            selected={checkLocation([
+              "/admin/super/",
+              "/admin/super/register",
+              "/admin/general/view",
+            ])}
           >
             <People className="icon" css={icon} />
             <p className="text" css={text}>
