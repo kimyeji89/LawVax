@@ -96,7 +96,7 @@ const divider = css`
   left: 0;
   bottom: 238px;
   width: 100%;
-  border: 0.6px solid #e0e0e0;
+  border: 0.6px solid var(--mono-gray-line-3);
 `;
 
 const icon = css`

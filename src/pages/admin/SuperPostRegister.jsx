@@ -10,27 +10,59 @@ import FileInput from "@adminComponents/FileInput";
 import { v4 as uuidv4 } from "uuid";
 
 export default function SuperPostRegister() {
-  const [image, setImage] = useState(null);
-  const [catrgory, setCategory] = useState("");
-  const [file, setFile] = useState(null);
+  const [formData, setFormData] = useState({
+    image: null,
+    category: "",
+    title: "",
+    content: "",
+    file: null,
+  });
 
-  const handleSelect = (id, value) => {
-    setCategory(value);
-  };
+  function handleImage(image) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      image: image,
+    }));
+  }
+
+  function handleCategory(category) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      category: category,
+    }));
+  }
+
+  function handleTitle(title) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      title: title,
+    }));
+  }
+
+  function handleFile(file) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      file: file,
+    }));
+  }
 
   return (
     <main>
       <h2 className="admin-pageTitle">게시글 작성</h2>
       <div css={ctn}>
-        <ImgInput onChange={setImage} image={image} label="사진 등록" />
+        <ImgInput
+          onChange={handleImage}
+          image={formData.image}
+          label="사진 등록"
+        />
         <form action="GET" css={form}>
           <div css={top}>
             <SelectBoxPost
               label="카테고리"
               placeholder="선택"
-              selectedValue={catrgory}
+              selectedValue={formData.category}
               data={categoryData}
-              onSelect={handleSelect}
+              onSelect={handleCategory}
               id="Category"
               isMulti={false}
             />
@@ -38,6 +70,7 @@ export default function SuperPostRegister() {
               id="title"
               label="제목"
               placeholder="제목을 입력하세요"
+              onChange={handleTitle}
             />
           </div>
           <div>
@@ -47,7 +80,7 @@ export default function SuperPostRegister() {
             </div>
           </div>
           <div>
-            <FileInput onChange={setFile} />
+            <FileInput onChange={handleFile} />
           </div>
         </form>
         <div css={bottom}>

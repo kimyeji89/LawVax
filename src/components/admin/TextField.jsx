@@ -1,116 +1,121 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-function TextField({ id, label, size, placeholder, isSingle }) {
-  switch (isSingle) {
-    case true:
-      return (
-        <div>
-          <label htmlFor={id} css={textInputLabel} className="label">
-            {label}
-          </label>
-          <input
-            type="text"
-            name={id}
-            id={id}
-            css={[textInput, size]}
-            required
-            placeholder={placeholder}
-          />
-        </div>
-      );
-    case false:
-      return (
-        <>
-          <label htmlFor={id} css={textInputLabel}>
-            {label}
-          </label>
-          <input
-            type="text"
-            name={id}
-            id={id}
-            css={[textInput, size]}
-            required
-            placeholder={placeholder}
-          />
-        </>
-      );
-    default:
-      return (
-        <div>
-          <label htmlFor={id} css={textInputLabel}>
-            {label}
-          </label>
-          <input
-            type="text"
-            name={id}
-            id={id}
-            css={[textInput, size]}
-            required
-            placeholder={placeholder}
-          />
-        </div>
-      );
+function TextField({ id, label, size, placeholder, isSingle, onChange }) {
+  function handleOnchange(e) {
+    onChange(e.currentTarget.value);
   }
+
+  return isSingle ? (
+    <div>
+      <label htmlFor={id} css={textInputLabel} className="label">
+        {label}
+      </label>
+      <input
+        type="text"
+        name={id}
+        id={id}
+        css={[textInput, size]}
+        required
+        placeholder={placeholder}
+        onChange={handleOnchange}
+      />
+    </div>
+  ) : (
+    <>
+      <label htmlFor={id} css={textInputLabel}>
+        {label}
+      </label>
+      <input
+        type="text"
+        name={id}
+        id={id}
+        css={[textInput, size]}
+        required
+        placeholder={placeholder}
+        onChange={handleOnchange}
+      />
+    </>
+  );
+}
+
+function PasswordField({ id, label, size, placeholder, isSingle, onChange }) {
+  function handleOnchange(e) {
+    onChange(e.currentTarget.value);
+  }
+
+  return isSingle ? (
+    <div>
+      <label htmlFor={id} css={textInputLabel} className="label">
+        {label}
+      </label>
+      <input
+        type="password"
+        name={id}
+        id={id}
+        css={[textInput, size]}
+        required
+        placeholder={placeholder}
+        onChange={handleOnchange}
+      />
+    </div>
+  ) : (
+    <>
+      <label htmlFor={id} css={textInputLabel}>
+        {label}
+      </label>
+      <input
+        type="text"
+        name={id}
+        id={id}
+        css={[textInput, size]}
+        required
+        placeholder={placeholder}
+        onChange={handleOnchange}
+      />
+    </>
+  );
 }
 
 function TextFieldReadOnly({ id, label, size, value, isSingle }) {
-  switch (isSingle) {
-    case true:
-      return (
-        <div>
-          <label htmlFor={id} css={textInputLabel} className="label">
-            {label}
-          </label>
-          <input
-            className="readOnly"
-            type="text"
-            name={id}
-            id={id}
-            css={[textInput, size]}
-            value={value}
-            readOnly
-          />
-        </div>
-      );
-    case false:
-      return (
-        <>
-          <label htmlFor={id} css={textInputLabel} className="label">
-            {label}
-          </label>
-          <input
-            className="readOnly"
-            type="text"
-            name={id}
-            id={id}
-            css={[textInput, size]}
-            value={value}
-            readOnly
-          />
-        </>
-      );
-    default:
-      return (
-        <div>
-          <label htmlFor={id} css={textInputLabel} className="label">
-            {label}
-          </label>
-          <input
-            className="readOnly"
-            type="text"
-            name={id}
-            id={id}
-            css={[textInput, size]}
-            value={value}
-            readOnly
-          />
-        </div>
-      );
-  }
+  return isSingle ? (
+    <div>
+      <label htmlFor={id} css={textInputLabel} className="label">
+        {label}
+      </label>
+      <input
+        className="readOnly"
+        type="text"
+        name={id}
+        id={id}
+        css={[textInput, size]}
+        value={value}
+        readOnly
+      />
+    </div>
+  ) : (
+    <>
+      <label htmlFor={id} css={textInputLabel} className="label">
+        {label}
+      </label>
+      <input
+        className="readOnly"
+        type="text"
+        name={id}
+        id={id}
+        css={[textInput, size]}
+        value={value}
+        readOnly
+      />
+    </>
+  );
 }
 
-function TextFieldPost({ id, label, placeholder }) {
+function TextFieldPost({ id, label, placeholder, onChange }) {
+  function handleChange(e) {
+    onChange(e.currentTarget.value);
+  }
+
   return (
     <div>
       <label htmlFor={id} css={textInputLabelPost} className="label">
@@ -123,12 +128,16 @@ function TextFieldPost({ id, label, placeholder }) {
         css={[textInputPost]}
         required
         placeholder={placeholder}
+        onChange={handleChange}
       />
     </div>
   );
 }
 
-function TextArea({ id, label, placeholder }) {
+function TextArea({ id, label, placeholder, onChange }) {
+  function handleChange(e) {
+    onChange(e.currentTarget.value);
+  }
   return (
     <div css={textAreaCtn}>
       <label htmlFor={id} css={textInputLabel}>
@@ -141,6 +150,7 @@ function TextArea({ id, label, placeholder }) {
         css={[textInput, textArea]}
         required
         placeholder={placeholder}
+        onChange={handleChange}
       />
     </div>
   );
@@ -239,6 +249,7 @@ const textArea = css`
 export {
   TextField,
   TextFieldReadOnly,
+  PasswordField,
   TextFieldPost,
   TextArea,
   TextAreaReadOnly,

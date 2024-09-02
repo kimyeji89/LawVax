@@ -14,14 +14,8 @@ import {
 } from "@adminComponents/ControlField";
 
 export default function GeneralMemberView() {
-  let image = "/assets/images/profile_view.png";
-  let selectedPosition = sampleProfileData[0].position;
-  let selectedTasks = sampleProfileData[0].task;
-  let selectedLangs = sampleProfileData[0].lang;
-  let educationFields = sampleProfileData[0].education;
-  let careerFields = sampleProfileData[0].career;
-  let casesFields = sampleProfileData[0].cases;
-  let etcFields = sampleProfileData[0].etc;
+  let formData = sampleProfileData[0];
+  formData.image = "/assets/images/profile_view.png";
 
   function renderField(type, componentList) {
     return componentList.map((component, index) => {
@@ -29,8 +23,8 @@ export default function GeneralMemberView() {
         case "education":
           return (
             <ControlSelectFieldReadOnly
-              key={`${component.id}-${index}`}
-              id={`eduction${index + 1}`}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
               selectedValue={component.year}
               textValue={component.text}
             />
@@ -48,8 +42,8 @@ export default function GeneralMemberView() {
         case "cases":
           return (
             <ControlPeriodFieldReadOnly
-              key={`${component.id}-${index}`}
-              id={`cases${index + 1}`}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
               yearStartValue={component.yearStart}
               yearEndValue={component.yearEnd}
               textValue={component.text}
@@ -58,8 +52,8 @@ export default function GeneralMemberView() {
         case "etc":
           return (
             <ControlFieldReadOnly
-              key={`${component.id}-${index}`}
-              id={`etc${index + 1}`}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
               textValue={component}
             />
           );
@@ -74,7 +68,7 @@ export default function GeneralMemberView() {
       <h2 className="admin-pageTitle">구성원 보기</h2>
       <form action="GET" css={form}>
         <div className="top" css={top}>
-          <ImgInputReadOnly gap="16" image={image} label="사진 등록" />
+          <ImgInputReadOnly gap="16" image={formData.image} label="사진 등록" />
         </div>
         <div className="middle" css={middle}>
           <div className="left" css={left}>
@@ -83,14 +77,14 @@ export default function GeneralMemberView() {
                 id={"nameKR"}
                 label={"이름(한글)"}
                 size={full}
-                value={sampleProfileData[0].name}
+                value={formData.name}
                 isSingle={true}
               />
               <TextFieldReadOnly
                 id={"nameCH"}
                 label={"이름(한문)"}
                 size={full}
-                value={sampleProfileData[0].nameCH}
+                value={formData.nameCH}
                 isSingle={true}
               />
             </div>
@@ -102,21 +96,21 @@ export default function GeneralMemberView() {
                     id={"year"}
                     label={"년"}
                     size={triple}
-                    value={sampleProfileData[0].birth.year}
+                    value={formData.birth.year}
                     isSingle={false}
                   />
                   <TextFieldReadOnly
                     id={"month"}
                     label={"월"}
                     size={triple}
-                    value={sampleProfileData[0].birth.month}
+                    value={formData.birth.month}
                     isSingle={false}
                   />
                   <TextFieldReadOnly
                     id={"date"}
                     label={"일"}
                     size={triple}
-                    value={sampleProfileData[0].birth.date}
+                    value={formData.birth.date}
                     isSingle={false}
                   />
                 </div>
@@ -125,14 +119,14 @@ export default function GeneralMemberView() {
                 <SelectBoxReadOnly
                   label="직책"
                   size={half}
-                  selectedValue={selectedPosition}
+                  selectedValue={formData.position}
                   id="Position"
                   isMulti={false}
                 />
                 <SelectBoxReadOnly
                   label="주요업무"
                   size={half}
-                  selectedValue={selectedTasks}
+                  selectedValue={formData.tasks}
                   id="Task"
                   isMulti={true}
                 />
@@ -143,13 +137,13 @@ export default function GeneralMemberView() {
                 id={"email"}
                 label={"E-mail"}
                 size={full}
-                value={sampleProfileData[0].email}
+                value={formData.email}
                 isSingle={true}
               />
               <SelectBoxReadOnly
                 label="언어(선택)"
                 size={full}
-                selectedValue={selectedLangs}
+                selectedValue={formData.langs}
                 id="Lang"
                 isMulti={true}
               />
@@ -159,14 +153,14 @@ export default function GeneralMemberView() {
                 id={"phone"}
                 label={"전화번호"}
                 size={full}
-                value={sampleProfileData[0].phone}
+                value={formData.phone}
                 isSingle={true}
               />
               <TextFieldReadOnly
                 id={"fax"}
                 label={"팩스번호"}
                 size={full}
-                value={sampleProfileData[0].fax}
+                value={formData.fax}
                 isSingle={true}
               />
             </div>
@@ -175,14 +169,14 @@ export default function GeneralMemberView() {
                 id={"id"}
                 label={"아이디"}
                 size={full}
-                value={sampleProfileData[0].id}
+                value={formData.id}
                 isSingle={true}
               />
               <TextFieldReadOnly
                 id={"pw"}
                 label={"비밀번호"}
                 size={full}
-                value={sampleProfileData[0].pw}
+                value={formData.pw}
                 isSingle={true}
               />
             </div>
@@ -190,7 +184,7 @@ export default function GeneralMemberView() {
               <TextAreaReadOnly
                 id={"introduce"}
                 label={"소개"}
-                value={sampleProfileData[0].introduce}
+                value={formData.introduce}
               />
             </div>
           </div>
@@ -198,20 +192,20 @@ export default function GeneralMemberView() {
             <div>
               <p css={textInputLabel}>학력</p>
               <div css={column}>
-                {renderField("education", educationFields)}
+                {renderField("education", formData.education)}
               </div>
             </div>
             <div>
               <p css={textInputLabel}>경력</p>
-              <div css={column}>{renderField("career", careerFields)}</div>
+              <div css={column}>{renderField("career", formData.career)}</div>
             </div>
             <div>
               <p css={textInputLabel}>주요 처리사례</p>
-              <div css={column}>{renderField("cases", casesFields)}</div>
+              <div css={column}>{renderField("cases", formData.cases)}</div>
             </div>
             <div>
               <p css={textInputLabel}>저서/활동/기타</p>
-              <div css={column}>{renderField("etc", etcFields)}</div>
+              <div css={column}>{renderField("etc", formData.etc)}</div>
             </div>
           </div>
         </div>
