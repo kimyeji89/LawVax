@@ -30,6 +30,6 @@ const intro_text = css`
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #666666;
+  color: var(--mono-gray-icon);
   margin: 0 0 84px 0;
 `;

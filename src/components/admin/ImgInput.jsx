@@ -87,7 +87,7 @@ const imgCtn = css`
   align-items: center;
   justify-content: center;
   background-color: #ececee;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-1);
   border-radius: 8px;
 `;
 

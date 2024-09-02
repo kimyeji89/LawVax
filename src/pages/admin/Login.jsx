@@ -168,7 +168,7 @@ const textInput = css`
   border: none;
   background-color: var(--mono-gray-bg-1);
   box-shadow: 0px -1px 0px 0px #c1c7cd inset;
-  color: #6e6e6f;
+  color: var(--mono-gray-txt-input);
   &::placeholder {
     color: var(--mono-gray-input-ph);
     opacity: 70%;
@@ -220,7 +220,7 @@ const checkboxCustom = css`
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background-color: #1a6cb5;
+  background-color: var(--point-color-5);
   box-shadow: 0 0 0 1px #8fc0ec inset;
 `;
 

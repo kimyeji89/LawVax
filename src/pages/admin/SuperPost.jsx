@@ -9,7 +9,7 @@ export default function SuperPost() {
       <h2 className="admin-pageTitle">게시글 관리</h2>
       <div css={ctn}>
         <AsideMenu />
-        <PostTable />
+        <PostTable level="super" />
       </div>
     </main>
   );

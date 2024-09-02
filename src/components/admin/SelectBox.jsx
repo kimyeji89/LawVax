@@ -219,7 +219,7 @@ const selectBoxCustomPost = css`
   height: 28px;
   box-sizing: border-box;
   background-color: var(--mono-white);
-  box-shadow: 0 0 0 1px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-2);
   border: none;
   border-radius: 4px;
   color: var(--mono-gray-txt-dark);
@@ -255,7 +255,7 @@ const optionBoxCustomPost = css`
   max-height: 320px;
   overflow-y: auto;
   padding: 4px 0;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-1);
   transform: translateY(100%);
   box-sizing: border-box;
   background-color: var(--mono-white);
@@ -296,7 +296,7 @@ const selectBoxCustom = css`
   padding: 14px 16px;
   box-sizing: border-box;
   background-color: var(--mono-gray-bg-1);
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-1);
   border: none;
   border-radius: 8px;
   color: var(--mono-gray-txt-dark);
@@ -330,7 +330,7 @@ const optionBoxCustom = css`
   height: 320px;
   overflow-y: auto;
   padding: 8px 0;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-1);
   transform: translateY(100%);
   box-sizing: border-box;
   background-color: var(--mono-gray-bg-1);

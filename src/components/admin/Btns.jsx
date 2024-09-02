@@ -1,4 +1,3 @@
-import React from "react";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
@@ -69,9 +68,9 @@ const btn36 = css`
   box-sizing: border-box;
   border-radius: 6px;
   background-color: var(--mono-gray-bg-1);
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-1);
   svg * {
-    fill: #666666;
+    fill: var(--mono-gray-icon);
   }
 `;
 

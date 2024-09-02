@@ -51,11 +51,11 @@ const btn = css`
   width: 60px;
   height: 20px;
   background-color: #eeeeee;
-  box-shadow: 0 0 0 1px #999999 inset;
+  box-shadow: 0 0 0 1px var(--mono-gray-txt-light) inset;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
-  color: #333333;
+  color: var(--mono-gray-txt-dark);
 `;
 
 const customFileInput = css`
@@ -67,14 +67,7 @@ const customFileInput = css`
   padding: 2px;
   box-sizing: border-box;
   height: 24px;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  background-color: var(--mono-white);
+  box-shadow: var(--input-bd-inner-1);
   border-radius: 4px;
-`;
-
-const fileName = css`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 16.71px;
-  color: var(--mono-gray-txt-dark);
 `;

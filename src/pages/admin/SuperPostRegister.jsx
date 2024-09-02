@@ -6,7 +6,7 @@ import { Btn274 } from "@adminComponents/Btns";
 import CheckBox from "@adminComponents/CheckBox";
 import { SelectBoxPost } from "@adminComponents/SelectBox";
 import { TextFieldPost } from "@adminComponents/TextField";
-import FileInput from "../../components/admin/FileInput";
+import FileInput from "@adminComponents/FileInput";
 import { v4 as uuidv4 } from "uuid";
 
 export default function SuperPostRegister() {
@@ -74,7 +74,7 @@ const textInputLabelPost = css`
 const editorLibraryArea = css`
   width: 1430px;
   height: 447px;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
+  box-shadow: var(--input-bd-inner-1);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -86,7 +86,7 @@ const ctn = css`
   height: 884px;
   border-radius: 14px;
   background-color: var(--mono-white);
-  box-shadow: 0 0 0 0.3px #b9b9b9b9 inset;
+  box-shadow: var(--ctn-bd-inner);
   display: flex;
   flex-direction: column;
   padding: 40px 60px;

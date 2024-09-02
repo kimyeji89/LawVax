@@ -10,13 +10,19 @@ import { ReactComponent as Add } from "@images/add-icon.svg";
 import { ReactComponent as Trash } from "@images/trash-outline.svg";
 import { ReactComponent as Setting } from "@images/settings-outline.svg";
 
-export default function PostTable() {
+export default function PostTable({ level }) {
   const [currentPage, setCurrentPage] = useState(1);
   const pageAmt = 5;
   return (
     <section css={content}>
       <div css={top}>
-        <Link to="/admin/super/post/register">
+        <Link
+          to={
+            level === "super"
+              ? "/admin/super/post/register"
+              : "/admin/general/post/register"
+          }
+        >
           <Btn120 text="글쓰기">
             <Add className="icon" />
           </Btn120>
@@ -74,7 +80,7 @@ const content = css`
   border-radius: 16px;
   padding: 24px;
   box-sizing: border-box;
-  box-shadow: 0 0 0 0.3px #b9b9b9 inset;
+  box-shadow: var(--ctn-bd-inner);
 `;
 
 const top = css`
@@ -92,11 +98,11 @@ const thead = css`
 `;
 
 const tbody = css`
-  border-top: 1px solid #d5d5d5;
+  border-top: var(--table-bd);
 `;
 
 const tr = css`
-  border-bottom: 1px solid #d5d5d5;
+  border-bottom: var(--table-bd);
   background-color: var(--mono-white);
 
   &:hover {
@@ -114,13 +120,13 @@ const td = css`
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
   &.title {
     width: 771px;
     font-weight: 500;
     line-height: 24px;
-    color: #333333;
+    color: var(--mono-gray-txt-dark);
     opacity: 90%;
     cursor: pointer;
   }
@@ -130,7 +136,7 @@ const td = css`
     font-weight: 500;
     line-height: 20px;
     opacity: 70%;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
   &.btns {
     padding-right: 24px;

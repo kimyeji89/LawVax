@@ -1,22 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
 import sampleProfileData from "@data/sampleProfileData.json";
 import { ImgInputReadOnly } from "@adminComponents/ImgInput";
-import { Btn274 } from "@adminComponents/Btns";
 import {
   TextAreaReadOnly,
   TextFieldReadOnly,
-  TextArea,
 } from "@adminComponents/TextField";
-import { SelectBox, SelectBoxReadOnly } from "@adminComponents/SelectBox";
-import { v4 as uuidv4 } from "uuid";
+import { SelectBoxReadOnly } from "@adminComponents/SelectBox";
 import {
   ControlFieldReadOnly,
   ControlSelectFieldReadOnly,
   ControlPeriodFieldReadOnly,
 } from "@adminComponents/ControlField";
-import CheckBox from "@adminComponents/CheckBox";
 
 export default function GeneralMemberView() {
   let image = "/assets/images/profile_view.png";
@@ -54,7 +49,7 @@ export default function GeneralMemberView() {
           return (
             <ControlPeriodFieldReadOnly
               key={`${component.id}-${index}`}
-              id={`career${index + 1}`}
+              id={`cases${index + 1}`}
               yearStartValue={component.yearStart}
               yearEndValue={component.yearEnd}
               textValue={component.text}
@@ -220,32 +215,10 @@ export default function GeneralMemberView() {
             </div>
           </div>
         </div>
-        <div className="bottom" css={bottom}>
-          <Btn274 text="저장" />
-          <CheckBox label="비공개" />
-        </div>
       </form>
     </main>
   );
 }
-
-const positionData = [
-  { value: "대표 변호사", text: "대표 변호사", key: uuidv4() },
-  { value: "파트너 변호사", text: "파트너 변호사", key: uuidv4() },
-  { value: "변호사", text: "변호사", key: uuidv4() },
-  { value: "고문", text: "고문", key: uuidv4() },
-];
-
-const taskData = [
-  { value: "기업분야", text: "기업분야", key: uuidv4() },
-  { value: "개인분야", text: "개인분야", key: uuidv4() },
-];
-
-const langData = [
-  { value: "한국어", text: "한국어", key: uuidv4() },
-  { value: "영어", text: "영어", key: uuidv4() },
-  { value: "일본어", text: "일본어", key: uuidv4() },
-];
 
 const form = css`
   display: flex;
@@ -265,7 +238,7 @@ const middle = css`
   display: flex;
   gap: 20px;
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 170px;
 `;
 
 const left = css`
@@ -331,10 +304,4 @@ const half = css`
 
 const triple = css`
   width: 118px;
-`;
-
-const bottom = css`
-  display: flex;
-  justify-content: center;
-  position: relative;
 `;

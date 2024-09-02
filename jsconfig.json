@@ -25,7 +25,8 @@
       "@userPages/*": ["./src/pages/user/*"],
       "@adminPages/*": ["./src/pages/admin/*"],
       "@images/*": ["./src/assets/images/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["./*"],
