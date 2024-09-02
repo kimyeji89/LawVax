@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { ReactComponent as Camera } from "@images/camera-icon.svg";
 
-export default function ImgInput({ onChange, image, label, gap }) {
+function ImgInput({ onChange, image, label, gap }) {
   function handleImageUpload(event) {
     const file = event.target.files[0];
     if (file && file.type.startsWith("image/")) {
@@ -36,6 +36,17 @@ export default function ImgInput({ onChange, image, label, gap }) {
         <p css={labelText}>{label}</p>
       </label>
     </>
+  );
+}
+
+function ImgInputReadOnly({ image, label, gap }) {
+  return (
+    <div htmlFor="imgUpload" css={[labelCtn, gap === "16" ? gap16 : gap8]}>
+      <div className="iconCtn" css={imgCtn}>
+        <img src={image} alt="profile image" css={uploadedImg} />
+      </div>
+      <p css={labelText}>{label}</p>
+    </div>
   );
 }
 
@@ -85,3 +96,5 @@ const uploadedImg = css`
   max-height: 80px;
   object-fit: contain;
 `;
+
+export { ImgInput, ImgInputReadOnly };

@@ -79,6 +79,40 @@ function SelectBox({
   );
 }
 
+function SelectBoxReadOnly({ label, selectedValue, size, id, isMulti }) {
+  const renderSelectedText = () => {
+    if (isMulti) {
+      if (id === "Task") {
+        if (selectedValue.length === 0) return "";
+        if (selectedValue.length === 1) return selectedValue[0];
+        return `${selectedValue[0]} 외 ${selectedValue.length - 1}개`;
+      }
+      if (id === "Lang") {
+        if (selectedValue.length === 0) return "";
+        if (selectedValue.length <= 3)
+          return selectedValue.slice(0, 3).join(", ");
+        return `${selectedValue.slice(0, 3).join(", ")} 외 ${
+          selectedValue.length - 3
+        }개`;
+      }
+    } else {
+      return selectedValue;
+    }
+  };
+
+  return (
+    <div css={selectBoxCtn}>
+      <p css={textInputLabel} className="label">
+        {label}
+      </p>
+      <div css={[selectBoxCustom, size]} className="readOnly">
+        <p>{renderSelectedText()}</p>
+        <DropDown css={dropDown} />
+      </div>
+    </div>
+  );
+}
+
 function SelectBoxPost({
   label,
   placeholder,
@@ -269,6 +303,11 @@ const selectBoxCustom = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 16px;
+  line-height: 24px;
+  &.readOnly {
+    cursor: default;
+  }
   .placeholder {
     font-weight: 400;
     line-height: 24px;
@@ -308,4 +347,4 @@ const optionBoxCustom = css`
   }
 `;
 
-export { SelectBoxPost, SelectBox };
+export { SelectBoxPost, SelectBox, SelectBoxReadOnly };

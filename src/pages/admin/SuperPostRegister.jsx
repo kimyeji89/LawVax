@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-import ImgInput from "@adminComponents/ImgInput";
+import { ImgInput } from "@adminComponents/ImgInput";
 import { Btn274 } from "@adminComponents/Btns";
 import CheckBox from "@adminComponents/CheckBox";
 import { SelectBoxPost } from "@adminComponents/SelectBox";

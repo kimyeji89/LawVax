@@ -5,7 +5,7 @@ import Login from "@adminPages/Login";
 import SuperMember from "@adminPages/SuperMember";
 import GeneralMember from "../pages/admin/GeneralMember";
 import SuperMemberRegister from "@adminPages/SuperMemberRegister";
-import GeneralMemberRegister from "../pages/admin/GeneralMemberRegister";
+import GeneralMemberView from "../pages/admin/GeneralMemberView";
 import SuperPost from "@adminPages/SuperPost";
 import GeneralPost from "../pages/admin/GeneralPost";
 import SuperPostRegister from "@adminPages/SuperPostRegister";
@@ -37,7 +37,7 @@ export default function AdminLayout() {
           <Route path="super/post/register" element={<SuperPostRegister />} />
           {/* general 일반 관리자*/}
           <Route path="general/" element={<GeneralMember />} />
-          <Route path="general/register" element={<GeneralMemberRegister />} />
+          <Route path="general/view" element={<GeneralMemberView />} />
           <Route path="general/post" element={<GeneralPost />} />
           <Route
             path="general/post/register"

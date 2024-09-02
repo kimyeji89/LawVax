@@ -54,6 +54,62 @@ function TextField({ id, label, size, placeholder, isSingle }) {
   }
 }
 
+function TextFieldReadOnly({ id, label, size, value, isSingle }) {
+  switch (isSingle) {
+    case true:
+      return (
+        <div>
+          <label htmlFor={id} css={textInputLabel} className="label">
+            {label}
+          </label>
+          <input
+            className="readOnly"
+            type="text"
+            name={id}
+            id={id}
+            css={[textInput, size]}
+            value={value}
+            readOnly
+          />
+        </div>
+      );
+    case false:
+      return (
+        <>
+          <label htmlFor={id} css={textInputLabel} className="label">
+            {label}
+          </label>
+          <input
+            className="readOnly"
+            type="text"
+            name={id}
+            id={id}
+            css={[textInput, size]}
+            value={value}
+            readOnly
+          />
+        </>
+      );
+    default:
+      return (
+        <div>
+          <label htmlFor={id} css={textInputLabel} className="label">
+            {label}
+          </label>
+          <input
+            className="readOnly"
+            type="text"
+            name={id}
+            id={id}
+            css={[textInput, size]}
+            value={value}
+            readOnly
+          />
+        </div>
+      );
+  }
+}
+
 function TextFieldPost({ id, label, placeholder }) {
   return (
     <div>
@@ -90,6 +146,25 @@ function TextArea({ id, label, placeholder }) {
   );
 }
 
+function TextAreaReadOnly({ id, label, value }) {
+  return (
+    <div css={textAreaCtn}>
+      <label htmlFor={id} css={textInputLabel}>
+        {label}
+      </label>
+      <textarea
+        className="readOnly"
+        name={id}
+        id={id}
+        rows="10"
+        css={[textInput, textArea]}
+        value={value}
+        readOnly
+      />
+    </div>
+  );
+}
+
 const textInputLabel = css`
   font-size: 14px;
   font-weight: 500;
@@ -119,6 +194,10 @@ const textInput = css`
   border: none;
   border-radius: 8px;
   color: var(--mono-gray-txt-dark);
+  font-size: 16px;
+  &.readOnly {
+    cursor: default;
+  }
   &::placeholder {
     font-weight: 400;
     line-height: 24px;
@@ -157,4 +236,10 @@ const textArea = css`
   resize: none;
 `;
 
-export { TextField, TextArea, TextFieldPost };
+export {
+  TextField,
+  TextFieldReadOnly,
+  TextFieldPost,
+  TextArea,
+  TextAreaReadOnly,
+};

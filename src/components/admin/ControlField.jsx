@@ -7,6 +7,8 @@ import { SelectBox } from "@adminComponents/SelectBox";
 import { ReactComponent as Add } from "@images/add-outline.svg";
 import { ReactComponent as Trash } from "@images/trash-outline.svg";
 import { v4 as uuidv4 } from "uuid";
+import { SelectBoxReadOnly } from "./SelectBox";
+import { TextFieldReadOnly } from "./TextField";
 
 function ControlField({ id, placeholder, addField }) {
   function removeField() {
@@ -30,6 +32,20 @@ function ControlField({ id, placeholder, addField }) {
       <Btn36 event={removeField}>
         <Trash />
       </Btn36>
+    </div>
+  );
+}
+
+function ControlFieldReadOnly({ id, textValue }) {
+  return (
+    <div css={multiInputCtnSmall} id={`${id}row`}>
+      <TextFieldReadOnly
+        id={`content${id}`}
+        label={"내용"}
+        value={textValue}
+        size={small538}
+        isSingle={true}
+      />
     </div>
   );
 }
@@ -87,6 +103,28 @@ function ControlSelectField({ id, placeholder, addField }) {
   );
 }
 
+function ControlSelectFieldReadOnly({ id, selectedValue, textValue }) {
+  return (
+    <div css={multiInputCtnSmall} id={`${id}row`}>
+      <SelectBoxReadOnly
+        label="년도"
+        placeholder="선택"
+        size={small159}
+        selectedValue={selectedValue}
+        id={`select${id}`}
+        isMulti={false}
+      />
+      <TextFieldReadOnly
+        id={`content${id}`}
+        label={"내용"}
+        size={small369}
+        value={textValue}
+        isSingle={true}
+      />
+    </div>
+  );
+}
+
 function ControlPeriodField({ id, placeholder, addField }) {
   function removeField() {
     let target = document.querySelector(`#${id}row`);
@@ -130,6 +168,42 @@ function ControlPeriodField({ id, placeholder, addField }) {
   );
 }
 
+function ControlPeriodFieldReadOnly({
+  id,
+  yearStartValue,
+  yearEndValue,
+  textValue,
+}) {
+  return (
+    <div css={multiInputCtnSmall} id={`${id}row`}>
+      <div css={periodCtn}>
+        <TextFieldReadOnly
+          id={`start${id}`}
+          label={"시작년도"}
+          size={small69}
+          isSingle={true}
+          value={yearStartValue}
+        />
+        <span>~</span>
+        <TextFieldReadOnly
+          id={`end${id}`}
+          label={"종료년도"}
+          size={small69}
+          isSingle={true}
+          value={yearEndValue}
+        />
+      </div>
+      <TextFieldReadOnly
+        id={`content${id}`}
+        label={"내용"}
+        size={small369}
+        isSingle={true}
+        value={textValue}
+      />
+    </div>
+  );
+}
+
 const yearData = Array.from(
   { length: new Date().getFullYear() - 1940 + 1 },
   (_, i) => new Date().getFullYear() - i
@@ -165,16 +239,6 @@ const multiInputCtnSmall = css`
   }
 `;
 
-const addNdelBtn = css`
-  width: 36px;
-  height: 36px;
-  padding: 6px;
-  box-sizing: border-box;
-  border-radius: 6px;
-  background-color: var(--mono-gray-bg-1);
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
-`;
-
 const periodCtn = css`
   display: flex;
   gap: 6px;
@@ -187,4 +251,11 @@ const periodCtn = css`
   }
 `;
 
-export { ControlField, ControlSelectField, ControlPeriodField };
+export {
+  ControlField,
+  ControlFieldReadOnly,
+  ControlSelectField,
+  ControlSelectFieldReadOnly,
+  ControlPeriodField,
+  ControlPeriodFieldReadOnly,
+};
