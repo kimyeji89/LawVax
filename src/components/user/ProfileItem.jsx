@@ -81,5 +81,12 @@ const member_contact = css`
     font-size: 14px;
     font-weight: 400;
     color: #666666;
+    margin: 0;
+    text-decoration: none;
+    text-decoration-line: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;

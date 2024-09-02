@@ -5,11 +5,11 @@ import { StyledTitleWrap } from "./NewsLetter";
 import { useState } from "react";
 import workImg from "@images/field/field-work.png";
 import bulletIcon from "@images/field/bullet-point.svg";
-import ProfileItem from "../../components/user/ProfileItem";
-import ProfileList from "../../components/user/ProfileList";
-import MoreBtn from "../../components/user/Field/MoreBtn";
-import NewsSlide from "../../components/user/NewsSlide";
-import SlideCard from "../../components/user/SlideCard";
+import ProfileItem from "@userComponents/ProfileItem";
+import ProfileList from "@userComponents//ProfileList";
+import MoreBtn from "@userComponents/MoreBtn";
+import NewsSlide from "@userComponents//NewsSlide";
+import SlideCard from "@userComponents/SlideCard";
 import slideData from "@data/newsSlideData.json";
 import profileData from "@data/profileData.json";
 

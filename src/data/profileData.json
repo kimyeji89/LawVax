@@ -22,5 +22,29 @@
     "job": "변호사",
     "phone": "02. 123. 4567",
     "email": "chulsu@lawvax.co.kr"
+  },
+  {
+    "name": "유성열",
+    "job": "변호사",
+    "phone": "02. 583. 6300",
+    "email": "ysl@lawvax.co.kr"
+  },
+  {
+    "name": "김철수",
+    "job": "변호사",
+    "phone": "02. 123. 4567",
+    "email": "chulsu@lawvax.co.kr"
+  },
+  {
+    "name": "이영희",
+    "job": "변호사",
+    "phone": "02. 583. 6300",
+    "email": "ysl@lawvax.co.kr"
+  },
+  {
+    "name": "김민수",
+    "job": "변호사",
+    "phone": "02. 123. 4567",
+    "email": "chulsu@lawvax.co.kr"
   }
 ]
