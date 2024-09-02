@@ -31,19 +31,13 @@ export default function AdminLayout() {
         <SideBar />
         <Routes>
           {/* super 통합 관리자*/}
-          <Route path="super/member" element={<SuperMember />} />
-          <Route
-            path="super/member/register"
-            element={<SuperMemberRegister />}
-          />
+          <Route path="super/" element={<SuperMember />} />
+          <Route path="super/register" element={<SuperMemberRegister />} />
           <Route path="super/post" element={<SuperPost />} />
           <Route path="super/post/register" element={<SuperPostRegister />} />
           {/* general 일반 관리자*/}
-          <Route path="general/member" element={<GeneralMember />} />
-          <Route
-            path="general/member/register"
-            element={<GeneralMemberRegister />}
-          />
+          <Route path="general/" element={<GeneralMember />} />
+          <Route path="general/register" element={<GeneralMemberRegister />} />
           <Route path="general/post" element={<GeneralPost />} />
           <Route
             path="general/post/register"
