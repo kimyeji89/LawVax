@@ -41,7 +41,7 @@ const checkboxCustom = css`
   height: 24px;
   border-radius: 4px;
   background-color: var(--point-color-5);
-  box-shadow: var(--checkbox-bd-inner);
+  box-shadow: 0 0 0 1px #8fc0ec inset;
 `;
 
 const checkbox = css`
