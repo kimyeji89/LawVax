@@ -47,7 +47,6 @@ const search_container = css`
     font-weight: 500;
     line-height: 24px;
     width: 149px;
-    // min-width: 149px;/
     padding: 12px;
     background-color: #fff;
     border: none;
@@ -68,7 +67,6 @@ const search_container = css`
 
     option {
       color: var(--mono-gray-txt-dark);
-      min-width: 220px;
       width: 149px;
 
       font-size: 16px;

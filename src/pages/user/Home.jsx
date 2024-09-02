@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
 import homeImg1 from "@images/home_img-1.png";
 import searchIcon from "@images/search-outline.svg";
 import searchBlack from "@images/search-outline-black.svg";
@@ -26,12 +25,6 @@ import SlideProfessional from "../../components/user/SlideProfessional";
 import newsSlideData from "@data/newsSlideData.json";
 
 function Home() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
-  };
-
   return (
     <div css={container}>
       <section>
@@ -44,25 +37,22 @@ function Home() {
               <br />
               기업 금융 IT 분야 로펌
             </p>
-            <div css={searchBar}>
-              <div css={dropdownContainer}>
-                <button css={dropdownButton} onClick={toggleDropdown}>
-                  카테고리
-                  <img src={dropDownIcon} css={dropdownIconStyle} />
-                </button>
-                {dropdownOpen && (
-                  <ul css={dropdownList}>
-                    <li>카테고리1</li>
-                    <li>카테고리2</li>
-                    <li>카테고리3</li>
-                  </ul>
-                )}
+            <div css={search_wrap}>
+              <div css={dropdown_container}>
+                <select>
+                  <option disabled hidden selected>
+                    카테고리
+                  </option>
+                  <option>카테고리1</option>
+                  <option>카테고리2</option>
+                  <option>카테고리3</option>
+                </select>
               </div>
               <span css={vertical_line}></span>
               <img src={searchIcon} css={search_icon} />
               <input type="text" placeholder="키워드를 입력해주세요." />
             </div>
-            <div css={buttonContainer}>
+            <div css={button_container}>
               <button css={circleButton_active}>형사</button>
               <button css={circleButton}>형사</button>
               <button css={circleButton}>형사</button>
@@ -249,7 +239,7 @@ const overlay_contents = css`
   padding: 0 8px;
 `;
 
-const searchBar = css`
+const search_wrap = css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,7 +255,7 @@ const searchBar = css`
   }
 
   input {
-    flex-grow: 1;
+    width: 50%;
   }
 
   @media (max-width: 420px) {
@@ -277,45 +267,25 @@ const searchBar = css`
   }
 `;
 
-const dropdownContainer = css`
+const dropdown_container = css`
   position: relative;
   display: flex;
   align-items: center;
   z-index: 1;
-`;
 
-const dropdownButton = css`
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-`;
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(${dropDownIcon}) no-repeat right 14px center;
+    width: 108px;
 
-const dropdownIconStyle = css`
-  margin: 0 14px;
-`;
-
-const dropdownList = css`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100px;
-  color: black;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 8px 0;
-  margin: 0;
-
-  li {
-    padding: 8px 16px;
+    border: none;
+    font-size: 16px;
+    color: #333;
     cursor: pointer;
-    &:hover {
-      background-color: #f0f0f0;
-    }
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -330,7 +300,7 @@ const search_icon = css`
   margin-right: 14px;
 `;
 
-const buttonContainer = css`
+const button_container = css`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -349,9 +319,10 @@ const buttonContainer = css`
 `;
 
 const circleButton = css`
-  width: 54px;
+  width: 56px;
   height: 32px;
   font-size: 16px;
+  padding: 0;
 
   border: 2px solid var(--point-color-2);
   border-radius: 20px;
@@ -366,7 +337,7 @@ const circleButton = css`
   @media (max-width: 375px) {
     width: 50px;
     height: 30px;
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 
@@ -374,6 +345,7 @@ const circleButton_active = css`
   width: 54px;
   height: 32px;
   font-size: 16px;
+  padding: 0;
 
   border: 2px solid var(--point-color-2);
   border-radius: 20px;
