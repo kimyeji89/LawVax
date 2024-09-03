@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { css } from "@emotion/react";
 import lawyerImg from "@images/lawyer-img.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
@@ -45,14 +45,50 @@ const slides = [
     previousPosition: "국세청장",
     image: lawyerImg,
   },
+  {
+    name: "홍길동",
+    title: "변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "김철수",
+    title: "변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "이영희",
+    title: "변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "홍길동",
+    title: "변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
 ];
 
 function SlideProfessional() {
+  const swiperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleCustomTranslate = (swiper) => {
+    const target = swiperRef.current.swiper;
+    const customTranslate = 0; // 원하는 px 값으로 설정
+    target.setTranslate(customTranslate);
+    setCurrentIndex(swiper.realIndex);
+  };
+
+  console.log(currentIndex);
 
   return (
     <Swiper
-      slidesPerView={3}
+      ref={swiperRef}
+      slidesPerView={"auto"}
+      spaceBetween={26}
       loop={true}
       modules={[Pagination, Autoplay]}
       pagination={{ type: "progressbar" }}
@@ -60,7 +96,7 @@ function SlideProfessional() {
         delay: 3000,
         disableOnInteraction: false,
       }}
-      onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
+      onSlideChange={(swiper) => handleCustomTranslate(swiper)}
       css={swiperStyle}
     >
       {slides.map((slide, index) => (
@@ -105,7 +141,7 @@ const swiperStyle = css`
   margin: 0 auto;
   height: 168px;
 
-  @media (min-width: 450px) {
+  @media (max-width: 450px) {
     width: 430px;
   }
 
@@ -124,9 +160,6 @@ const swiperStyle = css`
   }
 
   .swiper-slide.swiper-slide-next {
-    width: 72px !important;
-    margin-right: 16px;
-
     @media (max-width: 400px) {
       margin-right: 4px;
     }
@@ -138,7 +171,6 @@ const swiperStyle = css`
     height: 150px;
     display: flex;
     padding: 0 0 16px 0;
-    // margin: 0;
   }
 
   .swiper-slide.swiper-slide-active {
