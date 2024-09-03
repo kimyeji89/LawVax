@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Title from "../../components/user/Title";
+import Title from "@userComponents/Title";
 import { StyledTitleWrap } from "./NewsLetter";
-import SearchBar from "../../components/user/SearchBar";
-import ProfileItem from "../../components/user/ProfileItem";
+import SearchBar from "@userComponents/SearchBar";
+import ProfileItem from "@userComponents/ProfileItem";
 import profileData from "@data/profileData.json";
 import forwardIcon from "@images/chevron-forward-blue.svg";
 import nextIcon from "@images/chevron-next-blue.svg";

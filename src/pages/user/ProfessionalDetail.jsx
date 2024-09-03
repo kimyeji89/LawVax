@@ -4,7 +4,7 @@ import saveIcon from "@images/save.svg";
 import uniIcon from "@images/uni.svg";
 import lawyerImg from "@images/lawyer-img2.png";
 import { useState } from "react";
-import ProfileSection from "../../components/user/ProfileSection";
+import ProfileSection from "@userComponents/ProfileSection";
 import profileData from "@data/professionalDetail.json";
 
 function ProfessionalDetail() {
