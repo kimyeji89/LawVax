@@ -1,72 +1,199 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { TextField, TextArea } from "@adminComponents/TextField";
-import SelectBox from "@adminComponents/SelectBox";
+import { useState } from "react";
+import { ImgInput } from "@adminComponents/ImgInput";
+import { Btn274 } from "@adminComponents/Btns";
+import { TextField, TextArea, PasswordField } from "@adminComponents/TextField";
+import { SelectBox } from "@adminComponents/SelectBox";
+import { v4 as uuidv4 } from "uuid";
 import {
   ControlField,
   ControlSelectField,
   ControlPeriodField,
 } from "@adminComponents/ControlField";
-import { ReactComponent as Camera } from "@images/camera-icon.svg";
-import { ReactComponent as Check } from "@images/check-icon.svg";
-import { useState } from "react";
+import CheckBox from "@adminComponents/CheckBox";
 
-export default function ProfessionalRegister() {
-  const [image, setImage] = useState(null);
-  const [selectedPosition, setSelectedPosition] = useState("");
-  const [selectedTasks, setSelectedTasks] = useState([]);
-  const [selectedLangs, setSelectedLangs] = useState([]);
-  const [educationFields, setEducationFields] = useState([
-    { id: "education1", placeholder: "OO대학교 졸업" },
-    { id: "education2", placeholder: "OO대학교 졸업" },
-    { id: "education3", placeholder: "OO대학교 졸업" },
-  ]);
-  const [careerFields, setCareerFields] = useState([
-    { id: "career1", placeholder: ["1990", "제31회 사법시험 합격"] },
-    { id: "career2", placeholder: ["1990", "제31회 사법시험 합격"] },
-    { id: "career3", placeholder: ["1990", "제31회 사법시험 합격"] },
-  ]);
-  const [casesFields, setCasesFields] = useState([
-    {
-      id: "cases1",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-    {
-      id: "cases2",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-    {
-      id: "cases3",
-      placeholder: ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"],
-    },
-  ]);
-  const [etcFields, setEtcFields] = useState([
-    { id: "etc1", placeholder: "아시아경제 등 칼럼 게재" },
-    { id: "etc2", placeholder: "아시아경제 등 칼럼 게재" },
-    { id: "etc3", placeholder: "아시아경제 등 칼럼 게재" },
-  ]);
+export default function SuperMemberRegister() {
+  const [formData, setFormData] = useState({
+    image: null,
+    nameKR: "",
+    nameCH: "",
+    birth: { year: "", month: "", date: "" },
+    position: "",
+    tasks: [],
+    email: "",
+    langs: [],
+    phone: "",
+    fax: "",
+    id: "",
+    pw: "",
+    introduce: "",
+    education: [
+      { year: "", text: "" },
+      { year: "", text: "" },
+      { year: "", text: "" },
+    ],
+    career: [
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+    ],
+    cases: [
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+      { yearStart: "", yearEnd: "", text: "" },
+    ],
+    etc: ["", "", ""],
+  });
 
-  function addField(type, id, placeholder) {
-    let newComponent = {
+  function handleImage(image) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      image: image,
+    }));
+  }
+
+  function handleNameKR(nameKR) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      nameKR: nameKR,
+    }));
+  }
+
+  function handleNameCH(nameCH) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      nameCH: nameCH,
+    }));
+  }
+
+  function handleBirthYear(year) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birth: { ...prevFormData.birth, year: year },
+    }));
+  }
+
+  function handleBirthMonth(month) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birth: { ...prevFormData.birth, month: month },
+    }));
+  }
+
+  function handleBirthDate(date) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birth: { ...prevFormData.birth, date: date },
+    }));
+  }
+
+  function handleEmail(email) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      email: email,
+    }));
+  }
+
+  function handlePhone(phone) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      phone: phone,
+    }));
+  }
+
+  function handleFax(fax) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      fax: fax,
+    }));
+  }
+
+  function handleId(id) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       id: id,
-      placeholder: placeholder,
-    };
+    }));
+  }
 
+  function handlePw(pw) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      pw: pw,
+    }));
+  }
+
+  function handleIntroduce(introduce) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      introduce: introduce,
+    }));
+  }
+
+  function handleSelect(type, value) {
+    switch (type) {
+      case "Position":
+        setFormData((prevFormData) => ({ ...prevFormData, position: value }));
+        break;
+      case "Task":
+        if (formData.tasks.includes(value)) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            tasks: prevFormData.tasks.filter((item) => item !== value),
+          }));
+        } else {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            tasks: [...prevFormData.tasks, value],
+          }));
+        }
+        break;
+      case "Lang":
+        if (formData.langs.includes(value)) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            langs: prevFormData.langs.filter((item) => item !== value),
+          }));
+        } else {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            langs: [...prevFormData.langs, value],
+          }));
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  function addField(type) {
     switch (type) {
       case "education":
-        setEducationFields((prevComponents) => [
-          ...prevComponents,
-          newComponent,
-        ]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          education: [...formData.education, { year: "", text: "" }],
+        }));
         break;
       case "career":
-        setCareerFields((prevComponents) => [...prevComponents, newComponent]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          career: [
+            ...formData.career,
+            { yearStart: "", yearEnd: "", text: "" },
+          ],
+        }));
         break;
       case "cases":
-        setCasesFields((prevComponents) => [...prevComponents, newComponent]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          cases: [...formData.cases, { yearStart: "", yearEnd: "", text: "" }],
+        }));
         break;
       case "etc":
-        setEtcFields((prevComponents) => [...prevComponents, newComponent]);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          etc: [...formData.etc, ""],
+        }));
         break;
       default:
         break;
@@ -74,38 +201,42 @@ export default function ProfessionalRegister() {
   }
 
   function renderField(type, componentList, id, placeholder) {
-    return componentList.map((component) => {
+    return componentList.map((component, index) => {
       switch (type) {
         case "education":
           return (
             <ControlSelectField
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         case "career":
           return (
             <ControlPeriodField
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         case "cases":
           return (
             <ControlPeriodField
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         case "etc":
           return (
             <ControlField
-              id={component.id}
-              placeholder={component.placeholder}
-              addField={() => addField(type, id, placeholder)}
+              key={`${type}${index}`}
+              id={`${type}${index}`}
+              placeholder={placeholder}
+              addField={() => addField(type)}
             />
           );
         default:
@@ -114,69 +245,17 @@ export default function ProfessionalRegister() {
     });
   }
 
-  const handleSelect = (type, value) => {
-    switch (type) {
-      case "Position":
-        setSelectedPosition(value);
-        break;
-      case "Task":
-        if (selectedTasks.includes(value)) {
-          setSelectedTasks(
-            selectedTasks.filter((selected) => selected !== value)
-          );
-        } else {
-          setSelectedTasks([...selectedTasks, value]);
-        }
-        break;
-      case "Lang":
-        if (selectedLangs.includes(value)) {
-          setSelectedLangs(
-            selectedLangs.filter((selected) => selected !== value)
-          );
-        } else {
-          setSelectedLangs([...selectedLangs, value]);
-        }
-        break;
-      default:
-        break;
-    }
-  };
-
-  function handleImageUpload(event) {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert("Please upload a valid image file.");
-    }
-  }
-
   return (
     <main>
       <h2 className="admin-pageTitle">구성원 등록</h2>
-      <form action="GET" css={form}>
+      <form action="POST" css={form}>
         <div className="top" css={top}>
-          <input
-            type="file"
-            id="imgUpload"
-            css={imgUploadInput}
-            onChange={handleImageUpload}
-            accept="image/*"
+          <ImgInput
+            gap="16"
+            onChange={handleImage}
+            image={formData.image}
+            label="사진 등록"
           />
-          <label htmlFor="imgUpload" css={labelCtn}>
-            <div className="iconCtn" css={imgCtn}>
-              {image ? (
-                <img src={image} alt="profile image" css={uploadedImg} />
-              ) : (
-                <Camera />
-              )}
-            </div>
-            <p css={labelText}>사진 등록</p>
-          </label>
         </div>
         <div className="middle" css={middle}>
           <div className="left" css={left}>
@@ -187,6 +266,7 @@ export default function ProfessionalRegister() {
                 size={full}
                 placeholder={"홍길동"}
                 isSingle={true}
+                onChange={handleNameKR}
               />
               <TextField
                 id={"nameCH"}
@@ -194,6 +274,7 @@ export default function ProfessionalRegister() {
                 size={full}
                 placeholder={"洪吉童"}
                 isSingle={true}
+                onChange={handleNameCH}
               />
             </div>
             <div className="row" css={row}>
@@ -206,6 +287,7 @@ export default function ProfessionalRegister() {
                     size={triple}
                     placeholder={"0000"}
                     isSingle={false}
+                    onChange={handleBirthYear}
                   />
                   <TextField
                     id={"month"}
@@ -213,6 +295,7 @@ export default function ProfessionalRegister() {
                     size={triple}
                     placeholder={"00"}
                     isSingle={false}
+                    onChange={handleBirthMonth}
                   />
                   <TextField
                     id={"date"}
@@ -220,6 +303,7 @@ export default function ProfessionalRegister() {
                     size={triple}
                     placeholder={"00"}
                     isSingle={false}
+                    onChange={handleBirthDate}
                   />
                 </div>
               </div>
@@ -228,7 +312,7 @@ export default function ProfessionalRegister() {
                   label="직책"
                   placeholder="선택"
                   size={half}
-                  selectedValue={selectedPosition}
+                  selectedValue={formData.position}
                   data={positionData}
                   onSelect={handleSelect}
                   id="Position"
@@ -238,7 +322,7 @@ export default function ProfessionalRegister() {
                   label="주요업무"
                   placeholder="선택"
                   size={half}
-                  selectedValue={selectedTasks}
+                  selectedValue={formData.tasks}
                   data={taskData}
                   onSelect={handleSelect}
                   id="Task"
@@ -253,12 +337,13 @@ export default function ProfessionalRegister() {
                 size={full}
                 placeholder={"hongildong@lawvax.co.kr"}
                 isSingle={true}
+                onChange={handleEmail}
               />
               <SelectBox
                 label="언어(선택)"
                 placeholder="한국어"
                 size={full}
-                selectedValue={selectedLangs}
+                selectedValue={formData.langs}
                 data={langData}
                 onSelect={handleSelect}
                 id="Lang"
@@ -272,6 +357,7 @@ export default function ProfessionalRegister() {
                 size={full}
                 placeholder={"010-0000-0000"}
                 isSingle={true}
+                onChange={handlePhone}
               />
               <TextField
                 id={"fax"}
@@ -279,6 +365,7 @@ export default function ProfessionalRegister() {
                 size={full}
                 placeholder={"00-0000-0000"}
                 isSingle={true}
+                onChange={handleFax}
               />
             </div>
             <div className="row" css={row}>
@@ -288,13 +375,15 @@ export default function ProfessionalRegister() {
                 size={full}
                 placeholder={"입력"}
                 isSingle={true}
+                onChange={handleId}
               />
-              <TextField
+              <PasswordField
                 id={"pw"}
                 label={"비밀번호"}
                 size={full}
                 placeholder={"입력"}
                 isSingle={true}
+                onChange={handlePw}
               />
             </div>
             <div className="row" css={row}>
@@ -302,6 +391,7 @@ export default function ProfessionalRegister() {
                 id={"introduce"}
                 label={"소개"}
                 placeholder={"간단한 소개 글을 작성해주세요."}
+                onChange={handleIntroduce}
               />
             </div>
           </div>
@@ -311,8 +401,8 @@ export default function ProfessionalRegister() {
               <div css={column}>
                 {renderField(
                   "education",
-                  educationFields,
-                  `education${educationFields.length}`,
+                  formData.education,
+                  `education${formData.education.length}`,
                   "OO대학교 졸업"
                 )}
               </div>
@@ -322,8 +412,8 @@ export default function ProfessionalRegister() {
               <div css={column}>
                 {renderField(
                   "career",
-                  careerFields,
-                  `career${careerFields.length}`,
+                  formData.career,
+                  `career${formData.career.length}`,
                   ["1990", "제31회 사법시험 합격"]
                 )}
               </div>
@@ -333,8 +423,8 @@ export default function ProfessionalRegister() {
               <div css={column}>
                 {renderField(
                   "cases",
-                  casesFields,
-                  `cases${casesFields.length}`,
+                  formData.cases,
+                  `cases${formData.cases.length}`,
                   ["1995", "OO그룹 감사업무 대행 및 고소·고발 대리"]
                 )}
               </div>
@@ -344,8 +434,8 @@ export default function ProfessionalRegister() {
               <div css={column}>
                 {renderField(
                   "etc",
-                  etcFields,
-                  `etc${etcFields.length}`,
+                  formData.etc,
+                  `etc${formData.etc.length}`,
                   "아시아경제 등 칼럼 게재"
                 )}
               </div>
@@ -353,16 +443,8 @@ export default function ProfessionalRegister() {
           </div>
         </div>
         <div className="bottom" css={bottom}>
-          <button type="submit" css={btn}>
-            <p>저장</p>
-          </button>
-          <div css={checkboxCtn}>
-            <label htmlFor="auto" css={checkboxCustom}>
-              <input type="checkbox" name="auto" id="auto" css={checkbox} />
-              <Check />
-            </label>
-            <span css={checkboxLabel}>비공개</span>
-          </div>
+          <Btn274 text="저장" />
+          <CheckBox label="비공개" />
         </div>
       </form>
     </main>
@@ -370,21 +452,21 @@ export default function ProfessionalRegister() {
 }
 
 const positionData = [
-  { value: "대표 변호사", text: "대표 변호사" },
-  { value: "파트너 변호사", text: "파트너 변호사" },
-  { value: "변호사", text: "변호사" },
-  { value: "고문", text: "고문" },
+  { value: "대표 변호사", text: "대표 변호사", key: uuidv4() },
+  { value: "파트너 변호사", text: "파트너 변호사", key: uuidv4() },
+  { value: "변호사", text: "변호사", key: uuidv4() },
+  { value: "고문", text: "고문", key: uuidv4() },
 ];
 
 const taskData = [
-  { value: "기업분야", text: "기업분야" },
-  { value: "개인분야", text: "개인분야" },
+  { value: "기업분야", text: "기업분야", key: uuidv4() },
+  { value: "개인분야", text: "개인분야", key: uuidv4() },
 ];
 
 const langData = [
-  { value: "한국어", text: "한국어" },
-  { value: "영어", text: "영어" },
-  { value: "일본어", text: "일본어" },
+  { value: "한국어", text: "한국어", key: uuidv4() },
+  { value: "영어", text: "영어", key: uuidv4() },
+  { value: "일본어", text: "일본어", key: uuidv4() },
 ];
 
 const form = css`
@@ -399,46 +481,6 @@ const form = css`
 
 const top = css`
   margin-bottom: 30px;
-`;
-
-const labelCtn = css`
-  width: 80px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  cursor: pointer;
-`;
-
-const imgUploadInput = css`
-  display: none;
-`;
-
-const imgCtn = css`
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ececee;
-  box-shadow: 0 0 0 0.6px #d5d5d5 inset;
-  border-radius: 8px;
-`;
-
-const uploadedImg = css`
-  max-width: 80px;
-  max-height: 80px;
-  object-fit: contain;
-`;
-
-const labelText = css`
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 16px;
-  color: var(--point-color-1);
 `;
 
 const middle = css`
@@ -489,10 +531,6 @@ const multiInputCtnSmall = css`
   }
 `;
 
-const selectBoxCtn = css`
-  position: relative;
-`;
-
 const textInputLabel = css`
   font-size: 14px;
   font-weight: 500;
@@ -521,50 +559,5 @@ const bottom = css`
   display: flex;
   justify-content: center;
   position: relative;
-`;
-
-const btn = css`
-  width: 274px;
-  height: 56px;
-  background-color: var(--point-color-1);
-  border-radius: 8px;
-  p {
-    color: var(--mono-white);
-  }
-`;
-
-const checkboxCtn = css`
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 165px);
-  transform: translateY(-50%);
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`;
-
-const checkboxLabel = css`
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
-  color: var(--mono-gray-txt-dark);
-`;
-
-const checkboxCustom = css`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  background-color: #1a6cb5;
-  box-shadow: 0 0 0 1px #8fc0ec inset;
-`;
-
-const checkbox = css`
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+  margin-bottom: 54px;
 `;

@@ -41,10 +41,10 @@ const searchInput = css`
   height: 44px;
   width: 263px;
   background: var(--mono-white);
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--mono-gray-line-1);
   padding: 10px 14px;
   box-sizing: border-box;
-  color: #6e6e6f;
+  color: var(--mono-gray-txt-input);
   &::placeholder {
     color: var(--mono-gray-input-ph);
     line-height: 24px;

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header css={headerStyle}>
-      <Link to="/admin/PostManage">
+      <Link to="/admin/super/">
         <h1 css={title}>LawVax</h1>
         <img
           css={logoStyle}

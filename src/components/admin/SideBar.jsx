@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useLocationControl from "@hooks/useLocationControl";
 import { ReactComponent as People } from "@images/people-outline.svg";
 import { ReactComponent as Tray } from "@images/file-tray-full-outline.svg";
 import { ReactComponent as Settings } from "@images/settings-outline.svg";
@@ -8,16 +9,19 @@ import { ReactComponent as Power } from "@images/power-outline.svg";
 import { SideBtn } from "@adminComponents/SideBtns";
 
 export default function SideBar() {
-  const location = useLocation();
-  console.log(location.pathname);
+  const { includeLocation, checkLocation } = useLocationControl();
+
   return (
     <nav css={nav}>
       <div className="top" css={top}>
-        <Link to="/admin/professional">
+        <Link to="/admin/super/">
           <SideBtn
-            selected={
-              location.pathname === "/admin/professional" ? true : false
-            }
+            selected={checkLocation([
+              "/admin/super/",
+              "/admin/super/register",
+              "/admin/general/",
+              "/admin/general/view",
+            ])}
           >
             <People className="icon" css={icon} />
             <p className="text" css={text}>
@@ -25,10 +29,8 @@ export default function SideBar() {
             </p>
           </SideBtn>
         </Link>
-        <Link to="/admin/post">
-          <SideBtn
-            selected={location.pathname === "/admin/post" ? true : false}
-          >
+        <Link to="/admin/super/post">
+          <SideBtn selected={includeLocation("post")}>
             <Tray className="icon" css={icon} />
             <p className="text" css={text}>
               게시글 관리
@@ -38,12 +40,21 @@ export default function SideBar() {
       </div>
       <span className="divider" css={divider}></span>
       <div className="bottom" css={bottom}>
-        <SideBtn>
-          <Settings className="icon" css={icon} />
-          <p className="text" css={text}>
-            설정
-          </p>
-        </SideBtn>
+        {checkLocation([
+          "/admin/general/view",
+          "/admin/general/post/register",
+          "/admin/general/post/my",
+        ]) === true ? (
+          ""
+        ) : (
+          <SideBtn>
+            <Settings className="icon" css={icon} />
+            <p className="text" css={text}>
+              설정
+            </p>
+          </SideBtn>
+        )}
+
         <SideBtn>
           <Power className="icon" css={icon} />
           <p className="text" css={text}>
@@ -85,7 +96,7 @@ const divider = css`
   left: 0;
   bottom: 238px;
   width: 100%;
-  border: 0.6px solid #e0e0e0;
+  border: 0.6px solid var(--mono-gray-line-3);
 `;
 
 const icon = css`

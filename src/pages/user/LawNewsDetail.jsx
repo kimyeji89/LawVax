@@ -162,7 +162,7 @@ const news_img_wrap = css`
     font-weight: 700;
     font-size: 14px;
     line-height: 24px;
-    color: #666666;
+    color: var(--mono-gray-icon);
 
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -212,7 +212,7 @@ const view_list = css`
   cursor: pointer;
 
   span {
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
 `;
 

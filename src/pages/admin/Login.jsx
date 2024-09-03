@@ -5,9 +5,10 @@ import { ReactComponent as Check } from "@images/check-icon.svg";
 import { ReactComponent as EyeOff } from "@images/eye-off-outline.svg";
 import { ReactComponent as EyeOn } from "@images/eye-outline.svg";
 
-export default function AdminLogin() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [errorMassage, setErrorMassage] = useState(null);
+  const [viewPw, setViewPw] = useState(false);
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -58,16 +59,41 @@ export default function AdminLogin() {
           <label htmlFor="pw" css={label}>
             비밀번호
           </label>
-          <input
-            type="password"
-            name="pw"
-            id="pw"
-            css={textInput}
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <EyeOn css={eyeOn} />
-          <EyeOff css={eyeOff} />
+          {viewPw ? (
+            <input
+              type="text"
+              name="pw"
+              id="pw"
+              css={textInput}
+              placeholder="비밀번호를 입력해주세요."
+              required
+            />
+          ) : (
+            <input
+              type="password"
+              name="pw"
+              id="pw"
+              css={textInput}
+              placeholder="비밀번호를 입력해주세요."
+              required
+            />
+          )}
+
+          {viewPw ? (
+            <EyeOff
+              css={eye}
+              onClick={() => {
+                setViewPw(false);
+              }}
+            />
+          ) : (
+            <EyeOn
+              css={eye}
+              onClick={() => {
+                setViewPw(true);
+              }}
+            />
+          )}
         </div>
         <div css={checkboxCtn}>
           <label htmlFor="auto" css={checkboxCustom}>
@@ -142,7 +168,7 @@ const textInput = css`
   border: none;
   background-color: var(--mono-gray-bg-1);
   box-shadow: 0px -1px 0px 0px #c1c7cd inset;
-  color: #6e6e6f;
+  color: var(--mono-gray-txt-input);
   &::placeholder {
     color: var(--mono-gray-input-ph);
     opacity: 70%;
@@ -166,15 +192,8 @@ const error = css`
   line-height: 12px;
 `;
 
-const eyeOn = css`
-  top: calc(32px + ((100% - 32px) / 2));
-  transform: translateY(-50%);
-  right: 14px;
-  position: absolute;
-`;
-
-const eyeOff = css`
-  display: none;
+const eye = css`
+  cursor: pointer;
   top: calc(32px + ((100% - 32px) / 2));
   transform: translateY(-50%);
   right: 14px;
@@ -201,7 +220,7 @@ const checkboxCustom = css`
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background-color: #1a6cb5;
+  background-color: var(--point-color-5);
   box-shadow: 0 0 0 1px #8fc0ec inset;
 `;
 
