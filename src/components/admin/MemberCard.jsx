@@ -65,7 +65,7 @@ export default function MemberCard({ onSelect, category }) {
 const cardCtn = css`
   display: flex;
   gap: 30px;
-  width: 1543px;
+  width: 1550px;
 `;
 
 const card = css`
@@ -79,6 +79,7 @@ const card = css`
   padding: 16px;
   box-sizing: border-box;
   border-radius: 10px;
+  box-shadow: 6px 6px 54px 0px #0000000d;
   &.selected {
     background-color: var(--point-color-1);
     .cardTitle {

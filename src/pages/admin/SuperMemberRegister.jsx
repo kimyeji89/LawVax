@@ -559,4 +559,5 @@ const bottom = css`
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 54px;
 `;
