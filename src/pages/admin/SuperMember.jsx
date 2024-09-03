@@ -7,7 +7,7 @@ export default function SuperMember() {
   const [category, setCategory] = useState("전체");
   const [isChange, setIsChange] = useState(false);
 
-  function test(test) {}
+  function test2(test2) {}
 
   function onSelect(category) {
     setCategory(category);
