@@ -2,12 +2,12 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import NewsSlide from "../../components/user/NewsSlide";
-import SlideCard from "../../components/user/SlideCard";
+import NewsSlide from "@userComponents/NewsSlide";
+import SlideCard from "@userComponents/SlideCard";
 import newsSlideData from "@data/newsSlideData.json";
 import newsItems from "@data/newsItems.json";
-import NewsItem from "../../components/user/NewsItem";
-import Pagination from "./Pagination";
+import NewsItem from "@userComponents//NewsItem";
+import Pagination from "@userComponents/Pagination";
 
 function NewLetter() {
   return (
