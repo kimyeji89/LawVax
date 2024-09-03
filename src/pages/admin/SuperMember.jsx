@@ -25,7 +25,6 @@ export default function SuperMember() {
 
   return (
     <main>
-      <h2 className="admin-pageTitle">테스트2</h2>
       <h2 className="admin-pageTitle">구성원 관리</h2>
       <MemberCard onSelect={onSelect} category={category} />
       <MemberControl
