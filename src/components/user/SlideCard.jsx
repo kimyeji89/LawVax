@@ -23,7 +23,6 @@ const slide_card = css`
   width: 218px;
   height: 224px;
   border: 2px solid var(--mono-gray-line-1);
-  margin-right: 16px;
   padding: 22px 14px;
 
   display: flex;
