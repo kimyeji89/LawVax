@@ -25,6 +25,8 @@ export default function Pagination({ currentPage, setCurrentPage, pageAmt }) {
                     ? "var(--point-color-2)"
                     : "var(--mono-gray-txt-light)",
                 backgroundColor: "transparent",
+                border: "none",
+                height: "26px",
               }}
             >
               {page}
@@ -42,6 +44,7 @@ const ctn = css`
   justify-content: center;
   align-items: center;
   gap: 14px;
+  height: 26px;
 `;
 
 const li = css`

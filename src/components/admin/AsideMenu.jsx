@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import useLocationControl from "@hooks/useLocationControl";
 
-export default function AsideMenu() {
+export default function AsideMenu({ level }) {
   const { checkLocation } = useLocationControl();
   return (
     <aside css={aside}>
@@ -12,30 +12,43 @@ export default function AsideMenu() {
         <ul css={menuCtn}>
           <AsideMenuBtn
             title="전체보기"
-            num={1253}
+            num={"1253"}
             selected={checkLocation([
               "/admin/super/post",
               "/admin/general/post",
             ])}
             link="/admin/super/post"
           />
+          {level === "general" && (
+            <AsideMenuBtn
+              title="즐겨찾기"
+              num={"000"}
+              selected={checkLocation([
+                "/admin/super/post",
+                "/admin/general/post",
+              ])}
+              link="/admin/super/post"
+            />
+          )}
         </ul>
         <span css={divider}></span>
         <ul css={menuCtn}>
-          <AsideMenuBtn title="뉴스레터" num={0} selected={false} />
+          <AsideMenuBtn title="뉴스레터" num={"00"} selected={false} />
         </ul>
         <span css={divider}></span>
         <ul css={menuCtn}>
-          <AsideMenuBtn title="소식" num={0} selected={false} />
-          <AsideMenuBtn title="언론보도" num={0} selected={false} />
-          <AsideMenuBtn title="인재영입" num={0} selected={false} />
+          {level === "super" && (
+            <AsideMenuBtn title="소식" num={"00"} selected={false} />
+          )}
+          <AsideMenuBtn title="언론보도" num={"00"} selected={false} />
+          <AsideMenuBtn title="인재영입" num={"00"} selected={false} />
           <AsideMenuBtn
             title="내가 쓴 글"
-            num={0}
+            num={"00"}
             selected={checkLocation(["/admin/general/post/my"])}
             link="/admin/general/post/my"
           />
-          <AsideMenuBtn title="비공개" num={0} selected={false} />
+          <AsideMenuBtn title="비공개" num={"00"} selected={false} />
         </ul>
       </div>
     </aside>
@@ -53,11 +66,12 @@ function AsideMenuBtn({ title, num, selected, link }) {
     <Link to={link}>
       <li
         css={asideMenuBtn}
+        id={title === "전체보기" && "all"}
         className={selected ? "asideMenuBtns selected" : "asideMenuBtns"}
         onClick={handleStyle}
       >
-        <p>{title}</p>
-        <p>{num === 0 ? "00" : num.toLocaleString()}</p>
+        <p className="title">{title}</p>
+        <p className="num">{num}</p>
       </li>
     </Link>
   );
@@ -79,6 +93,9 @@ const asideMenuBtn = css`
   height: 44px;
   border-radius: 6px;
   background-color: var(--mono-white);
+  &#all .title {
+    font-weight: 700;
+  }
   p {
     font-size: 14px;
     font-weight: 500;
@@ -118,4 +135,5 @@ const asideTitle = css`
   font-family: Nunito Sans;
   font-weight: 700;
   line-height: 22px;
+  color: #202224;
 `;
