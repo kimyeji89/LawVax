@@ -108,12 +108,10 @@ function ProfessionalDetail() {
 export default ProfessionalDetail;
 
 const profile_main = css`
-  // border: 1px solid red;
   padding: 172px 16px 0;
 `;
 
 const main_1 = css`
-  // border: 1px solid blue;
   display: flex;
   justify-content: space-between;
   padding: 0 0 46px 11px;
@@ -128,8 +126,14 @@ const main_1 = css`
       font-weight: 500;
       color: var(--mono-gray-txt-light);
       margin: 0 0 0 8px;
+    }
+  }
 
-      @media (min-width: 360px) {
+  @media (max-width: 370px) {
+    h1 {
+      font-size: 32px;
+
+      span {
         font-size: 12px;
       }
     }
@@ -156,11 +160,11 @@ const save_btn = css`
     height: 16px;
   }
 
-  @media (min-width: 360px) {
+  @media (max-width: 400px) {
     width: 146px;
     height: 40px;
-    // padding: 10px;
     font-size: 14px;
+    // font-size: 4px;
     font-weight: 500;
     line-height: 14px;
   }
