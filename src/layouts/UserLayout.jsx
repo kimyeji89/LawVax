@@ -14,6 +14,8 @@ import NewsLetter from "@userPages/NewsLetter";
 import HeaderUser from "../components/user/HeaderUser";
 import FooterUser from "../components/user/FooterUser";
 import FieldDetail from "../pages/user/FieldDetail";
+import SearchResult from "../pages/user/SearchResult";
+import SearchResultDetail from "../pages/user/SearchResultDetail";
 
 export default function UserLayout() {
   return (
@@ -30,6 +32,8 @@ export default function UserLayout() {
         <Route path="professional/search" element={<ProfessionalSearch />} />
         <Route path="field" element={<Field />} />
         <Route path="field/detail" element={<FieldDetail />} />
+        <Route path="/search" element={<SearchResult />} />
+        <Route path="/search/detail" element={<SearchResultDetail />} />
       </Routes>
       <FooterUser />
     </div>
