@@ -4,8 +4,6 @@ import homeImg1 from "@images/home_img-1.png";
 import searchIcon from "@images/search-outline.svg";
 import searchBlack from "@images/search-outline-black.svg";
 import dropDownIcon from "@images/drop-down-icon.svg";
-import ellipse from "@images/news-ellipse-28.png";
-import ellipseImg from "@images/news-ellipse-26.png";
 import Title from "@components/user/Title";
 import mapImg from "@images/map-img.png";
 import deleteIcon from "@images/x-icon.svg";
@@ -16,13 +14,14 @@ import callIcon from "@images/call-outline.svg";
 import busIcon1 from "@images/bus-outline.svg";
 import busIcon2 from "@images/bus-outline-green.svg";
 import subwayIcon from "@images/subway-3.svg";
-import forwardIcon from "@images/chevron-forward-outline.svg";
-import nextIcon from "@images/chevron-next-outline.svg";
-import NewsSlide from "@userComponents/NewsSlide";
-import SlideCard from "@userComponents/SlideCard";
-import NewsCategory from "@userComponents/NewsCategory";
-import SlideProfessional from "@userComponents/SlideProfessional";
+import NewsSlide from "../../components/user/NewsSlide";
+import SlideCard from "../../components/user/SlideCard";
+import NewsCategory from "../../components/user/NewsCategory";
+import SlideProfessional from "../../components/user/SlideProfessional";
 import newsSlideData from "@data/newsSlideData.json";
+import { SlideNews } from "../../components/user/SlideNews";
+import SlideNewsLetter from "../../components/user/SlideNewsLetter";
+import lawNews from "@data/lawNews.json";
 
 function Home() {
   return (
@@ -71,27 +70,9 @@ function Home() {
       <section css={sec_2}>
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" showMore />
         <NewsCategory />
-
         <div css={new_list_wrap}>
-          <div css={news_slide}>
-            <div css={new_slide_img}>
-              <img src={ellipse} css={ellipse_1} />
-              <img src={ellipseImg} css={ellipse_2} />
-            </div>
-
-            <div css={news_slide_des}>
-              <div css={slide_btn}>
-                <img src={forwardIcon} />
-                <span>1/10</span>
-                <img src={nextIcon} />
-              </div>
-              <div css={slide_text}>
-                중대재해처벌법 시행
-                <br />
-                2년,무엇이 달라졌을까
-              </div>
-              <div css={slide_link}>자세히 보기</div>
-            </div>
+          <div css={slideWrapper}>
+            <SlideNews slideDataArr={lawNews} />
           </div>
         </div>
       </section>
@@ -108,16 +89,7 @@ function Home() {
             </>
           }
         />
-        <NewsSlide>
-          {newsSlideData.map((slide, index) => (
-            <SlideCard
-              key={index}
-              category={slide.category}
-              title={slide.title}
-              date={slide.date}
-            />
-          ))}
-        </NewsSlide>
+        <SlideNewsLetter />
       </section>
 
       <section css={sec_2}>
@@ -371,102 +343,16 @@ const sec_2 = css`
 
 const new_list_wrap = css`
   display: flex;
-
+  height: 179px;
+  justify-content: center;
   @media (min-width: 1024px) {
     justify-content: center;
   }
 `;
 
-const news_slide = css`
+const slideWrapper = css`
+  width: 398px;
   position: relative;
-  height: 179px;
-  display: flex;
-`;
-
-const new_slide_img = css`
-  display: flex;
-  align-items: end;
-`;
-
-const ellipse_1 = css`
-  width: 178px;
-  margin-right: 54px;
-
-  @media (max-width: 420px) {
-    width: 166px;
-    margin-right: 44px;
-  }
-
-  @media (max-width: 375px) {
-    width: 152px;
-    margin-right: 36px;
-  }
-`;
-
-const ellipse_2 = css`
-  position: absolute;
-  left: 66px;
-  bottom: 0;
-  width: 150px;
-
-  @media (max-width: 420px) {
-    width: 130px;
-  }
-
-  @media (max-width: 375px) {
-    width: 120px;
-    left: 58px;
-  }
-`;
-
-const news_slide_des = css`
-  width: 166px;
-
-  @media (max-width: 420px) {
-    width: 120px;
-  }
-
-  @media (max-width: 375px) {
-    width: 90px;
-  }
-`;
-
-const slide_btn = css`
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  align-items: center;
-  width: 111px;
-  height: 28px;
-  font-size: 14px;
-  line-height: 28px;
-  margin: 37px 0px 16px 0px;
-
-  span {
-    color: var(--point-color-2);
-  }
-`;
-
-const slide_text = css`
-  margin: 0 0 26px 0;
-  width: 164px;
-  height: 48px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--mono-gray-txt-dark);
-
-  @media (max-width: 375px) {
-    width: 150px;
-    font-size: 14px;
-  }
-`;
-
-const slide_link = css`
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--mono-gray-txt-light);
-  text-decoration: underline var(--mono-gray-txt-light);
 `;
 
 const sec_3 = css`
