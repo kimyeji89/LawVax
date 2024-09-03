@@ -43,7 +43,7 @@ export default function SuperMemberRegister() {
       { yearStart: "", yearEnd: "", text: "" },
       { yearStart: "", yearEnd: "", text: "" },
     ],
-    etc: [""],
+    etc: ["", "", ""],
   });
 
   function handleImage(image) {

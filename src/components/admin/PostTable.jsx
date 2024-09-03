@@ -78,7 +78,7 @@ const content = css`
   height: 795px;
   background-color: var(--mono-white);
   border-radius: 16px;
-  padding: 24px;
+  padding: 24px 24px 60px 24px;
   box-sizing: border-box;
   box-shadow: var(--ctn-bd-inner);
 `;
@@ -98,15 +98,34 @@ const thead = css`
 `;
 
 const tbody = css`
-  border-top: var(--table-bd);
+  position: relative;
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0px;
+    left: 0;
+    right: 0;
+    border-top: var(--table-bd);
+    height: 1px;
+    width: 100%;
+  }
 `;
 
 const tr = css`
-  border-bottom: var(--table-bd);
+  position: relative;
   background-color: var(--mono-white);
-
   &:hover {
     background-color: #e6eff7;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    border-bottom: var(--table-bd);
+    height: 1px;
+    width: 100%;
   }
 `;
 
