@@ -1,11 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { StyledTitleWrap } from "./NewsLetter";
 import saveIcon from "@images/save.svg";
 import uniIcon from "@images/uni.svg";
 import lawyerImg from "@images/lawyer-img2.png";
+import { useState } from "react";
+import ProfileSection from "../../components/user/ProfileSection";
+import profileData from "@data/professionalDetail.json";
 
 function ProfessionalDetail() {
+  const [activeTab, setActiveTab] = useState("주요 처리사례");
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+    const section = document.getElementById(tabName);
+    if (section) {
+      const offsetTop = section.offsetTop - 25;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div css={profile_main}>
@@ -66,12 +79,28 @@ function ProfessionalDetail() {
         </div>
       </div>
 
-      <div>네비</div>
+      <nav css={nav}>
+        <ul>
+          {["주요 처리사례", "학력", "경력", "저서/활동/기타"].map(
+            (tabName) => (
+              <li
+                key={tabName}
+                css={navItem(activeTab === tabName)}
+                onClick={() => handleTabClick(tabName)}
+              >
+                {tabName}
+              </li>
+            )
+          )}
+        </ul>
+      </nav>
 
-      <div>주요처리사례</div>
-      <div>학력</div>
-      <div>경력</div>
-      <div>저서/활동/기타</div>
+      <div css={section_wrap}>
+        <ProfileSection title="주요 처리사례" data={profileData.case} />
+        <ProfileSection title="학력" data={profileData.edu} />
+        <ProfileSection title="경력" data={profileData.career} />
+        <ProfileSection title="저서/활동/기타" data={profileData.etc} />
+      </div>
     </>
   );
 }
@@ -80,7 +109,7 @@ export default ProfessionalDetail;
 
 const profile_main = css`
   // border: 1px solid red;
-  padding: 172px 16px;
+  padding: 172px 16px 0;
 `;
 
 const main_1 = css`
@@ -99,6 +128,10 @@ const main_1 = css`
       font-weight: 500;
       color: var(--mono-gray-txt-light);
       margin: 0 0 0 8px;
+
+      @media (min-width: 360px) {
+        font-size: 12px;
+      }
     }
   }
 `;
@@ -121,6 +154,15 @@ const save_btn = css`
   img {
     width: 16px;
     height: 16px;
+  }
+
+  @media (min-width: 360px) {
+    width: 146px;
+    height: 40px;
+    // padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
   }
 `;
 
@@ -158,6 +200,13 @@ const main_2 = css`
     width: 193px;
     height: 300px;
   }
+
+  @media (max-width: 380px) {
+    img {
+      width: 176px;
+      height: 280px;
+    }
+  }
 `;
 
 const button_wrap = css`
@@ -175,6 +224,16 @@ const button_wrap = css`
     font-size: 14px;
     font-weight: 500;
     color: #666666;
+
+    @media (max-width: 380px) {
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 525px) {
+    width: 50%;
+]
   }
 `;
 
@@ -202,13 +261,56 @@ const career_list = css`
     font-weight: 500;
     color: #666666;
   }
+
+  @media (min-width: 360px) {
+    p {
+      font-size: 13px;
+    }
+  }
 `;
 
 const introduce = css`
   // border: 1px solid green;
   padding: 30px 0;
+  border-bottom: 2px solid #7e7e7e;
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #666666;
+  }
+`;
+
+const nav = css`
+  padding: 0 16px;
+
+  ul {
+    padding: 24px 16px;
+    border-bottom: 2px solid #dbdbdb;
+    display: flex;
+    justify-content: space-between;
+
+    // li {
+    //   font-size: 16px;
+    //   font-weight: 500;
+    //   color: #666666;
+    // }
+  }
+`;
+
+const navItem = (isActive) => css`
+  cursor: pointer;
+  color: ${isActive ? "var(--point-color-2)" : "#666666"};
+  font-weight: ${isActive ? "700" : "500"};
   font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #666666;
+  line-height: 16px;
+
+  // @media (max-width: 430px) {
+  //   font-size: 14px;
+  // }
+`;
+
+const section_wrap = css`
+  margin-bottom: 130px;
 `;
