@@ -18,10 +18,10 @@ import busIcon2 from "@images/bus-outline-green.svg";
 import subwayIcon from "@images/subway-3.svg";
 import forwardIcon from "@images/chevron-forward-outline.svg";
 import nextIcon from "@images/chevron-next-outline.svg";
-import NewsSlide from "../../components/user/NewsSlide";
-import SlideCard from "../../components/user/SlideCard";
-import NewsCategory from "../../components/user/NewsCategory";
-import SlideProfessional from "../../components/user/SlideProfessional";
+import NewsSlide from "@userComponents/NewsSlide";
+import SlideCard from "@userComponents/SlideCard";
+import NewsCategory from "@userComponents/NewsCategory";
+import SlideProfessional from "@userComponents/SlideProfessional";
 import newsSlideData from "@data/newsSlideData.json";
 
 function Home() {

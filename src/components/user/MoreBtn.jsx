@@ -1,14 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import downArrowIcon from "@images/chevron-down-outline.svg";
+import downIcon from "@images/chevron-down-outline.svg";
+import upIcon from "@images/chevron-up-outline.svg";
 
-function MoreBtn({ onClick }) {
+function MoreBtn({ isExpanded, onClick }) {
   return (
     <div css={moreButtonStyle}>
       <span css={line}></span>
       <span css={text} onClick={onClick}>
-        더보기
-        <img src={downArrowIcon} css={arrowIcon} alt="더보기" />
+        {isExpanded ? "접기" : "더보기"}
+        <img
+          src={isExpanded ? upIcon : downIcon}
+          css={arrowIcon}
+          alt={isExpanded ? "접기" : "더보기"}
+        />
       </span>
       <span css={line}></span>
     </div>

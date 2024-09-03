@@ -2,8 +2,8 @@
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
 import { StyledTitleWrap } from "./NewsLetter";
-import NewsCategory from "../../components/user/NewsCategory";
-import NewsItem from "../../components/user/NewsItem";
+import NewsCategory from "@userComponents/NewsCategory";
+import NewsItem from "@userComponents/NewsItem";
 import newsImg1 from "@images/news/news-card-1.png";
 import newsImg2 from "@images/news/news-card-2.png";
 import newsImg3 from "@images/news/news-card-3.png";
