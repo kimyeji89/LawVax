@@ -4,7 +4,7 @@ import moreRec from "@images/more-rectangle.svg";
 
 function Title({ titleFirst, title, subTitle, showMore }) {
   return (
-    <div css={fontImport}>
+    <div css={title_wrap}>
       <p css={sub_title}>{subTitle}</p>
       <h1 css={main_title}>{titleFirst}</h1>
       <span css={main_span}>{title}</span>
@@ -20,7 +20,7 @@ function Title({ titleFirst, title, subTitle, showMore }) {
 
 export default Title;
 
-const fontImport = css`
+const title_wrap = css`
   padding: 0 0 48px 0;
 `;
 
