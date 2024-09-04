@@ -2,8 +2,8 @@
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
 import { StyledTitleWrap } from "./NewsLetter";
-import FieldList from "../../components/user/FieldList";
-import FieldItem from "../../components/user/FieldItem";
+import FieldList from "@userComponents/FieldList";
+import FieldItem from "@userComponents//FieldItem";
 
 function Field() {
   return (

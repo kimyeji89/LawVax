@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import dropIcon from "../../assets/images/chevron-down-black.svg";
+import dropIcon from "@images/chevron-down-black.svg";
 
 function SearchBar() {
   return (

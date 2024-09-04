@@ -53,7 +53,7 @@ export default function SuperPostRegister() {
         <ImgInput
           onChange={handleImage}
           image={formData.image}
-          label="사진 등록"
+          label="대표사진 등록"
         />
         <form action="GET" css={form}>
           <div css={top}>
