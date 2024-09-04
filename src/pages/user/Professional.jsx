@@ -7,6 +7,7 @@ import ProfileCard from "../../components/user/ProfileCard";
 import profileData from "@data/profileData.json";
 import { useState } from "react";
 import MoreBtn from "@userComponents/MoreBtn";
+import { SlideProfessional } from "../../components/user/SlideProfessional";
 
 function Professional() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -28,10 +29,8 @@ function Professional() {
       <StyledTitleWrap>
         <Title titleFirst="P" title="ROFESSIONAL " />
       </StyledTitleWrap>
-
       <SearchBar />
-
-      <div css={swiper_wrap}>스와이퍼 영역</div>
+      <SlideProfessional />
 
       <div css={profile_container}>
         {profileData.slice(0, visibleCount).map((profile, index) => (
@@ -52,11 +51,6 @@ function Professional() {
 }
 
 export default Professional;
-
-const swiper_wrap = css`
-  height: 300px;
-  border: 1px solid gray;
-`;
 
 const btn_wrap = css`
   padding: 10px 16px 138px 16px;
