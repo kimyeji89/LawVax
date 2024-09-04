@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import moreRec from "@images/more-rectangle.svg";
+import moreRec from "@images/rectangle-blue.svg";
 
 function Title({ titleFirst, title, subTitle, showMore }) {
   return (
