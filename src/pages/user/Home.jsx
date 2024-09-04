@@ -2,14 +2,13 @@
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
 import NewsCategory from "@userComponents/NewsCategory";
-import SlideProfessional from "@userComponents/SlideProfessional";
 import { SlideNews } from "@userComponents/SlideNews";
 import SlideNewsLetter from "@userComponents/SlideNewsLetter";
 import homeImg from "@images/home_img-1.png";
 import mapImg from "@images/map-img.png";
+import dropDownIcon from "@images/drop-down-icon.svg";
 import { ReactComponent as SearchIcon } from "@images/search-gray.svg";
 import { ReactComponent as SearchIconBk } from "@images/search-black.svg";
-import { ReactComponent as DropDownIcon } from "@images/drop-down-icon.svg";
 import { ReactComponent as DeleteIcon } from "@images/x-icon.svg";
 import { ReactComponent as ShareIcon } from "@images/share-social-outline.svg";
 import { ReactComponent as CopyIcon } from "@images/copy-outline.svg";
@@ -19,6 +18,7 @@ import { ReactComponent as BusIconBl } from "@images/bus-outline.svg";
 import { ReactComponent as BusIconGn } from "@images/bus-outline.svg";
 import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
 import lawNews from "@data/lawNews.json";
+import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
 
 function Home() {
   return (
@@ -267,7 +267,7 @@ const dropdown_container = css`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url(${DropDownIcon}) no-repeat right 14px center;
+    background: url(${dropDownIcon}) no-repeat right 14px center;
     width: 108px;
 
     border: none;
