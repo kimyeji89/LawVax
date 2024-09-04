@@ -28,6 +28,8 @@ const title_wrap = css`
     font-weight: 500;
     color: var(--mono-gray-txt-dark);
   }
+
+  padding: 0 0 24px 0;
 `;
 
 const more_btn = css`

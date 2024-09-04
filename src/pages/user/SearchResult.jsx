@@ -5,7 +5,7 @@ import ProfileItem from "@userComponents/ProfileItem";
 import MoreBtn from "@userComponents/MoreBtn";
 import profileData from "@data/profileData.json";
 import { useState } from "react";
-import NewsPreview from "../../components/user/NewsPreview";
+import NewsPreview from "@userComponents/NewsPreview";
 import newsData from "@data/newsData.json";
 import NewsSlide from "@userComponents/NewsSlide";
 import SlideCard from "@userComponents/SlideCard";
@@ -112,7 +112,7 @@ const sec_field = css`
 `;
 
 const hr = css`
-  margin: 24px 0;
+  margin: 0 0 24px 0;
   border: none;
   background-color: #dbdbdb;
   height: 1px;
