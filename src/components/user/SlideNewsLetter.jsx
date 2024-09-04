@@ -83,7 +83,7 @@ export default SlideNewsLetter;
 
 const swiperStyle = css`
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -104,7 +104,7 @@ const swiperStyle = css`
     background: var(--point-color-2);
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1280px) {
     .swiper-pagination-progressbar {
       width: calc(100% - 16px);
     }

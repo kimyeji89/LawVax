@@ -6,13 +6,13 @@ function SearchBar() {
   return (
     <div css={search_wrap}>
       <div css={search_container}>
-        <select>
-          <option disabled hidden selected>
+        <select defaultValue="" id="part" name="part">
+          <option disabled hidden value="">
             업무분야 선택
           </option>
-          <option>기업 분야</option>
-          <option>업무 분야2</option>
-          <option>업무 분야3</option>
+          <option value="part1">기업 분야</option>
+          <option value="part2">업무 분야2</option>
+          <option value="part3">업무 분야3</option>
         </select>
         <input placeholder="성함을 입력해주세요." />
       </div>

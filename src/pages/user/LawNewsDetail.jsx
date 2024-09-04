@@ -9,9 +9,10 @@ import newsImg2 from "@images/news/news-card-2.png";
 import newsImg3 from "@images/news/news-card-3.png";
 import newsImg4 from "@images/news/news-card-4.png";
 import newsImg5 from "@images/news/news-card-5.png";
-import shareIcon from "@images/share-2.svg";
-import printerIcon from "@images/printer.svg";
-import listIcon from "@images/list.svg";
+import { ReactComponent as Share } from "@images/share-2.svg";
+import { ReactComponent as Printer } from "@images/printer.svg";
+import { ReactComponent as List } from "@images/list.svg";
+import { Link } from "react-router-dom";
 
 const newsItems = [
   {
@@ -54,8 +55,8 @@ function LawNewsDetail() {
           <h1>[소식]글로벌 항공우주산업 학회 세미나 개최</h1>
           <div css={news_sub}>
             <span>2024.06.24</span>
-            <img src={shareIcon} alt="share icon" />
-            <img src={printerIcon} alt="printer icon" />
+            <Share alt="share icon" />
+            <Printer alt="printer icon" />
           </div>
 
           <div css={news_img_wrap}>
@@ -106,8 +107,10 @@ function LawNewsDetail() {
         <div css={view_list_wrap}>
           <div></div>
           <div css={view_list}>
-            <img src={listIcon} alt="list icon" />
-            <span>목록보기</span>
+            <List alt="list icon" />
+            <Link to={"/lawNews"}>
+              <span>목록보기</span>
+            </Link>
           </div>
         </div>
 
@@ -213,6 +216,7 @@ const view_list = css`
 
   span {
     color: var(--mono-gray-icon);
+    text-decoration: underline;
   }
 `;
 
