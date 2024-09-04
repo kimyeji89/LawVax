@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { css } from "@emotion/react";
 import lawyerImg from "@images/lawyer-img.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
