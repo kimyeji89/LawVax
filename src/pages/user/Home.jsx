@@ -14,11 +14,8 @@ import callIcon from "@images/call-outline.svg";
 import busIcon1 from "@images/bus-outline.svg";
 import busIcon2 from "@images/bus-outline-green.svg";
 import subwayIcon from "@images/subway-3.svg";
-import NewsSlide from "../../components/user/NewsSlide";
-import SlideCard from "../../components/user/SlideCard";
 import NewsCategory from "../../components/user/NewsCategory";
-import SlideProfessional from "../../components/user/SlideProfessional";
-import newsSlideData from "@data/newsSlideData.json";
+import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
 import { SlideNews } from "../../components/user/SlideNews";
 import SlideNewsLetter from "../../components/user/SlideNewsLetter";
 import lawNews from "@data/lawNews.json";
@@ -27,7 +24,7 @@ function Home() {
   return (
     <div css={container}>
       <section>
-        <img src={homeImg1} css={img_1} />
+        <img src={homeImg1} css={img_1} alt="home" />
         <div css={overlay}>
           <div css={overlay_contents}>
             <h1>Difference. Experience.</h1>
@@ -38,18 +35,23 @@ function Home() {
             </p>
             <div css={search_wrap}>
               <div css={dropdown_container}>
-                <select>
-                  <option disabled hidden selected>
+                <select defaultValue="" id="category" name="category">
+                  <option disabled hidden value="">
                     카테고리
                   </option>
-                  <option>카테고리1</option>
-                  <option>카테고리2</option>
-                  <option>카테고리3</option>
+                  <option value="category1">카테고리1</option>
+                  <option value="category2">카테고리2</option>
+                  <option value="category3">카테고리3</option>
                 </select>
               </div>
               <span css={vertical_line}></span>
-              <img src={searchIcon} css={search_icon} />
-              <input type="text" placeholder="키워드를 입력해주세요." />
+              <img src={searchIcon} css={search_icon} alt="search" />
+              <input
+                type="text"
+                placeholder="키워드를 입력해주세요."
+                id="search"
+                name="search"
+              />
             </div>
             <div css={button_container}>
               <button css={circleButton_active}>형사</button>
@@ -94,7 +96,7 @@ function Home() {
 
       <section css={sec_2}>
         <Title titleFirst="P" title="ROFESSIONAL" showMore />
-        <SlideProfessional />
+        <SlideProfessionalMain />
       </section>
 
       <section css={sec_5}>
@@ -102,16 +104,19 @@ function Home() {
         <p css={map_text}>경로 탐색</p>
         <div css={map_search}>
           <div css={map_search_inner}>
-            <img src={searchBlack} />
-            <input placeholder="출발지를 입력해주세요." />
-            <img src={deleteIcon} />
+            <img src={searchBlack} alt="search" />
+            <input
+              placeholder="출발지를 입력해주세요."
+              name="departure"
+              id="departure"
+            />
+            <img src={deleteIcon} alt="delete" />
           </div>
         </div>
         <img src={mapImg} alt="로백스 지도 이미지" css={map_img} />
-
         <div css={share_btn_wrap}>
           <button css={share_btn}>
-            <img src={shareIcon} />
+            <img src={shareIcon} alt="share" />
             공유하기
           </button>
         </div>
@@ -121,7 +126,7 @@ function Home() {
             <h3>주소</h3>
             <div css={map_address_des}>
               <span>지번: 서울특별시 서초구 서초동 1596-3</span>
-              <img src={copyIcon} />
+              <img src={copyIcon} alt="copy" />
             </div>
             <p>서울특별시 서초구 사임당로 18 석오빌딩 3층, 9층</p>
           </div>
@@ -129,12 +134,12 @@ function Home() {
           <h3>연락처</h3>
           <div css={contact}>
             <span css={contact_inner}>
-              <img src={callIcon} />
+              <img src={callIcon} alt="call" />
               <span>대표번호</span>
               <span>02-583-6300</span>
             </span>
             <span css={contact_inner}>
-              <img src={receiptIcon} />
+              <img src={receiptIcon} alt="receipt" />
               <span>팩스</span>
               <span>02-583-6303</span>
             </span>
@@ -143,15 +148,15 @@ function Home() {
           <div css={map_transport}>
             <h3>대중교통</h3>
             <p>
-              <img src={busIcon1} />
+              <img src={busIcon1} alt="bus1" />
               <span>350, 742 서울교대사거리 정류장 22160</span>
             </p>
             <p>
-              <img src={busIcon2} />
+              <img src={busIcon2} alt="bus2" />
               서초21청호나이스 정류장 22935
             </p>
             <p>
-              <img src={subwayIcon} />
+              <img src={subwayIcon} alt="bus3" />
               남부터미널역 6번 출구 하차
             </p>
           </div>
