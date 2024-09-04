@@ -3,12 +3,46 @@ import { useState, useRef } from "react";
 import { css } from "@emotion/react";
 import lawyerImg from "@images/lawyer-img.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
-const slides = [
+const LeadLawyerArr = [
+  {
+    name: "홍길동",
+    title: "대표 변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "김철수",
+    title: "대표 변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "이영희",
+    title: "대표 변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "홍길동",
+    title: "대표 변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+  {
+    name: "김철수",
+    title: "대표 변호사",
+    previousPosition: "국세청장",
+    image: lawyerImg,
+  },
+];
+
+const allLawyerArr = [
   {
     name: "홍길동",
     title: "변호사",
@@ -71,93 +105,104 @@ const slides = [
   },
 ];
 
-function SlideProfessional() {
-  const swiperRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleCustomTranslate = (swiper) => {
-    const target = swiperRef.current.swiper;
-    const customTranslate = 0; // 원하는 px 값으로 설정
-    target.setTranslate(customTranslate);
-    setCurrentIndex(swiper.realIndex);
-  };
-
-  console.log(currentIndex);
-
+function SlideAllLawyer({ allLawyerArr }) {
   return (
     <Swiper
-      ref={swiperRef}
-      slidesPerView={"auto"}
-      spaceBetween={26}
-      loop={true}
-      modules={[Pagination, Autoplay]}
-      pagination={{ type: "progressbar" }}
+      effect={"fade"}
+      modules={[EffectFade, Autoplay]}
       autoplay={{
         delay: 3000,
         disableOnInteraction: false,
       }}
-      onSlideChange={(swiper) => handleCustomTranslate(swiper)}
-      css={swiperStyle}
+      loop={true}
+      className="fadeSwiper"
+      css={allLawyerCtn}
     >
-      {slides.map((slide, index) => (
-        <div css={swiper_wrap}>
-          <SwiperSlide key={index}>
-            <div
-              css={
-                index === currentIndex
-                  ? activeSlideContainer
-                  : inactiveSlideContainer
-              }
-            >
+      {allLawyerArr &&
+        allLawyerArr.map((slideData, idx) => (
+          <SwiperSlide key={"slide" + idx}>
+            <div css={allLawyerSlideContainer}>
               <img
-                src={slide.image}
-                alt={`${slide.name} 사진`}
-                css={index === currentIndex ? colorImage : grayscaleImage}
+                src={slideData.image}
+                alt={`${slideData.name} 사진`}
+                css={colorImage}
               />
-              {index === currentIndex && (
-                <div css={info_container}>
-                  <div>
-                    <p css={info_title}>{slide.title}</p>
-                    <h2 css={info_name}>{slide.name}</h2>
-                  </div>
-                  <div css={info_previous}>
-                    <span css={info_icon}>전</span>
-                    <span css={info_prev_job}>{slide.previousPosition}</span>
-                  </div>
+              <div css={info_container}>
+                <div>
+                  <p css={info_title}>{slideData.title}</p>
+                  <h2 css={info_name}>{slideData.name}</h2>
                 </div>
-              )}
+                <div css={info_previous}>
+                  <span css={info_icon}>전</span>
+                  <span css={info_prev_job}>{slideData.previousPosition}</span>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
-        </div>
-      ))}
+        ))}
     </Swiper>
+  );
+}
+
+function SlideLeadLawyer({ LeadLawyerArr }) {
+  const [progress, setProgress] = useState(0);
+  return (
+    <>
+      <Swiper
+        slidesPerView={"auto"}
+        spaceBetween={26}
+        loop={true}
+        modules={[Pagination]}
+        css={leadLawyerSlide}
+        onSwiper={(swiper) => {
+          swiper.on("slideChange", () => {
+            const progress = (swiper.realIndex + 1) / swiper.slides.length;
+            setProgress(progress * 100);
+          });
+        }}
+      >
+        {LeadLawyerArr.map((slide, index) => (
+          <div css={swiper_wrap}>
+            <SwiperSlide key={index}>
+              <div css={leadLawyerSlideContainer}>
+                <img
+                  src={slide.image}
+                  alt={`${slide.name} 사진`}
+                  css={grayscaleImage}
+                />
+              </div>
+            </SwiperSlide>
+          </div>
+        ))}
+      </Swiper>
+      <div css={customProgressBar}>
+        <div css={[progressBarFill, { width: `${progress}%` }]}></div>
+      </div>
+    </>
+  );
+}
+
+function SlideProfessional() {
+  return (
+    <div css={professionalSlideCtn}>
+      <SlideAllLawyer allLawyerArr={allLawyerArr} />
+      <SlideLeadLawyer LeadLawyerArr={LeadLawyerArr} />
+    </div>
   );
 }
 
 export default SlideProfessional;
 
-const swiperStyle = css`
+const professionalSlideCtn = css`
+  position: relative;
   width: 100%;
+  display: flex;
+  gap: 26px;
+`;
+
+const leadLawyerSlide = css`
   margin: 0 auto;
   height: 168px;
-
-  @media (max-width: 450px) {
-    width: 430px;
-  }
-
-  .swiper-pagination-progressbar {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--mono-gray-line-1);
-    margin-top: 166px;
-  }
-
-  .swiper-pagination-progressbar-fill {
-    background: var(--point-color-2);
-  }
 
   .swiper-slide.swiper-slide-next {
     @media (max-width: 400px) {
@@ -174,7 +219,6 @@ const swiperStyle = css`
   }
 
   .swiper-slide.swiper-slide-active {
-    width: 205px !important;
     display: flex !important;
     flex-direction: row !important;
     margin-right: 26px;
@@ -182,6 +226,30 @@ const swiperStyle = css`
     @media (max-width: 400px) {
       margin-right: 0px;
     }
+  }
+
+  @media (max-width: 450px) {
+    width: 430px;
+  }
+`;
+
+const customProgressBar = css`
+  position: absolute;
+  bottom: 0px;
+  top: 166px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--mono-gray-line-1);
+  z-index: 1;
+`;
+
+const progressBarFill = css`
+  height: 2px;
+  background: var(--point-color-2);
+  @media (min-width: 730px) {
+    display: none;
   }
 `;
 
@@ -191,13 +259,27 @@ const swiper_wrap = css`
   align-items: end;
 `;
 
-const activeSlideContainer = css`
-  width: 205px;
-  display: flex;
-  flex-direction: row;
+const allLawyerCtn = css`
+  width: 100%;
+  max-width: 205px;
+  min-width: 205px;
+  height: 150px;
+  background-color: transparent;
+  .swiper-slide {
+    height: 150px;
+  }
 `;
 
-const inactiveSlideContainer = css`
+const allLawyerSlideContainer = css`
+  width: 100%;
+  max-width: 205px;
+  min-width: 205px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--mono-white);
+`;
+
+const leadLawyerSlideContainer = css`
   float: right;
   width: 72px;
   display: flex;
