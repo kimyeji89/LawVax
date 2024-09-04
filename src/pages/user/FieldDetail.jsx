@@ -1,21 +1,23 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
 import Title from "@components/user/Title";
 import { StyledTitleWrap } from "./NewsLetter";
-import { useState } from "react";
-import workImg from "@images/field/field-work.png";
-import bulletIcon from "@images/field/bullet-point.svg";
 import ProfileItem from "@userComponents/ProfileItem";
 import ProfileList from "@userComponents//ProfileList";
 import MoreBtn from "@userComponents/MoreBtn";
-import NewsSlide from "@userComponents//NewsSlide";
-import SlideCard from "@userComponents/SlideCard";
-import slideData from "@data/newsSlideData.json";
+import SlideNewsLetter from "@userComponents/SlideNewsLetter";
+import workImg from "@images/field/field-work.png";
+import bulletIcon from "@images/field/bullet-point.svg";
 import profileData from "@data/profileData.json";
 
 function FieldDetail() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const initialVisibleCount = 2;
+  const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
+  const totalProfiles = profileData.length;
+
   const [activeTab, setActiveTab] = useState("소개");
-  const [showAllProfiles, setShowAllProfiles] = useState(false);
   const navHeight = 64;
 
   const handleTabClick = (tabName) => {
@@ -32,7 +34,12 @@ function FieldDetail() {
   };
 
   const handleMoreClick = () => {
-    setShowAllProfiles(!showAllProfiles);
+    if (isExpanded) {
+      setVisibleCount(initialVisibleCount);
+    } else {
+      setVisibleCount(totalProfiles);
+    }
+    setIsExpanded(!isExpanded);
   };
 
   return (
@@ -170,27 +177,18 @@ function FieldDetail() {
       <section id="주요 구성원" css={members}>
         <h1>주요구성원</h1>
         <ProfileList>
-          {profileData
-            .slice(0, showAllProfiles ? profileData.length : 2)
-            .map((profile, index) => (
-              <ProfileItem key={index} profile={profile} />
-            ))}
+          {profileData.slice(0, visibleCount).map((profile, index) => (
+            <ProfileItem key={index} profile={profile} />
+          ))}
         </ProfileList>
 
-        {profileData.length > 2 && <MoreBtn onClick={handleMoreClick} />}
+        {totalProfiles > 2 && (
+          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+        )}
       </section>
 
       <section id="최근소식" css={news}>
-        <NewsSlide>
-          {slideData.map((slide, index) => (
-            <SlideCard
-              key={index}
-              category={slide.category}
-              title={slide.title}
-              date={slide.date}
-            />
-          ))}
-        </NewsSlide>
+        <SlideNewsLetter />
       </section>
     </>
   );
@@ -247,6 +245,10 @@ const work = css`
     width: 100%;
     height: 398px;
     padding: 24px 0;
+
+    @media (min-width: 1024px) {
+      height: 700px;
+    }
   }
 
   p {

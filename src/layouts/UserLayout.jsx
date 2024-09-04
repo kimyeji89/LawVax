@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "@userPages/Home";
 import Introduction from "@userPages/Introduction";
@@ -11,11 +10,11 @@ import ProfessionalDetail from "@userPages/ProfessionalDetail";
 import ProfessionalSearch from "@userPages/ProfessionalSearch";
 import Field from "@userPages/Field";
 import NewsLetter from "@userPages/NewsLetter";
-import HeaderUser from "../components/user/HeaderUser";
-import FooterUser from "../components/user/FooterUser";
-import FieldDetail from "../pages/user/FieldDetail";
-import SearchResult from "../pages/user/SearchResult";
-import SearchResultDetail from "../pages/user/SearchResultDetail";
+import FieldDetail from "@userPages/FieldDetail";
+import SearchResult from "@userPages/SearchResult";
+import SearchResultDetail from "@userPages/SearchResultDetail";
+import HeaderUser from "@userComponents/HeaderUser";
+import FooterUser from "@userComponents/FooterUser";
 
 export default function UserLayout() {
   return (
@@ -41,6 +40,6 @@ export default function UserLayout() {
 }
 
 const layout_wrap = css`
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
 `;

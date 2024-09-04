@@ -119,7 +119,7 @@ const header_wrap = css`
 const side_btn = css`
   width: 48px;
   height: 48px;
-  margin: 24px;
+  margin: 24px 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,7 +141,7 @@ const nav_style = (isNavVisible) => css`
   position: fixed;
   top: 0;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   height: 100vh;
   background-color: var(--mono-white);
   padding: 28px 16px 0 16px;
@@ -164,7 +164,7 @@ const nav_style = (isNavVisible) => css`
     cursor: pointer;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     display: ${isNavVisible ? "block" : "none"};
   }
 `;

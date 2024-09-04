@@ -1,12 +1,25 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
 
 function NewsCategory() {
+  const [activeCategory, setActiveCategory] = useState("법인소식");
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+  };
+
   return (
     <div css={news_list}>
-      <span css={news_item_active}>법인소식</span>
-      <span css={news_item}>언론보도</span>
-      <span css={news_item}>인재영입</span>
+      {["법인소식", "언론보도", "인재영입"].map((category) => (
+        <span
+          key={category}
+          css={activeCategory === category ? news_item_active : news_item}
+          onClick={() => handleCategoryClick(category)}
+        >
+          {category}
+        </span>
+      ))}
     </div>
   );
 }
@@ -22,6 +35,7 @@ const news_list = css`
 
   span {
     font-size: 16px;
+    cursor: pointer;
   }
 `;
 
