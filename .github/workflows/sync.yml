@@ -1,9 +1,6 @@
 name: Sync Fork with Upstream
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -33,7 +30,13 @@ jobs:
       - name: Merge upstream changes
         run: git merge upstream/main --allow-unrelated-histories
 
-      - name: Push changes
+      - name: Check for changes
+        run: |
+          git diff --quiet || echo "Changes detected"
+        id: changes
+
+      - name: Push changes if there are updates
+        if: steps.changes.outputs.changes != 'Changes detected'
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push origin main
