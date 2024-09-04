@@ -56,7 +56,8 @@ const field_item_wrap = css`
   justify-content: space-between;
   gap: 14px;
 
-  @media (min-width: 1024px) {
-    justify-content: center;
+  @media (min-width: 600px) {
+    justify-content: start;
+    gap: 36px;
   }
 `;

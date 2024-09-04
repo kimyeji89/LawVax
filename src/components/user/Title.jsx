@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import moreRec from "@images/rectangle-blue.svg";
+import { ReactComponent as MoreIcon } from "@images/rectangle-blue.svg";
+import { Link } from "react-router-dom";
 
-function Title({ titleFirst, title, subTitle, showMore }) {
+function Title({ titleFirst, title, subTitle, showMore, link }) {
   return (
     <div css={title_wrap}>
       <p css={sub_title}>{subTitle}</p>
@@ -10,8 +11,10 @@ function Title({ titleFirst, title, subTitle, showMore }) {
       <span css={main_span}>{title}</span>
       {showMore && (
         <span css={more_btn}>
-          <p css={more_p}>more</p>
-          <img src={moreRec} css={more_bg} />
+          <Link to={link}>
+            <p css={more_p}>more</p>
+            <MoreIcon css={more_bg} />
+          </Link>
         </span>
       )}
     </div>
@@ -43,6 +46,10 @@ const main_title = css`
   @media (max-width: 400px) {
     font-size: 58px;
   }
+
+  @media (max-width: 350px) {
+    font-size: 54px;
+  }
 `;
 
 const main_span = css`
@@ -53,6 +60,10 @@ const main_span = css`
 
   @media (max-width: 400px) {
     font-size: 28px;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 26px;
   }
 `;
 

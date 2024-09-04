@@ -11,4 +11,9 @@ const list_wrap = css`
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
+
+  @media (min-width: 500px) {
+    justify-content: center;
+    gap: 148px;
+  }
 `;

@@ -1,15 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import TitleSub from "../../components/user/TitleSub";
+import { useState } from "react";
+import TitleSub from "@userComponents/TitleSub";
 import ProfileItem from "@userComponents/ProfileItem";
 import MoreBtn from "@userComponents/MoreBtn";
 import profileData from "@data/profileData.json";
-import { useState } from "react";
 import NewsPreview from "@userComponents/NewsPreview";
 import newsData from "@data/newsData.json";
-import NewsSlide from "@userComponents/NewsSlide";
-import SlideCard from "@userComponents/SlideCard";
-import slideData from "@data/newsSlideData.json";
+import SlideNewsLetter from "@userComponents/SlideNewsLetter";
 
 function SearchResult() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -70,18 +68,11 @@ function SearchResult() {
 
       <section css={sec_newsletter}>
         <TitleSub title="뉴스레터" showMore />
-        <hr css={hr} />
-        <NewsSlide>
-          {slideData.map((slide, index) => (
-            <SlideCard
-              key={index}
-              category={slide.category}
-              title={slide.title}
-              date={slide.date}
-            />
-          ))}
-        </NewsSlide>
+        <hr css={hr_2} />
       </section>
+      <div css={slide_wrap}>
+        <SlideNewsLetter />
+      </div>
     </>
   );
 }
@@ -112,6 +103,14 @@ const sec_field = css`
 `;
 
 const hr = css`
+  margin: 0 0 24px 0;
+  border: none;
+  background-color: #dbdbdb;
+  height: 1px;
+`;
+
+const hr_2 = css`
+  padding: 0 16px 0 0;
   margin: 0 0 24px 0;
   border: none;
   background-color: #dbdbdb;
@@ -151,5 +150,9 @@ const sec_news = css`
 `;
 
 const sec_newsletter = css`
-  padding: 48px 16px 130px;
+  padding: 48px 16px 0 16px;
+`;
+
+const slide_wrap = css`
+  padding: 0 0 130px 16px;
 `;

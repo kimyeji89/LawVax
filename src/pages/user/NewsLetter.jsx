@@ -2,12 +2,10 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import NewsSlide from "@userComponents/NewsSlide";
-import SlideCard from "@userComponents/SlideCard";
-import newsSlideData from "@data/newsSlideData.json";
-import newsItems from "@data/newsItems.json";
 import NewsItem from "@userComponents//NewsItem";
 import Pagination from "@userComponents/Pagination";
+import SlideNewsLetter from "@userComponents/SlideNewsLetter";
+import newsItems from "@data/newsItems.json";
 
 function NewLetter() {
   return (
@@ -26,17 +24,7 @@ function NewLetter() {
       </StyledTitleWrap>
 
       <div css={content_wrap}>
-        <NewsSlide>
-          {newsSlideData.map((slide, index) => (
-            <SlideCard
-              key={index}
-              category={slide.category}
-              title={slide.title}
-              date={slide.date}
-            />
-          ))}
-        </NewsSlide>
-
+        <SlideNewsLetter />
         <hr css={divide_line} />
 
         {newsItems.map((news, index) => (

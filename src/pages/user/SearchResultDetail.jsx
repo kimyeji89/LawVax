@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import TitleSub from "@userComponents/TitleSub";
-import newsData from "@data/newsData.json";
 import NewsPreview from "@userComponents/NewsPreview";
 import Pagination from "@userComponents/Pagination";
+import newsData from "@data/newsData.json";
 
 function SearchResultDetail() {
   return (

@@ -1,30 +1,30 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import homeImg1 from "@images/home_img-1.png";
-import searchIcon from "@images/search-gray.svg";
-import searchBlack from "@images/search-black.svg";
-import dropDownIcon from "@images/drop-down-icon.svg";
 import Title from "@components/user/Title";
+import NewsCategory from "@userComponents/NewsCategory";
+import { SlideNews } from "@userComponents/SlideNews";
+import SlideNewsLetter from "@userComponents/SlideNewsLetter";
+import homeImg from "@images/home_img-1.png";
 import mapImg from "@images/map-img.png";
-import deleteIcon from "@images/x-icon.svg";
-import shareIcon from "@images/share-social-outline.svg";
-import copyIcon from "@images/copy-outline.svg";
-import receiptIcon from "@images/receipt-outline.svg";
-import callIcon from "@images/call-outline.svg";
-import busIcon1 from "@images/bus-outline.svg";
-import busIcon2 from "@images/bus-outline-green.svg";
-import subwayIcon from "@images/subway-3.svg";
-import NewsCategory from "../../components/user/NewsCategory";
-import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
-import { SlideNews } from "../../components/user/SlideNews";
-import SlideNewsLetter from "../../components/user/SlideNewsLetter";
+import dropDownIcon from "@images/drop-down-icon.svg";
+import { ReactComponent as SearchIcon } from "@images/search-gray.svg";
+import { ReactComponent as SearchIconBk } from "@images/search-black.svg";
+import { ReactComponent as DeleteIcon } from "@images/x-icon.svg";
+import { ReactComponent as ShareIcon } from "@images/share-social-outline.svg";
+import { ReactComponent as CopyIcon } from "@images/copy-outline.svg";
+import { ReactComponent as ReceiptIcon } from "@images/receipt-outline.svg";
+import { ReactComponent as CallIcon } from "@images/call-outline.svg";
+import { ReactComponent as BusIconBl } from "@images/bus-outline.svg";
+import { ReactComponent as BusIconGn } from "@images/bus-outline.svg";
+import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
 import lawNews from "@data/lawNews.json";
+import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
 
 function Home() {
   return (
     <div css={container}>
       <section>
-        <img src={homeImg1} css={img_1} alt="home" />
+        <img src={homeImg} css={home_img} alt="home" />
         <div css={overlay}>
           <div css={overlay_contents}>
             <h1>Difference. Experience.</h1>
@@ -45,7 +45,8 @@ function Home() {
                 </select>
               </div>
               <span css={vertical_line}></span>
-              <img src={searchIcon} css={search_icon} alt="search" />
+
+              <SearchIcon css={search_icon} alt="search" />
               <input
                 type="text"
                 placeholder="키워드를 입력해주세요."
@@ -70,7 +71,13 @@ function Home() {
       </section>
 
       <section css={sec_2}>
-        <Title subTitle={"About Us"} titleFirst="N" title="EWS" showMore />
+        <Title
+          subTitle={"About Us"}
+          titleFirst="N"
+          title="EWS"
+          showMore
+          link="/lawNews"
+        />
         <NewsCategory />
         <div css={new_list_wrap}>
           <div css={slideWrapper}>
@@ -90,12 +97,18 @@ function Home() {
               LETTER
             </>
           }
+          link="/newsletter"
         />
         <SlideNewsLetter />
       </section>
 
       <section css={sec_2}>
-        <Title titleFirst="P" title="ROFESSIONAL" showMore />
+        <Title
+          titleFirst="P"
+          title="ROFESSIONAL"
+          showMore
+          link="/professional"
+        />
         <SlideProfessionalMain />
       </section>
 
@@ -104,19 +117,19 @@ function Home() {
         <p css={map_text}>경로 탐색</p>
         <div css={map_search}>
           <div css={map_search_inner}>
-            <img src={searchBlack} alt="search" />
+            <SearchIconBk alt="search" />
             <input
               placeholder="출발지를 입력해주세요."
               name="departure"
               id="departure"
             />
-            <img src={deleteIcon} alt="delete" />
+            <DeleteIcon alt="delete" />
           </div>
         </div>
         <img src={mapImg} alt="로백스 지도 이미지" css={map_img} />
         <div css={share_btn_wrap}>
           <button css={share_btn}>
-            <img src={shareIcon} alt="share" />
+            <ShareIcon alt="share" />
             공유하기
           </button>
         </div>
@@ -126,7 +139,7 @@ function Home() {
             <h3>주소</h3>
             <div css={map_address_des}>
               <span>지번: 서울특별시 서초구 서초동 1596-3</span>
-              <img src={copyIcon} alt="copy" />
+              <CopyIcon alt="copy" />
             </div>
             <p>서울특별시 서초구 사임당로 18 석오빌딩 3층, 9층</p>
           </div>
@@ -134,12 +147,12 @@ function Home() {
           <h3>연락처</h3>
           <div css={contact}>
             <span css={contact_inner}>
-              <img src={callIcon} alt="call" />
+              <CallIcon alt="call" />
               <span>대표번호</span>
               <span>02-583-6300</span>
             </span>
             <span css={contact_inner}>
-              <img src={receiptIcon} alt="receipt" />
+              <ReceiptIcon alt="receipt" />
               <span>팩스</span>
               <span>02-583-6303</span>
             </span>
@@ -148,15 +161,15 @@ function Home() {
           <div css={map_transport}>
             <h3>대중교통</h3>
             <p>
-              <img src={busIcon1} alt="bus1" />
+              <BusIconBl alt="bus1" />
               <span>350, 742 서울교대사거리 정류장 22160</span>
             </p>
             <p>
-              <img src={busIcon2} alt="bus2" />
+              <BusIconGn alt="bus2" />
               서초21청호나이스 정류장 22935
             </p>
             <p>
-              <img src={subwayIcon} alt="bus3" />
+              <SubwayIcon alt="bus3" />
               남부터미널역 6번 출구 하차
             </p>
           </div>
@@ -171,13 +184,13 @@ export default Home;
 const container = css`
   position: relative;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
 `;
 
-const img_1 = css`
+const home_img = css`
   height: 872px;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   object-fit: cover;
 `;
 
@@ -278,18 +291,26 @@ const search_icon = css`
 `;
 
 const button_container = css`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  // display: flex;
+  // flex-wrap: wrap;
+  gap: 25px;
   justify-content: center;
   background-color: white;
   padding: 26px 18px;
 
-  @media (max-width: 420px) {
-    gap: 14px;
+  @media (max-width: 360px) {
+    padding: 26px 12px;
   }
 
-  @media (min-width: 1024px) {
+  @media (max-width: 420px) {
+    gap: 14px;
+    padding: 26px 12px;
+  }
+
+  @media (min-width: 560px) {
     gap: 20px;
     padding: 26px 88px;
   }
@@ -315,6 +336,11 @@ const circleButton = css`
     width: 50px;
     height: 30px;
     font-size: 12px;
+  }
+
+  @media (max-width: 360px) {
+    width: 48px;
+    height: 28px;
   }
 `;
 
@@ -350,7 +376,8 @@ const new_list_wrap = css`
   display: flex;
   height: 179px;
   justify-content: center;
-  @media (min-width: 1024px) {
+
+  @media (min-width: 1280px) {
     justify-content: center;
   }
 `;
@@ -493,6 +520,10 @@ const contact_inner = css`
 `;
 
 const map_transport = css`
+  img {
+    margin-right: 8px;
+  }
+
   p {
     display: flex;
     align-items: center;
