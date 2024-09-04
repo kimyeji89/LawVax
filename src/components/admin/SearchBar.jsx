@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { ReactComponent as Search } from "@images/search-outline.svg";
+import { ReactComponent as Search } from "@images/search-black.svg";
 
 export default function SearchBar() {
   return (

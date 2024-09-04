@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import homeImg1 from "@images/home_img-1.png";
-import searchIcon from "@images/search-outline.svg";
-import searchBlack from "@images/search-outline-black.svg";
+import searchIcon from "@images/search-gray.svg";
+import searchBlack from "@images/search-black.svg";
 import dropDownIcon from "@images/drop-down-icon.svg";
 import Title from "@components/user/Title";
 import mapImg from "@images/map-img.png";
