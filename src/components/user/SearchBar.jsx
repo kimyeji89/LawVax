@@ -67,7 +67,8 @@ const input = css`
   width: calc(100% - 165px);
   background-color: transparent;
 
-  @media (max-width: 370px) {
+  @media (max-width: 375px) {
+    width: calc(100% - 174px);
     font-size: 14px;
   }
 
