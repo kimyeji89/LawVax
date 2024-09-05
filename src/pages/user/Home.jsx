@@ -431,7 +431,7 @@ const map_search = css`
 
 const map_search_inner = css`
   height: 100%;
-  padding: 10px 16px;
+  padding: 12px 16px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
