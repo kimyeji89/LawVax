@@ -1,12 +1,39 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function NewsCategory() {
+function NewsCategory({ onCategoryChange, enableRouting = false }) {
   const [activeCategory, setActiveCategory] = useState("법인소식");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const pathToCategory = {
+      "/lawNews": "법인소식",
+      "/media": "언론보도",
+      "/recruit": "인재영입",
+    };
+
+    const currentCategory = pathToCategory[location.pathname];
+    if (currentCategory) {
+      setActiveCategory(currentCategory);
+    }
+  }, [location.pathname]);
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
+
+    if (enableRouting) {
+      const routes = {
+        법인소식: "/lawNews",
+        언론보도: "/media",
+        인재영입: "/recruit",
+      };
+      navigate(routes[category]);
+    } else {
+      if (onCategoryChange) onCategoryChange(category);
+    }
   };
 
   return (
@@ -23,6 +50,7 @@ function NewsCategory() {
     </div>
   );
 }
+
 export default NewsCategory;
 
 const news_list = css`

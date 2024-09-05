@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "@userPages/Home";
 import Introduction from "@userPages/Introduction";
 import LawNews from "@userPages/LawNews";
+import Media from "@userPages/Media";
+import Recruit from "@userPages/Recruit";
 import LawNewsDetail from "@userPages/LawNewsDetail";
 import Professional from "@userPages/Professional";
 import ProfessionalDetail from "@userPages/ProfessionalDetail";
@@ -24,6 +26,8 @@ export default function UserLayout() {
         <Route path="/" element={<Home />} />
         <Route path="introduction" element={<Introduction />} />
         <Route path="lawNews" element={<LawNews />} />
+        <Route path="media" element={<Media />} />
+        <Route path="recruit" element={<Recruit />} />
         <Route path="newsLetter" element={<NewsLetter />} />
         <Route path="lawNews/detail" element={<LawNewsDetail />} />
         <Route path="professional" element={<Professional />} />

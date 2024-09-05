@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Title from "@userComponents/Title";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 import SearchBar from "@userComponents/SearchBar";
 import ProfileItem from "@userComponents/ProfileItem";
 import profileData from "@data/profileData.json";
@@ -66,7 +66,7 @@ const profile_item_wrap = css`
 
   img {
     display: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--mono-gray-txt-back);
     width: 100%;
     box-sizing: border-box;
   }
@@ -76,7 +76,7 @@ const gray_back = css`
   height: 198px;
   position: absolute;
   top: 0;
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
   width: 100%;
   z-index: -1;
 `;

@@ -62,6 +62,6 @@ const slider_container = css`
   }
 
   & > *:last-of-type {
-    margin-right: 0; /* 마지막 슬라이드 오른쪽 마진 제거 */
+    margin-right: 0;
   }
 `;

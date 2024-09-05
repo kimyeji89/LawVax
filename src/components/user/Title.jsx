@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { ReactComponent as MoreIcon } from "@images/rectangle-blue.svg";
-import { Link } from "react-router-dom";
+import MoreBtn from "@userComponents/MoreBtn";
 
 function Title({ titleFirst, title, subTitle, showMore, link }) {
   return (
@@ -9,14 +8,7 @@ function Title({ titleFirst, title, subTitle, showMore, link }) {
       <p css={sub_title}>{subTitle}</p>
       <h1 css={main_title}>{titleFirst}</h1>
       <span css={main_span}>{title}</span>
-      {showMore && (
-        <span css={more_btn}>
-          <Link to={link}>
-            <p css={more_p}>more</p>
-            <MoreIcon css={more_bg} />
-          </Link>
-        </span>
-      )}
+      {showMore && <MoreBtn link={link} translateY="-15%" />}
     </div>
   );
 }
@@ -55,8 +47,8 @@ const main_title = css`
 const main_span = css`
   font-size: 32px;
   font-family: "Prata";
-  color: #222222;
-  margin: 0;
+  color: var(--mono-black-title-2);
+  margin: 0px;
 
   @media (max-width: 400px) {
     font-size: 28px;
@@ -65,38 +57,4 @@ const main_span = css`
   @media (max-width: 350px) {
     font-size: 26px;
   }
-`;
-
-const more_btn = css`
-  position: relative;
-  margin-left: 18px;
-  z-index: 1;
-
-  display: flex-inline;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 44px;
-  height: 7px;
-
-  text-align: center;
-`;
-
-const more_p = css`
-  display: inline-block;
-  width: 44px;
-  height: 14px;
-  font-size: 14px;
-  font-family: "Prata", serif;
-  color: var(--mono-gray-txt-light);
-`;
-
-const more_bg = css`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transform: translateY(-15%);
-  z-index: -1;
-  width: 44px;
-  height: 7px;
 `;

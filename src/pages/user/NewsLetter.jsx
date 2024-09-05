@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import NewsItem from "@userComponents//NewsItem";
+import NewsItem from "@userComponents/NewsItem";
 import Pagination from "@userComponents/Pagination";
 import SlideNewsLetter from "@userComponents/SlideNewsLetter";
 import newsItems from "@data/newsItems.json";
@@ -25,18 +25,20 @@ function NewLetter() {
 
       <div css={content_wrap}>
         <SlideNewsLetter />
-        <hr css={divide_line} />
+        <div css={innerCtn}>
+          <hr css={divide_line} />
 
-        {newsItems.map((news, index) => (
-          <NewsItem
-            key={index}
-            title={news.title}
-            date={news.date}
-            link={news.link}
-          />
-        ))}
+          {newsItems.map((news, index) => (
+            <NewsItem
+              key={index}
+              title={news.title}
+              date={news.date}
+              link={news.link}
+            />
+          ))}
 
-        <Pagination />
+          <Pagination />
+        </div>
       </div>
     </>
   );
@@ -49,7 +51,11 @@ export const StyledTitleWrap = styled.div`
 `;
 
 const content_wrap = css`
-  padding: 0 16px;
+  padding-left: 16px;
+`;
+
+const innerCtn = css`
+  padding-right: 16px;
 `;
 
 const divide_line = css`

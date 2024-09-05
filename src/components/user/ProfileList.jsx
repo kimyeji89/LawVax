@@ -2,7 +2,11 @@
 import { css } from "@emotion/react";
 
 function ProfileList({ children }) {
-  return <div css={list_wrap}>{children}</div>;
+  return (
+    <div to="/professional/detail" css={list_wrap}>
+      {children}
+    </div>
+  );
 }
 
 export default ProfileList;
