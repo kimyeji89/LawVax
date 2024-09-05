@@ -65,6 +65,7 @@ const input = css`
   line-height: 24px;
   border: none;
   width: calc(100% - 165px);
+  background-color: transparent;
 
   @media (max-width: 370px) {
     font-size: 14px;
