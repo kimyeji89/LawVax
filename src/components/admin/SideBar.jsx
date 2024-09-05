@@ -103,6 +103,7 @@ const icon = css`
   fill: var(--mono-black-icon-1);
 `;
 const text = css`
+  font-size: 16px;
   font-weight: 700;
   line-height: 24px;
   color: var(--mono-gray-txt-dark);
