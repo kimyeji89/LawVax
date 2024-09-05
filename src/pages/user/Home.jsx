@@ -331,12 +331,11 @@ const button_container = css`
 `;
 
 const circleButton = css`
-  width: 56px;
+  width: 53px;
   height: 32px;
   font-size: 16px;
   padding: 0;
-
-  border: 2px solid var(--point-color-2);
+  box-shadow: 0 0 0 2px var(--point-color-2) inset;
   border-radius: 20px;
   background-color: var(--mono-white);
   color: var(--point-color-2);
@@ -359,12 +358,12 @@ const circleButton = css`
 `;
 
 const circleButton_active = css`
-  width: 54px;
+  width: 53px;
   height: 32px;
   font-size: 16px;
   padding: 0;
 
-  border: 2px solid var(--point-color-2);
+  box-shadow: 0 0 0 2px var(--point-color-2) inset;
   border-radius: 20px;
   background-color: var(--point-color-2);
   color: var(--mono-white);
