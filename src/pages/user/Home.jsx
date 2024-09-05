@@ -15,7 +15,7 @@ import { ReactComponent as CopyIcon } from "@images/copy-outline.svg";
 import { ReactComponent as ReceiptIcon } from "@images/receipt-outline.svg";
 import { ReactComponent as CallIcon } from "@images/call-outline.svg";
 import { ReactComponent as BusIconBl } from "@images/bus-outline.svg";
-import { ReactComponent as BusIconGn } from "@images/bus-outline.svg";
+import { ReactComponent as BusIconGn } from "@images/bus-outline-green.svg";
 import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
 import lawNews from "@data/lawNews.json";
 import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
