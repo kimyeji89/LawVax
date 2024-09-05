@@ -15,12 +15,21 @@ import { ReactComponent as CopyIcon } from "@images/copy-outline.svg";
 import { ReactComponent as ReceiptIcon } from "@images/receipt-outline.svg";
 import { ReactComponent as CallIcon } from "@images/call-outline.svg";
 import { ReactComponent as BusIconBl } from "@images/bus-outline.svg";
-import { ReactComponent as BusIconGn } from "@images/bus-outline.svg";
+import { ReactComponent as BusIconGn } from "@images/bus-outline-green.svg";
 import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
-import lawNews from "@data/lawNews.json";
-import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
+import lawNewsData from "@data/lawNewsData.json";
+import pressReportsData from "@data/pressReportsData.json";
+import recruitTalentData from "@data/recruitTalentData.json";
+import { SlideProfessionalMain } from "@userComponents/SlideProfessional";
+import { useState } from "react";
 
 function Home() {
+  const [newsCate, setNewsCate] = useState("법인소식");
+
+  const handleCate = (cate) => {
+    setNewsCate(cate);
+  };
+
   return (
     <div css={container}>
       <section>
@@ -78,10 +87,18 @@ function Home() {
           showMore
           link="/lawNews"
         />
-        <NewsCategory />
+        <NewsCategory onCategoryChange={handleCate} />
         <div css={new_list_wrap}>
           <div css={slideWrapper}>
-            <SlideNews slideDataArr={lawNews} />
+            {newsCate === "법인소식" && (
+              <SlideNews slideDataArr={lawNewsData} />
+            )}
+            {newsCate === "언론보도" && (
+              <SlideNews slideDataArr={pressReportsData} />
+            )}
+            {newsCate === "인재영입" && (
+              <SlideNews slideDataArr={recruitTalentData} />
+            )}
           </div>
         </div>
       </section>
@@ -293,9 +310,6 @@ const search_icon = css`
 const button_container = css`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-
-  // display: flex;
-  // flex-wrap: wrap;
   gap: 25px;
   justify-content: center;
   background-color: white;
@@ -373,8 +387,9 @@ const sec_2 = css`
 `;
 
 const new_list_wrap = css`
+  width: 100%;
   display: flex;
-  height: 179px;
+  height: fit-content;
   justify-content: center;
 
   @media (min-width: 1280px) {
@@ -383,7 +398,9 @@ const new_list_wrap = css`
 `;
 
 const slideWrapper = css`
-  width: 398px;
+  width: 100%;
+  max-height: 179px;
+  max-width: 398px;
   position: relative;
 `;
 
@@ -421,12 +438,13 @@ const map_search_inner = css`
   align-items: center;
   gap: 28px;
 
-  img {
+  svg {
+    width: 24px;
     height: 24px;
   }
 
   input {
-    width: 100%;
+    flex-grow: 1;
     border: 0;
     font-size: 16px;
   }
@@ -498,10 +516,6 @@ const contact = css`
   align-items: center;
   margin: 0 0 12px 0;
 
-  img {
-    height: 24px;
-  }
-
   @media (max-width: 420px) {
     display: block;
     margin: 0 0 12px 0;
@@ -520,7 +534,7 @@ const contact_inner = css`
 `;
 
 const map_transport = css`
-  img {
+  svg {
     margin-right: 8px;
   }
 

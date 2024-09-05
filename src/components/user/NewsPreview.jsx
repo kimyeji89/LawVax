@@ -18,16 +18,6 @@ const item_wrap = css`
   margin: 0 0 24px 0;
 `;
 
-const card_img = css`
-  width: 100%;
-  height: 160px;
-  margin: 0 0 14px 0;
-
-  @media (min-width: 760px) {
-    height: 400px;
-  }
-`;
-
 const item_title = css`
   font-size: 20px;
   font-weight: 500;
@@ -46,7 +36,7 @@ const item_text = css`
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
-  color: #666666;
+  color: var(--mono-gray-icon);
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -60,5 +50,5 @@ const item_date = css`
   font-weight: 400;
   line-height: 24px;
   padding: 24px 0;
-  color: #a2a9b1;
+  color: var(--mono-gray-txt-normal);
 `;

@@ -83,14 +83,22 @@ function SlideNews({ slideDataArr }) {
 
 const news_slide = css`
   position: relative;
-  height: 179px;
   display: flex;
+  height: fit-content;
   background-color: var(--mono-white);
 `;
 
 const new_slide_img = css`
   display: flex;
   align-items: end;
+  height: 178px;
+  @media (max-width: 420px) {
+    height: 166px;
+  }
+
+  @media (max-width: 375px) {
+    height: 152px;
+  }
 `;
 
 const ellipse_1 = css`
@@ -99,11 +107,13 @@ const ellipse_1 = css`
   margin-right: 54px;
   @media (max-width: 420px) {
     width: 166px;
+    height: 166px;
     margin-right: 44px;
   }
 
   @media (max-width: 375px) {
     width: 152px;
+    height: 152px;
     margin-right: 36px;
   }
 `;
@@ -113,20 +123,22 @@ const ellipse_2 = css`
   left: 66px;
   bottom: 0;
   width: 150px;
+  height: 150px;
 
   @media (max-width: 420px) {
     width: 130px;
+    height: 130px;
   }
 
   @media (max-width: 375px) {
     width: 120px;
+    height: 120px;
     left: 58px;
   }
 `;
 
 const news_slide_des = css`
   margin-top: 81px;
-  width: 166px;
 
   @media (max-width: 420px) {
     width: 120px;
@@ -141,8 +153,9 @@ const customPagination = css`
   .swiper-pagination-fraction {
     width: 111px;
     position: absolute;
-    top: 37px;
-    left: 232px;
+    top: 51px;
+    left: calc(50% + 32px);
+    transform: translateY(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,6 +163,9 @@ const customPagination = css`
     font-size: 14px;
     line-height: 28px;
     color: var(--point-color-2);
+    @media (max-width: 420px) {
+      left: calc(50% + 16px);
+    }
   }
   .swiper-pagination-fraction .swiper-pagination-current {
     color: var(--point-color-2);
@@ -167,9 +183,13 @@ const customNavigation = css`
   justify-content: space-between;
   padding: 2px 0;
   box-sizing: border-box;
-  top: 37px;
-  left: 232px;
+  top: 51px;
+  left: calc(50% + 32px);
+  transform: translateY(-50%);
   z-index: 10;
+  @media (max-width: 420px) {
+    left: calc(50% + 16px);
+  }
   button {
     padding: 0;
     margin: 0;

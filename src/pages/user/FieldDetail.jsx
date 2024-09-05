@@ -2,10 +2,10 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 import ProfileItem from "@userComponents/ProfileItem";
-import ProfileList from "@userComponents//ProfileList";
-import MoreBtn from "@userComponents/MoreBtn";
+import ProfileList from "@userComponents/ProfileList";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import SlideNewsLetter from "@userComponents/SlideNewsLetter";
 import workImg from "@images/field/field-work.png";
 import bulletIcon from "@images/field/bullet-point.svg";
@@ -13,7 +13,7 @@ import profileData from "@data/profileData.json";
 
 function FieldDetail() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const initialVisibleCount = 2;
+  const initialVisibleCount = window.innerWidth >= 1280 ? 4 : 2;
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
   const totalProfiles = profileData.length;
 
@@ -175,7 +175,7 @@ function FieldDetail() {
       </section>
 
       <section id="주요 구성원" css={members}>
-        <h1>주요구성원</h1>
+        <h1>주요 구성원</h1>
         <ProfileList>
           {profileData.slice(0, visibleCount).map((profile, index) => (
             <ProfileItem key={index} profile={profile} />
@@ -183,7 +183,7 @@ function FieldDetail() {
         </ProfileList>
 
         {totalProfiles > 2 && (
-          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+          <ToggleContentBtn onClick={handleMoreClick} isExpanded={isExpanded} />
         )}
       </section>
 
@@ -211,17 +211,20 @@ const nav = css`
 
 const nav_list = css`
   display: flex;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
 
   @media (max-width: 430px) {
+    justify-content: space-between;
     gap: 10px;
+    font-size: 14px;
   }
 `;
 
 const navItem = (isActive) => css`
   cursor: pointer;
-  color: ${isActive ? "var(--point-color-2)" : "#666666"};
+  color: ${isActive ? "var(--point-color-2)" : "var(--mono-gray-icon"};
   font-weight: ${isActive ? "700" : "500"};
   font-size: 16px;
   line-height: 16px;

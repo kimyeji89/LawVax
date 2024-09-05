@@ -5,7 +5,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
-import SlideCard from "../../components/user/SlideCard";
+import SlideCard from "@userComponents/SlideCard";
 
 const slideData = [
   {

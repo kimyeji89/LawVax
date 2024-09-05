@@ -8,7 +8,7 @@ function FieldItem({ title, link }) {
     <div css={field_item}>
       {title}
       <Link to={link}>
-        <img src={linkBtn} css={link_icon} />
+        <img src={linkBtn} css={link_icon} alt="link" />
       </Link>
     </div>
   );

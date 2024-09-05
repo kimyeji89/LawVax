@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
-import SearchBar from "@userComponents/SearchBar";
-import ProfileCard from "../../components/user/ProfileCard";
-import profileData from "@data/profileData.json";
 import { useState } from "react";
-import MoreBtn from "@userComponents/MoreBtn";
-import { SlideProfessional } from "../../components/user/SlideProfessional";
+import Title from "@components/user/Title";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
+import SearchBar from "@userComponents/SearchBar";
+import ProfileCard from "@userComponents/ProfileCard";
+import profileData from "@data/profileData.json";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 
 function Professional() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -30,8 +29,7 @@ function Professional() {
         <Title titleFirst="P" title="ROFESSIONAL " />
       </StyledTitleWrap>
       <SearchBar />
-      <SlideProfessional />
-
+      {/* <SlideProfessional /> 필요시 주석 해제*/}
       <div css={profile_container}>
         {profileData.slice(0, visibleCount).map((profile, index) => (
           <div key={index} css={profile_item_wrap}>
@@ -43,7 +41,7 @@ function Professional() {
 
       <div css={btn_wrap}>
         {totalProfiles > 6 && (
-          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+          <ToggleContentBtn onClick={handleMoreClick} isExpanded={isExpanded} />
         )}
       </div>
     </div>
@@ -62,7 +60,7 @@ const profile_container = css`
   grid-template-columns: repeat(3, 1fr);
   padding: 0;
 
-  @media (max-width: 360px) {
+  @media (max-width: 375px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -79,7 +77,7 @@ const gray_back = css`
   position: absolute;
   bottom: 0;
 
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
   width: 100%;
   z-index: -1;
 `;

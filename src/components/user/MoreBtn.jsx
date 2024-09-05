@@ -1,53 +1,53 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import downIcon from "@images/chevron-down-outline.svg";
-import upIcon from "@images/chevron-up-outline.svg";
+import { Link } from "react-router-dom";
+import { ReactComponent as MoreIcon } from "@images/rectangle-blue.svg";
 
-function MoreBtn({ isExpanded, onClick }) {
+function MoreBtn({ link, translateY = "-55%" }) {
   return (
-    <div css={moreButtonStyle}>
-      <span css={line}></span>
-      <span css={text} onClick={onClick}>
-        {isExpanded ? "접기" : "더보기"}
-        <img
-          src={isExpanded ? upIcon : downIcon}
-          css={arrowIcon}
-          alt={isExpanded ? "접기" : "더보기"}
-        />
-      </span>
-      <span css={line}></span>
-    </div>
+    <span css={more_btn}>
+      <p css={more_p}>
+        <Link to={link}>more</Link>
+      </p>
+      <MoreIcon css={more_bg(translateY)} />
+    </span>
   );
 }
 
 export default MoreBtn;
 
-const moreButtonStyle = css`
-  display: flex;
+const more_btn = css`
+  position: relative;
+  margin-left: 18px;
+  z-index: 1;
+  display: flex-inline;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin: 20px 0 0 0;
-  color: #cccccc;
+  text-align: center;
+  width: 44px;
+  height: 7px;
+  text-align: center;
 `;
 
-const line = css`
-  flex-grow: 1;
-  height: 2px;
-  background-color: #dbdbdb;
-`;
-
-const text = css`
-  display: flex;
-  align-items: center;
-  margin: 0 18px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--mono-gray-txt-light);
-`;
-
-const arrowIcon = css`
-  margin-left: 6px;
-  width: 14px;
+const more_p = css`
+  display: inline-block;
+  width: 44px;
   height: 14px;
+
+  a {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Prata", serif;
+    color: var(--mono-gray-txt-light);
+  }
+`;
+
+const more_bg = (translateY) => css`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(${translateY});
+  z-index: -1;
+  width: 44px;
+  height: 7px;
 `;

@@ -1,50 +1,65 @@
 [
   {
-    "name": "유성열",
+    "name": "김기동",
     "job": "변호사",
     "phone": "02. 583. 6300",
-    "email": "ysl@lawvax.co.kr"
+    "email": "ysl@lawvax.co.kr",
+    "image": "/assets/images/김기동.png"
   },
   {
-    "name": "유성열",
+    "name": "이동열",
     "job": "변호사",
     "phone": "02. 123. 4567",
-    "email": "chulsu@lawvax.co.kr"
+    "email": "chulsu@lawvax.co.kr",
+    "image": "/assets/images/이동열.png"
   },
   {
-    "name": "유성열",
+    "name": "김후곤",
     "job": "변호사",
     "phone": "02. 583. 6300",
-    "email": "ysl@lawvax.co.kr"
+    "email": "ysl@lawvax.co.kr",
+    "image": "/assets/images/김후곤.png"
   },
   {
-    "name": "유성열",
+    "name": "손영배",
     "job": "변호사",
     "phone": "02. 123. 4567",
-    "email": "chulsu@lawvax.co.kr"
-  },
-  {
-    "name": "유성열",
-    "job": "변호사",
-    "phone": "02. 583. 6300",
-    "email": "ysl@lawvax.co.kr"
-  },
-  {
-    "name": "유성열",
-    "job": "변호사",
-    "phone": "02. 123. 4567",
-    "email": "chulsu@lawvax.co.kr"
+    "email": "chulsu@lawvax.co.kr",
+    "image": "/assets/images/손영배.png"
   },
   {
     "name": "유성열",
     "job": "변호사",
     "phone": "02. 583. 6300",
-    "email": "ysl@lawvax.co.kr"
+    "email": "ysl@lawvax.co.kr",
+    "image": "/assets/images/유성열.png"
   },
   {
-    "name": "유성열",
+    "name": "유상재",
     "job": "변호사",
     "phone": "02. 123. 4567",
-    "email": "chulsu@lawvax.co.kr"
+    "email": "chulsu@lawvax.co.kr",
+    "image": "/assets/images/유상재.png"
+  },
+  {
+    "name": "장진석",
+    "job": "변호사",
+    "phone": "02. 583. 6300",
+    "email": "ysl@lawvax.co.kr",
+    "image": "/assets/images/장진석.png"
+  },
+  {
+    "name": "김정훈",
+    "job": "변호사",
+    "phone": "02. 123. 4567",
+    "email": "chulsu@lawvax.co.kr",
+    "image": "/assets/images/김정훈.png"
+  },
+  {
+    "name": "허슬기",
+    "job": "변호사",
+    "phone": "02. 123. 4567",
+    "email": "chulsu@lawvax.co.kr",
+    "image": "/assets/images/허슬기.png"
   }
 ]

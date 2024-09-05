@@ -180,16 +180,6 @@ const btn_container = css`
   box-sizing: border-box;
 `;
 
-const kor_btn = css`
-  color: var(--point-color-2);
-  margin-right: 28px;
-`;
-
-const eng_btn = css`
-  color: var(--mono-gray-txt-light);
-  margin-right: auto;
-`;
-
 const close_btn = css`
   width: 48px;
   height: 48px;

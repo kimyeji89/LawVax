@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 function IntroCard({ imgSrc, title, text }) {
   return (
     <>
-      <img src={imgSrc} css={intro_img} />
+      <img src={imgSrc} css={intro_img} alt="intro" />
       <h1 css={intro_title}>{title}</h1>
       <p css={intro_text}>{text}</p>
     </>

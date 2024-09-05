@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import TitleSub from "@userComponents/TitleSub";
 import ProfileItem from "@userComponents/ProfileItem";
-import MoreBtn from "@userComponents/MoreBtn";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import profileData from "@data/profileData.json";
 import NewsPreview from "@userComponents/NewsPreview";
 import newsData from "@data/newsData.json";
@@ -36,7 +36,7 @@ function SearchResult() {
         </div>
 
         {totalProfiles > 6 && (
-          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+          <ToggleContentBtn onClick={handleMoreClick} isExpanded={isExpanded} />
         )}
       </section>
 
@@ -91,6 +91,9 @@ const profile_container = css`
   @media (min-width: 765px) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 const sec_member = css`
@@ -99,13 +102,13 @@ const sec_member = css`
 
 const sec_field = css`
   padding: 24px 16px;
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
 `;
 
 const hr = css`
   margin: 0 0 24px 0;
   border: none;
-  background-color: #dbdbdb;
+  background-color: var(--mono-gray-bg-4);
   height: 1px;
 `;
 
@@ -113,7 +116,7 @@ const hr_2 = css`
   padding: 0 16px 0 0;
   margin: 0 0 24px 0;
   border: none;
-  background-color: #dbdbdb;
+  background-color: var(--mono-gray-bg-4);
   height: 1px;
 `;
 
@@ -128,7 +131,7 @@ const field_list = css`
     padding: 0 0 0 2px;
     font-size: 14px;
     line-height: 20px;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
 
   @media (max-width: 380px) {
@@ -146,7 +149,7 @@ const sec_law = css`
 
 const sec_news = css`
   padding: 24px 16px;
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
 `;
 
 const sec_newsletter = css`

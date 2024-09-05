@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import profileImg from "@images/member-profile.png";
-
+import { Link } from "react-router-dom";
 function Profile({ profile }) {
   return (
-    <div css={profile_wrap}>
-      <img src={profileImg} css={profile_img} />
+    <Link to="/professional/detail" css={profile_wrap}>
+      <img src={profile.image} css={profile_img} alt="profile" />
 
       <div css={member_info}>
         <p css={member_name}>
@@ -22,7 +21,7 @@ function Profile({ profile }) {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -80,7 +79,7 @@ const member_contact = css`
   p {
     font-size: 14px;
     font-weight: 400;
-    color: #666666;
+    color: var(--mono-gray-icon);
     margin: 0;
     text-decoration: none;
     text-decoration-line: none;
