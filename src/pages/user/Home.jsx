@@ -498,10 +498,6 @@ const share_btn = css`
     font-size: 16px;
     color: var(--point-color-2);
   }
-
-  @media (max-width: 300px) {
-    font-size: 13px;
-  }
 `;
 
 const map_des = css`
