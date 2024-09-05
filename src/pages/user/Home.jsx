@@ -243,7 +243,7 @@ const overlay = css`
 `;
 
 const overlay_contents = css`
-  padding: 0 8px;
+  padding: 0 16px;
 `;
 
 const search_wrap = css`
