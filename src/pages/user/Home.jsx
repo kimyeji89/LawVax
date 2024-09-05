@@ -251,8 +251,10 @@ const search_wrap = css`
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 12px 48px 12px 12px;
+  // padding: 12px 48px 12px 12px;
+  padding: 12px;
   position: relative;
+  // border: 1px solid red;
 
   select,
   input {
@@ -262,11 +264,11 @@ const search_wrap = css`
   }
 
   input {
-    width: 50%;
+    width: 40%;
   }
 
-  @media (max-width: 420px) {
-    padding: 12px 0px 12px 12px;
+  @media (max-width: 400px) {
+    padding: 12px 0px 12px 0px;
     select,
     input {
       font-size: 14px;
@@ -293,6 +295,14 @@ const dropdown_container = css`
     cursor: pointer;
     display: flex;
     align-items: center;
+
+    @media (max-width: 400px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 320px) {
+      width: 98px;
+    }
   }
 `;
 
