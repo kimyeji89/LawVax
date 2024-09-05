@@ -120,7 +120,6 @@ function LawNewsDetail() {
         {newsItems.map((news, index) => (
           <NewsItem
             key={index}
-            imgSrc={news.image}
             title={news.title}
             date={news.date}
             link={news.link}
