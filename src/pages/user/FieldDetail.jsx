@@ -212,11 +212,13 @@ const nav = css`
 const nav_list = css`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 40px;
 
   @media (max-width: 430px) {
     justify-content: space-between;
     gap: 10px;
+    font-size: 14px;
   }
 `;
 
