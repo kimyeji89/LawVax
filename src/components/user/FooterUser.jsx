@@ -9,10 +9,10 @@ function FooterUser() {
     <div css={footer_wrap}>
       <div css={footer_container}>
         <div css={icon_container}>
-          <img src={lawLogo} css={logo} />
+          <img src={lawLogo} css={logo} alt="law" />
           <div css={sns_icons}>
-            <img src={blogLogo} />
-            <img src={instagramLogo} />
+            <img src={blogLogo} alt="blog" />
+            <img src={instagramLogo} alt="instagram" />
           </div>
         </div>
         <hr css={hr} />
@@ -48,8 +48,13 @@ const footer_wrap = css`
 `;
 
 const footer_container = css`
-  height: 181px;å
+  height: 181px;
   margin: 14px 16px;
+  width: 100%;
+
+  @media (max-width: 350px) {
+    margin: 0;
+  }
 `;
 
 const icon_container = css`
@@ -70,8 +75,11 @@ const sns_icons = css`
 `;
 
 const hr = css`
-  width:100%
-  margin: 14px;
+  width: 100%;
+  margin: 14px 0;
+  height: 1px;
+  background-color: var(--mono-gray-line-1);
+  border: none;
 `;
 
 const text_container = css`
@@ -80,10 +88,9 @@ const text_container = css`
   width: 100%;
   height: 24px;
   gap: 14px;
-  color: var(--mono-white);
   font-size: 14px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 400px) {
     font-size: 12px;
   }
 `;
@@ -94,4 +101,9 @@ const text = css`
   justify-content: center;
   gap: 24px;
   line-height: 24px;
+  color: var(--mono-white);
+
+  span {
+    color: var(--mono-white);
+  }
 `;

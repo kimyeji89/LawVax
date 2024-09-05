@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# LawVax_mo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+메인 : https://lawvax.vercel.app/
 
-## Available Scripts
+1. LawVax 소개페이지 : https://lawvax.vercel.app/introduction
+2. 법인소식 : https://lawvax.vercel.app/lawNews
+3. 법인소식 상세 : https://lawvax.vercel.app/lawNews/detail
+4. 뉴스레터 : https://lawvax.vercel.app/newsLetter
+5. 언론보도 : https://lawvax.vercel.app/media
+6. 인재영입 : https://lawvax.vercel.app/recruit
+7. 구성원 : https://lawvax.vercel.app/professional
+8. 구성원 검색 결과 : https://lawvax.vercel.app/professional/search
+9. 구성원 상세 : https://lawvax.vercel.app/professional/detail
+10. 업무분야 : https://lawvax.vercel.app/field
+11. 업무분야 상세 : https://lawvax.vercel.app/field/detail
+12. 메인 검색결과 : https://lawvax.vercel.app/search
+13. 메인 검색결과 상세 : https://lawvax.vercel.app/search/detail
 
-In the project directory, you can run:
+# LawVax_admin
 
-### `npm start`
+로그인 : https://lawvax.vercel.app/admin/login
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. 통합 관리자
+    1. 메인(구성원 관리): https://lawvax.vercel.app/admin/super
+    2. 구성원 등록: https://lawvax.vercel.app/admin/super/register
+    3. 게시물 관리: https://lawvax.vercel.app/admin/super/post
+    4. 게시물 등록: https://lawvax.vercel.app/admin/super/post/register
+2. 일반 관리자
+    1. 메인(구성원 관리): https://lawvax.vercel.app/admin/general
+    2. 구성원 보기: https://lawvax.vercel.app/admin/general/view
+    3. 게시글 관리: https://lawvax.vercel.app/admin/general/post
+    4. 게시글 작성: https://lawvax.vercel.app/admin/general/post/register
+    5. 내가 쓴 글: https://lawvax.vercel.app/admin/general/post/my
+  
+<hr/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 프로젝트 설치 - npm install
+### 프로젝트 실행 - npm start

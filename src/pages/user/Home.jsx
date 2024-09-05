@@ -1,68 +1,39 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
-import homeImg1 from "@images/home_img-1.png";
-import searchIcon from "@images/search-outline.svg";
-import searchBlack from "@images/search-outline-black.svg";
-import dropDownIcon from "@images/drop-down-icon.svg";
-import ellipse from "@images/news-ellipse-28.png";
-import ellipseImg from "@images/news-ellipse-26.png";
 import Title from "@components/user/Title";
+import NewsCategory from "@userComponents/NewsCategory";
+import { SlideNews } from "@userComponents/SlideNews";
+import SlideNewsLetter from "@userComponents/SlideNewsLetter";
+import homeImg from "@images/home_img-1.png";
 import mapImg from "@images/map-img.png";
-import deleteIcon from "@images/x-icon.svg";
-import shareIcon from "@images/share-social-outline.svg";
-import copyIcon from "@images/copy-outline.svg";
-import receiptIcon from "@images/receipt-outline.svg";
-import callIcon from "@images/call-outline.svg";
-import busIcon1 from "@images/bus-outline.svg";
-import busIcon2 from "@images/bus-outline-green.svg";
-import subwayIcon from "@images/subway-3.svg";
-import forwardIcon from "@images/chevron-forward-outline.svg";
-import nextIcon from "@images/chevron-next-outline.svg";
-import NewsSlide from "../../components/user/NewsSlide";
-import SlideCard from "../../components/user/SlideCard";
-import NewsCategory from "../../components/user/NewsCategory";
-import SlideProfessional from "../../components/user/SlideProfessional";
-
-export const slideData = [
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-  {
-    category: "회계 법률",
-    title: "법률AI' 거스를 수 없는 대세… 변호사 대체 아닌 '협업'으로",
-    date: "2024.07.01",
-  },
-];
+import dropDownIcon from "@images/drop-down-icon.svg";
+import { ReactComponent as SearchIcon } from "@images/search-gray.svg";
+import { ReactComponent as SearchIconBk } from "@images/search-black.svg";
+import { ReactComponent as DeleteIcon } from "@images/x-icon.svg";
+import { ReactComponent as ShareIcon } from "@images/share-social-outline.svg";
+import { ReactComponent as CopyIcon } from "@images/copy-outline.svg";
+import { ReactComponent as ReceiptIcon } from "@images/receipt-outline.svg";
+import { ReactComponent as CallIcon } from "@images/call-outline.svg";
+import { ReactComponent as BusIconBl } from "@images/bus-outline.svg";
+import { ReactComponent as BusIconGn } from "@images/bus-outline-green.svg";
+import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
+import lawNewsData from "@data/lawNewsData.json";
+import pressReportsData from "@data/pressReportsData.json";
+import recruitTalentData from "@data/recruitTalentData.json";
+import { SlideProfessionalMain } from "@userComponents/SlideProfessional";
+import { useState } from "react";
 
 function Home() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [newsCate, setNewsCate] = useState("법인소식");
 
-  const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
+  const handleCate = (cate) => {
+    setNewsCate(cate);
   };
 
   return (
     <div css={container}>
       <section>
-        <img src={homeImg1} css={img_1} />
+        <img src={homeImg} css={home_img} alt="home" />
         <div css={overlay}>
           <div css={overlay_contents}>
             <h1>Difference. Experience.</h1>
@@ -71,25 +42,28 @@ function Home() {
               <br />
               기업 금융 IT 분야 로펌
             </p>
-            <div css={searchBar}>
-              <div css={dropdownContainer}>
-                <button css={dropdownButton} onClick={toggleDropdown}>
-                  카테고리
-                  <img src={dropDownIcon} css={dropdownIconStyle} />
-                </button>
-                {dropdownOpen && (
-                  <ul css={dropdownList}>
-                    <li>카테고리1</li>
-                    <li>카테고리2</li>
-                    <li>카테고리3</li>
-                  </ul>
-                )}
+            <div css={search_wrap}>
+              <div css={dropdown_container}>
+                <select defaultValue="" id="category" name="category">
+                  <option disabled hidden value="">
+                    카테고리
+                  </option>
+                  <option value="category1">카테고리1</option>
+                  <option value="category2">카테고리2</option>
+                  <option value="category3">카테고리3</option>
+                </select>
               </div>
               <span css={vertical_line}></span>
-              <img src={searchIcon} css={search_icon} />
-              <input type="text" placeholder="키워드를 입력해주세요." />
+
+              <SearchIcon css={search_icon} alt="search" />
+              <input
+                type="text"
+                placeholder="키워드를 입력해주세요."
+                id="search"
+                name="search"
+              />
             </div>
-            <div css={buttonContainer}>
+            <div css={button_container}>
               <button css={circleButton_active}>형사</button>
               <button css={circleButton}>형사</button>
               <button css={circleButton}>형사</button>
@@ -106,29 +80,25 @@ function Home() {
       </section>
 
       <section css={sec_2}>
-        <Title subTitle={"About Us"} titleFirst="N" title="EWS" showMore />
-        <NewsCategory />
-
+        <Title
+          subTitle={"About Us"}
+          titleFirst="N"
+          title="EWS"
+          showMore
+          link="/lawNews"
+        />
+        <NewsCategory onCategoryChange={handleCate} />
         <div css={new_list_wrap}>
-          <div css={news_slide}>
-            <div css={new_slide_img}>
-              <img src={ellipse} css={ellipse_1} />
-              <img src={ellipseImg} css={ellipse_2} />
-            </div>
-
-            <div css={news_slide_des}>
-              <div css={slide_btn}>
-                <img src={forwardIcon} />
-                <span>1/10</span>
-                <img src={nextIcon} />
-              </div>
-              <div css={slide_text}>
-                중대재해처벌법 시행
-                <br />
-                2년,무엇이 달라졌을까
-              </div>
-              <div css={slide_link}>자세히 보기</div>
-            </div>
+          <div css={slideWrapper}>
+            {newsCate === "법인소식" && (
+              <SlideNews slideDataArr={lawNewsData} />
+            )}
+            {newsCate === "언론보도" && (
+              <SlideNews slideDataArr={pressReportsData} />
+            )}
+            {newsCate === "인재영입" && (
+              <SlideNews slideDataArr={recruitTalentData} />
+            )}
           </div>
         </div>
       </section>
@@ -144,22 +114,19 @@ function Home() {
               LETTER
             </>
           }
+          link="/newsletter"
         />
-        <NewsSlide>
-          {slideData.map((slide, index) => (
-            <SlideCard
-              key={index}
-              category={slide.category}
-              title={slide.title}
-              date={slide.date}
-            />
-          ))}
-        </NewsSlide>
+        <SlideNewsLetter />
       </section>
 
       <section css={sec_2}>
-        <Title titleFirst="P" title="ROFESSIONAL" showMore />
-        <SlideProfessional />
+        <Title
+          titleFirst="P"
+          title="ROFESSIONAL"
+          showMore
+          link="/professional"
+        />
+        <SlideProfessionalMain />
       </section>
 
       <section css={sec_5}>
@@ -167,17 +134,20 @@ function Home() {
         <p css={map_text}>경로 탐색</p>
         <div css={map_search}>
           <div css={map_search_inner}>
-            <img src={searchBlack} />
-            <input placeholder="출발지를 입력해주세요." />
-            <img src={deleteIcon} />
+            <SearchIconBk alt="search" />
+            <input
+              placeholder="출발지를 입력해주세요."
+              name="departure"
+              id="departure"
+            />
+            <DeleteIcon alt="delete" />
           </div>
         </div>
         <img src={mapImg} alt="로백스 지도 이미지" css={map_img} />
-
         <div css={share_btn_wrap}>
           <button css={share_btn}>
-            <img src={shareIcon} />
-            공유하기
+            <ShareIcon alt="share" />
+            <p>공유하기</p>
           </button>
         </div>
 
@@ -186,7 +156,7 @@ function Home() {
             <h3>주소</h3>
             <div css={map_address_des}>
               <span>지번: 서울특별시 서초구 서초동 1596-3</span>
-              <img src={copyIcon} />
+              <CopyIcon alt="copy" />
             </div>
             <p>서울특별시 서초구 사임당로 18 석오빌딩 3층, 9층</p>
           </div>
@@ -194,12 +164,12 @@ function Home() {
           <h3>연락처</h3>
           <div css={contact}>
             <span css={contact_inner}>
-              <img src={callIcon} />
+              <CallIcon alt="call" />
               <span>대표번호</span>
               <span>02-583-6300</span>
             </span>
             <span css={contact_inner}>
-              <img src={receiptIcon} />
+              <ReceiptIcon alt="receipt" />
               <span>팩스</span>
               <span>02-583-6303</span>
             </span>
@@ -208,15 +178,15 @@ function Home() {
           <div css={map_transport}>
             <h3>대중교통</h3>
             <p>
-              <img src={busIcon1} />
+              <BusIconBl alt="bus1" />
               <span>350, 742 서울교대사거리 정류장 22160</span>
             </p>
             <p>
-              <img src={busIcon2} />
+              <BusIconGn alt="bus2" />
               서초21청호나이스 정류장 22935
             </p>
             <p>
-              <img src={subwayIcon} />
+              <SubwayIcon alt="bus3" />
               남부터미널역 6번 출구 하차
             </p>
           </div>
@@ -231,13 +201,13 @@ export default Home;
 const container = css`
   position: relative;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
 `;
 
-const img_1 = css`
+const home_img = css`
   height: 872px;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   object-fit: cover;
 `;
 
@@ -273,16 +243,18 @@ const overlay = css`
 `;
 
 const overlay_contents = css`
-  padding: 0 8px;
+  padding: 0 16px;
 `;
 
-const searchBar = css`
+const search_wrap = css`
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 12px 48px 12px 12px;
+  // padding: 12px 48px 12px 12px;
+  padding: 12px;
   position: relative;
+  // border: 1px solid red;
 
   select,
   input {
@@ -292,11 +264,11 @@ const searchBar = css`
   }
 
   input {
-    flex-grow: 1;
+    width: 40%;
   }
 
-  @media (max-width: 420px) {
-    padding: 12px 0px 12px 12px;
+  @media (max-width: 400px) {
+    padding: 12px 0px 12px 0px;
     select,
     input {
       font-size: 14px;
@@ -304,44 +276,32 @@ const searchBar = css`
   }
 `;
 
-const dropdownContainer = css`
+const dropdown_container = css`
   position: relative;
   display: flex;
   align-items: center;
   z-index: 1;
-`;
 
-const dropdownButton = css`
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-`;
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(${dropDownIcon}) no-repeat right 14px center;
+    width: 108px;
 
-const dropdownIconStyle = css`
-  margin: 0 14px;
-`;
-
-const dropdownList = css`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100px;
-  color: black;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 8px 0;
-  margin: 0;
-
-  li {
-    padding: 8px 16px;
+    border: none;
+    font-size: 16px;
+    color: #333;
     cursor: pointer;
-    &:hover {
-      background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 400px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 320px) {
+      width: 98px;
     }
   }
 `;
@@ -357,30 +317,35 @@ const search_icon = css`
   margin-right: 14px;
 `;
 
-const buttonContainer = css`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+const button_container = css`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
   justify-content: center;
   background-color: white;
   padding: 26px 18px;
 
-  @media (max-width: 420px) {
-    gap: 14px;
+  @media (max-width: 360px) {
+    padding: 26px 12px;
   }
 
-  @media (min-width: 1024px) {
+  @media (max-width: 420px) {
+    gap: 14px;
+    padding: 26px 12px;
+  }
+
+  @media (min-width: 560px) {
     gap: 20px;
     padding: 26px 88px;
   }
 `;
 
 const circleButton = css`
-  width: 54px;
+  width: 53px;
   height: 32px;
   font-size: 16px;
-
-  border: 2px solid var(--point-color-2);
+  padding: 0;
+  box-shadow: 0 0 0 2px var(--point-color-2) inset;
   border-radius: 20px;
   background-color: var(--mono-white);
   color: var(--point-color-2);
@@ -393,16 +358,22 @@ const circleButton = css`
   @media (max-width: 375px) {
     width: 50px;
     height: 30px;
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 360px) {
+    width: 48px;
+    height: 28px;
   }
 `;
 
 const circleButton_active = css`
-  width: 54px;
+  width: 53px;
   height: 32px;
   font-size: 16px;
+  padding: 0;
 
-  border: 2px solid var(--point-color-2);
+  box-shadow: 0 0 0 2px var(--point-color-2) inset;
   border-radius: 20px;
   background-color: var(--point-color-2);
   color: var(--mono-white);
@@ -425,99 +396,21 @@ const sec_2 = css`
 `;
 
 const new_list_wrap = css`
+  width: 100%;
   display: flex;
-`;
-
-const news_slide = css`
-  position: relative;
-  height: 179px;
-  display: flex;
-`;
-
-const new_slide_img = css`
-  display: flex;
-  align-items: end;
-`;
-
-const ellipse_1 = css`
-  width: 178px;
-  margin-right: 54px;
-
-  @media (max-width: 420px) {
-    width: 166px;
-    margin-right: 44px;
-  }
-
-  @media (max-width: 375px) {
-    width: 152px;
-    margin-right: 36px;
-  }
-`;
-
-const ellipse_2 = css`
-  position: absolute;
-  left: 66px;
-  bottom: 0;
-  width: 150px;
-
-  @media (max-width: 420px) {
-    width: 130px;
-  }
-
-  @media (max-width: 375px) {
-    width: 120px;
-    left: 58px;
-  }
-`;
-
-const news_slide_des = css`
-  width: 166px;
-
-  @media (max-width: 420px) {
-    width: 120px;
-  }
-
-  @media (max-width: 375px) {
-    width: 90px;
-  }
-`;
-
-const slide_btn = css`
-  display: flex;
-  gap: 18px;
+  height: fit-content;
   justify-content: center;
-  align-items: center;
-  width: 111px;
-  height: 28px;
-  font-size: 14px;
-  line-height: 28px;
-  margin: 37px 0px 16px 0px;
 
-  span {
-    color: var(--point-color-2);
+  @media (min-width: 1280px) {
+    justify-content: center;
   }
 `;
 
-const slide_text = css`
-  margin: 0 0 26px 0;
-  width: 164px;
-  height: 48px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--mono-gray-txt-dark);
-
-  @media (max-width: 375px) {
-    width: 150px;
-    font-size: 14px;
-  }
-`;
-
-const slide_link = css`
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--mono-gray-txt-light);
-  text-decoration: underline var(--mono-gray-txt-light);
+const slideWrapper = css`
+  width: 100%;
+  max-height: 179px;
+  max-width: 398px;
+  position: relative;
 `;
 
 const sec_3 = css`
@@ -547,25 +440,36 @@ const map_search = css`
 `;
 
 const map_search_inner = css`
-  height: 24px;
-  padding: 10px 16px;
+  height: 100%;
+  padding: 12px 16px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 28px;
 
-  img {
+  svg {
+    width: 24px;
     height: 24px;
   }
 
   input {
-    width: 100%;
+    flex-grow: 1;
     border: 0;
     font-size: 16px;
+    max-width: calc(100% - 76px);
   }
 
   input::placeholder {
     color: var(--mono-gray-txt-light);
+  }
+
+  @media (max-width: 429px) {
+    gap: 8px;
+    input {
+      font-size: 14px;
+      max-width: calc(100% - 80px);
+    }
   }
 `;
 
@@ -590,7 +494,20 @@ const share_btn = css`
   color: var(--point-color-2);
   background-color: var(--mono-white);
   cursor: pointer;
-  margin-right: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 0;
+
+  svg {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  p {
+    min-width: 56px;
+    font-size: 16px;
+    color: var(--point-color-2);
+  }
 `;
 
 const map_des = css`
@@ -631,10 +548,6 @@ const contact = css`
   align-items: center;
   margin: 0 0 12px 0;
 
-  img {
-    height: 24px;
-  }
-
   @media (max-width: 420px) {
     display: block;
     margin: 0 0 12px 0;
@@ -653,6 +566,10 @@ const contact_inner = css`
 `;
 
 const map_transport = css`
+  svg {
+    margin-right: 8px;
+  }
+
   p {
     display: flex;
     align-items: center;

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "홍길동",
+    "title": "대표 변호사",
+    "previousPosition": "국세청장",
+    "image": "/assets/images/lawyer-img.png"
+  },
+  {
+    "name": "김철수",
+    "title": "대표 변호사",
+    "previousPosition": "국세청장",
+    "image": "/assets/images/lawyer-img.png"
+  },
+  {
+    "name": "이영희",
+    "title": "대표 변호사",
+    "previousPosition": "국세청장",
+    "image": "/assets/images/lawyer-img.png"
+  },
+  {
+    "name": "홍길동1",
+    "title": "대표 변호사",
+    "previousPosition": "국세청장",
+    "image": "/assets/images/lawyer-img.png"
+  },
+  {
+    "name": "김철수1",
+    "title": "대표 변호사",
+    "previousPosition": "국세청장",
+    "image": "/assets/images/lawyer-img.png"
+  }
+]

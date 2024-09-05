@@ -1,15 +1,59 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function NewsCategory() {
+function NewsCategory({
+  onCategoryChange,
+  enableRouting = false,
+  defaultCategory = "법인소식",
+}) {
+  const [activeCategory, setActiveCategory] = useState(defaultCategory);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const pathToCategory = {
+      "/lawNews": "법인소식",
+      "/media": "언론보도",
+      "/recruit": "인재영입",
+    };
+
+    const currentCategory =
+      pathToCategory[location.pathname] || defaultCategory;
+    setActiveCategory(currentCategory);
+  }, [location.pathname, defaultCategory]);
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+
+    if (enableRouting) {
+      const routes = {
+        법인소식: "/lawNews",
+        언론보도: "/media",
+        인재영입: "/recruit",
+      };
+      navigate(routes[category]);
+    } else {
+      if (onCategoryChange) onCategoryChange(category);
+    }
+  };
+
   return (
     <div css={news_list}>
-      <span css={news_item_active}>법인소식</span>
-      <span css={news_item}>언론보도</span>
-      <span css={news_item}>인재영입</span>
+      {["법인소식", "언론보도", "인재영입"].map((category) => (
+        <span
+          key={category}
+          css={activeCategory === category ? news_item_active : news_item}
+          onClick={() => handleCategoryClick(category)}
+        >
+          {category}
+        </span>
+      ))}
     </div>
   );
 }
+
 export default NewsCategory;
 
 const news_list = css`
@@ -22,6 +66,7 @@ const news_list = css`
 
   span {
     font-size: 16px;
+    cursor: pointer;
   }
 `;
 

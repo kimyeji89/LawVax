@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import IntroCard from "../../components/user/IntroCard";
+import IntroCard from "@userComponents/IntroCard";
 import introImg1 from "@images/introduction/intro-img-1.png";
 import introImg2 from "@images/introduction/intro-img-2.png";
 import introImg3 from "@images/introduction/intro-img-3.png";
 import introImg4 from "@images/introduction/intro-img-4.png";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 
 function Introduction() {
   return (
