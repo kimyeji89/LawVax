@@ -30,8 +30,7 @@ function Professional() {
         <Title titleFirst="P" title="ROFESSIONAL " />
       </StyledTitleWrap>
       <SearchBar />
-      <SlideProfessional />
-
+      {/* <SlideProfessional /> 필요시 주석 해제*/}
       <div css={profile_container}>
         {profileData.slice(0, visibleCount).map((profile, index) => (
           <div key={index} css={profile_item_wrap}>
@@ -62,7 +61,7 @@ const profile_container = css`
   grid-template-columns: repeat(3, 1fr);
   padding: 0;
 
-  @media (max-width: 360px) {
+  @media (max-width: 375px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;

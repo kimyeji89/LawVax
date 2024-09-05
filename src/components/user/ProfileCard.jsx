@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import profileImg from "@images/member-profile.png";
 
 function ProfileCard({ data }) {
   return (
     <div css={card_wrap}>
-      <img src={profileImg} />
+      <img src={data.image} alt="profile" />
       <div>
         <p css={career}>{data.job}</p>
         <p css={pro_name}>{data.name}</p>

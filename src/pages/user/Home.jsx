@@ -17,10 +17,19 @@ import { ReactComponent as CallIcon } from "@images/call-outline.svg";
 import { ReactComponent as BusIconBl } from "@images/bus-outline.svg";
 import { ReactComponent as BusIconGn } from "@images/bus-outline.svg";
 import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
-import lawNews from "@data/lawNews.json";
+import lawNewsData from "@data/lawNewsData.json";
+import pressReportsData from "@data/pressReportsData.json";
+import recruitTalentData from "@data/recruitTalentData.json";
 import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
+import { useState } from "react";
 
 function Home() {
+  const [newsCate, setNewsCate] = useState("법인소식");
+
+  const handleCate = (cate) => {
+    setNewsCate(cate);
+  };
+
   return (
     <div css={container}>
       <section>
@@ -78,10 +87,18 @@ function Home() {
           showMore
           link="/lawNews"
         />
-        <NewsCategory />
+        <NewsCategory handleCate={handleCate} />
         <div css={new_list_wrap}>
           <div css={slideWrapper}>
-            <SlideNews slideDataArr={lawNews} />
+            {newsCate === "법인소식" && (
+              <SlideNews slideDataArr={lawNewsData} />
+            )}
+            {newsCate === "언론보도" && (
+              <SlideNews slideDataArr={pressReportsData} />
+            )}
+            {newsCate === "인재영입" && (
+              <SlideNews slideDataArr={recruitTalentData} />
+            )}
           </div>
         </div>
       </section>
@@ -373,8 +390,9 @@ const sec_2 = css`
 `;
 
 const new_list_wrap = css`
+  width: 100%;
   display: flex;
-  height: 179px;
+  height: fit-content;
   justify-content: center;
 
   @media (min-width: 1280px) {
@@ -383,7 +401,9 @@ const new_list_wrap = css`
 `;
 
 const slideWrapper = css`
-  width: 398px;
+  width: 100%;
+  max-height: 179px;
+  max-width: 398px;
   position: relative;
 `;
 

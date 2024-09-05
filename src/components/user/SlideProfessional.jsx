@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import professionalLeadLawyerData from "@data/professionalLeadLawyerData.json";
 import professionalAllLawyerData from "@data/professionalAllLawyerData.json";
@@ -157,10 +158,10 @@ function SlideProfessional() {
                     </div>
                   </div>
 
-                  <div css={more_btn}>
+                  <Link to="/professional/detail" css={more_btn}>
                     <p css={more_p}>view more</p>
                     <img src={moreRec} css={more_bg} alt="view more" />
-                  </div>
+                  </Link>
                 </div>
                 <p css={nameInitial}>{slideData.nameInitial}</p>
               </div>

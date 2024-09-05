@@ -1,8 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 function ProfileList({ children }) {
-  return <div css={list_wrap}>{children}</div>;
+  return (
+    <Link to="/professional/detail" css={list_wrap}>
+      {children}
+    </Link>
+  );
 }
 
 export default ProfileList;

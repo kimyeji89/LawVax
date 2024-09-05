@@ -2,11 +2,12 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-function NewsCategory() {
+function NewsCategory({ handleCate }) {
   const [activeCategory, setActiveCategory] = useState("법인소식");
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
+    handleCate(category);
   };
 
   return (
@@ -23,6 +24,7 @@ function NewsCategory() {
     </div>
   );
 }
+
 export default NewsCategory;
 
 const news_list = css`
