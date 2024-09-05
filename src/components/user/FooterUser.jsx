@@ -75,8 +75,8 @@ const sns_icons = css`
 `;
 
 const hr = css`
-  width:100%
-  margin: 14px;
+  width: 100%;
+  margin: 14px 0;
   height: 1px;
   background-color: var(--mono-gray-line-1);
   border: none;
