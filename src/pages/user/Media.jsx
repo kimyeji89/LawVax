@@ -14,7 +14,7 @@ import NewsItem from "@userComponents//NewsItem";
 const newsItems = [
   {
     image: newsImg1,
-    title: `[소식]글로벌 항공우주산업 학회 세미나 개최`,
+    title: `[언론]글로벌 항공우주산업 학회 세미나 개최`,
     date: "2024.06.24",
     link: "/lawNews/detail",
   },
@@ -44,7 +44,7 @@ const newsItems = [
   },
 ];
 
-function LawNews() {
+function Media() {
   return (
     <>
       <StyledTitleWrap>
@@ -70,7 +70,7 @@ function LawNews() {
   );
 }
 
-export default LawNews;
+export default Media;
 
 const news_wrap = css`
   padding: 0 16px;
