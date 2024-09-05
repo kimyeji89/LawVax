@@ -79,7 +79,7 @@ const member_contact = css`
   p {
     font-size: 14px;
     font-weight: 400;
-    color: #666666;
+    color: var(--mono-gray-icon);
     margin: 0;
     text-decoration: none;
     text-decoration-line: none;

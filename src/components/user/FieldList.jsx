@@ -29,7 +29,7 @@ const field_wrap = (isOpen) => css`
   height: ${isOpen ? "100%" : "87px"};
   box-sizing: border-box;
   border-bottom: 1px solid #c2c7cd;
-  background-color: ${isOpen ? "#F3F4F8" : "#fff"};
+  background-color: ${isOpen ? "#F3F4F8" : "var(--mono-white"};
 `;
 
 const field_list_wrap = css`
@@ -49,7 +49,7 @@ const item_title = css`
 const field_item_wrap = css`
   padding: 24px 16px;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--mono-white);
 
   display: flex;
   flex-wrap: wrap;

@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
 import saveIcon from "@images/save.svg";
 import uniIcon from "@images/uni.svg";
 import lawyerImg from "@images/lawyer-img2.png";
-import { useState } from "react";
 import ProfileSection from "@userComponents/ProfileSection";
 import profileData from "@data/professionalDetail.json";
 
@@ -164,7 +164,6 @@ const save_btn = css`
     width: 146px;
     height: 40px;
     font-size: 14px;
-    // font-size: 4px;
     font-weight: 500;
     line-height: 14px;
   }
@@ -184,14 +183,13 @@ const main_1_uni = css`
 
   font-size: 14px;
   font-weight: 500;
-  color: #666666;
+  color: var(--mono-gray-icon);
 `;
 
 const main_2 = css`
   display: flex;
   justify-content: space-between;
-  // border: 1px solid red;
-  border-bottom: 2px solid #7e7e7e;
+  border-bottom: 2px solid var(--mono-gray-line-4);
 
   h2 {
     font-size: 16px;
@@ -222,12 +220,12 @@ const button_wrap = css`
 
   button {
     padding: 12px;
-    border: 1px solid #666666;
+    border: 1px solid var(--mono-gray-icon);
     background-color: var(--mono-white);
 
     font-size: 14px;
     font-weight: 500;
-    color: #666666;
+    color: var(--mono-gray-icon);
 
     @media (max-width: 380px) {
       padding: 10px;
@@ -263,7 +261,7 @@ const career_list = css`
   p {
     font-size: 14px;
     font-weight: 500;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
 
   @media (min-width: 360px) {
@@ -274,15 +272,14 @@ const career_list = css`
 `;
 
 const introduce = css`
-  // border: 1px solid green;
   padding: 30px 0;
-  border-bottom: 2px solid #7e7e7e;
+  border-bottom: 2px solid var(--mono-gray-line-4);
 
   p {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
 `;
 
@@ -291,28 +288,18 @@ const nav = css`
 
   ul {
     padding: 24px 16px;
-    border-bottom: 2px solid #dbdbdb;
+    background-color: var(--mono-gray-bg-4);
     display: flex;
     justify-content: space-between;
-
-    // li {
-    //   font-size: 16px;
-    //   font-weight: 500;
-    //   color: #666666;
-    // }
   }
 `;
 
 const navItem = (isActive) => css`
   cursor: pointer;
-  color: ${isActive ? "var(--point-color-2)" : "#666666"};
+  color: ${isActive ? "var(--point-color-2)" : "var(--mono-gray-icon"};
   font-weight: ${isActive ? "700" : "500"};
   font-size: 16px;
   line-height: 16px;
-
-  // @media (max-width: 430px) {
-  //   font-size: 14px;
-  // }
 `;
 
 const section_wrap = css`

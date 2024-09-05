@@ -145,12 +145,15 @@ table {
   --mono-gray-txt-dark: #333333;
   --mono-gray-txt-input: #6e6e6f;
   --mono-gray-txt-normal: #a2a9b1;
+  --mono-gray-txt-back: #f9f9f9;
   --mono-gray-line-1: #d9d9d9;
   --mono-gray-line-2: #d5d5d5;
   --mono-gray-line-3: #e0e0e0;
+  --mono-gray-line-4: #7e7e7e;
   --mono-gray-bg-1: #f5f6fa;
   --mono-gray-bg-2: #d9d9d9;
   --mono-gray-bg-3: #697077;
+  --mono-gray-bg-4: #dbdbdb;
   --mono-gray-input-ph: #c5c5c5;
   --mono-gray-input-bd: #c1c7cd;
   --mono-gray-normal: #ededed;

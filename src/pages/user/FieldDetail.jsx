@@ -222,7 +222,7 @@ const nav_list = css`
 
 const navItem = (isActive) => css`
   cursor: pointer;
-  color: ${isActive ? "var(--point-color-2)" : "#666666"};
+  color: ${isActive ? "var(--point-color-2)" : "var(--mono-gray-icon"};
   font-weight: ${isActive ? "700" : "500"};
   font-size: 16px;
   line-height: 16px;

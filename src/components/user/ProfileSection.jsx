@@ -91,12 +91,12 @@ const list_wrap = css`
 
   p {
     line-height: 24px;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
 `;
 
 const line = css`
-  background-color: #dbdbdb;
+  background-color: var(--mono-gray-bg-4);
   height: 2px;
   margin-top: 28px;
 `;

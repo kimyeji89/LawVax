@@ -3,11 +3,11 @@ import { css } from "@emotion/react";
 import Title from "@components/user/Title";
 import { StyledTitleWrap } from "./NewsLetter";
 import SearchBar from "@userComponents/SearchBar";
-import ProfileCard from "../../components/user/ProfileCard";
+import ProfileCard from "@userComponents/ProfileCard";
 import profileData from "@data/profileData.json";
 import { useState } from "react";
 import ToggleContentBtn from "@userComponents/ToggleContentBtn";
-import { SlideProfessional } from "../../components/user/SlideProfessional";
+// import { SlideProfessional } from "../../components/user/SlideProfessional";
 
 function Professional() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -78,7 +78,7 @@ const gray_back = css`
   position: absolute;
   bottom: 0;
 
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
   width: 100%;
   z-index: -1;
 `;

@@ -34,7 +34,7 @@ const moreButtonStyle = css`
 const line = css`
   flex-grow: 1;
   height: 2px;
-  background-color: #dbdbdb;
+  background-color: var(--mono-gray-bg-4);
 `;
 
 const text = css`

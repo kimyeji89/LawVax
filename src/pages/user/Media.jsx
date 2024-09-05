@@ -9,7 +9,7 @@ import newsImg2 from "@images/news/news-card-2.png";
 import newsImg3 from "@images/news/news-card-3.png";
 import newsImg4 from "@images/news/news-card-4.png";
 import newsImg5 from "@images/news/news-card-5.png";
-import NewsItem from "@userComponents//NewsItem";
+import NewsItem from "@userComponents/NewsItem";
 
 const newsItems = [
   {

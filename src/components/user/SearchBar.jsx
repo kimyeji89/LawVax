@@ -165,7 +165,7 @@ const selectBoxCtn = css`
 `;
 
 const search_wrap = css`
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
   padding: 24px 16px;
   margin: 0 0 48px 0;
 `;

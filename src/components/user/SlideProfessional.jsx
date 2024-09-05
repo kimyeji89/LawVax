@@ -424,7 +424,7 @@ const infoNameCH = css`
 const slideProfessionalWrapper = css`
   width: 100%;
   height: 198px;
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
   .swiper-slide {
     display: flex;
     algin-items: bottom;

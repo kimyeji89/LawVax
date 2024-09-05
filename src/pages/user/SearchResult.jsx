@@ -102,13 +102,13 @@ const sec_member = css`
 
 const sec_field = css`
   padding: 24px 16px;
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
 `;
 
 const hr = css`
   margin: 0 0 24px 0;
   border: none;
-  background-color: #dbdbdb;
+  background-color: var(--mono-gray-bg-4);
   height: 1px;
 `;
 
@@ -116,7 +116,7 @@ const hr_2 = css`
   padding: 0 16px 0 0;
   margin: 0 0 24px 0;
   border: none;
-  background-color: #dbdbdb;
+  background-color: var(--mono-gray-bg-4);
   height: 1px;
 `;
 
@@ -131,7 +131,7 @@ const field_list = css`
     padding: 0 0 0 2px;
     font-size: 14px;
     line-height: 20px;
-    color: #666666;
+    color: var(--mono-gray-icon);
   }
 
   @media (max-width: 380px) {
@@ -149,7 +149,7 @@ const sec_law = css`
 
 const sec_news = css`
   padding: 24px 16px;
-  background-color: #f9f9f9;
+  background-color: var(--mono-gray-txt-back);
 `;
 
 const sec_newsletter = css`

@@ -20,7 +20,7 @@ import { ReactComponent as SubwayIcon } from "@images/subway-3.svg";
 import lawNewsData from "@data/lawNewsData.json";
 import pressReportsData from "@data/pressReportsData.json";
 import recruitTalentData from "@data/recruitTalentData.json";
-import { SlideProfessionalMain } from "../../components/user/SlideProfessional";
+import { SlideProfessionalMain } from "@userComponents/SlideProfessional";
 import { useState } from "react";
 
 function Home() {
@@ -310,9 +310,6 @@ const search_icon = css`
 const button_container = css`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-
-  // display: flex;
-  // flex-wrap: wrap;
   gap: 25px;
   justify-content: center;
   background-color: white;
@@ -441,12 +438,13 @@ const map_search_inner = css`
   align-items: center;
   gap: 28px;
 
-  img {
+  svg {
+    width: 24px;
     height: 24px;
   }
 
   input {
-    width: 100%;
+    flex-grow: 1;
     border: 0;
     font-size: 16px;
   }
@@ -518,10 +516,6 @@ const contact = css`
   align-items: center;
   margin: 0 0 12px 0;
 
-  img {
-    height: 24px;
-  }
-
   @media (max-width: 420px) {
     display: block;
     margin: 0 0 12px 0;
@@ -540,7 +534,7 @@ const contact_inner = css`
 `;
 
 const map_transport = css`
-  img {
+  svg {
     margin-right: 8px;
   }
 
