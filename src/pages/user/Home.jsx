@@ -430,8 +430,9 @@ const map_search = css`
 `;
 
 const map_search_inner = css`
-  height: 24px;
+  height: 100%;
   padding: 10px 16px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -446,10 +447,19 @@ const map_search_inner = css`
     flex-grow: 1;
     border: 0;
     font-size: 16px;
+    max-width: calc(100% - 76px);
   }
 
   input::placeholder {
     color: var(--mono-gray-txt-light);
+  }
+
+  @media (max-width: 429px) {
+    gap: 8px;
+    input {
+      font-size: 14px;
+      max-width: calc(100% - 80px);
+    }
   }
 `;
 
