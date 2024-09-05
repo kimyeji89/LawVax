@@ -183,6 +183,7 @@ const btn_container = css`
 const close_btn = css`
   width: 48px;
   height: 48px;
+  padding: 0;
   background: none;
   border: none;
   font-size: 24px;
