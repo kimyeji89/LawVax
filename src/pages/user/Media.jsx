@@ -51,7 +51,7 @@ function Media() {
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
       </StyledTitleWrap>
 
-      <NewsCategory enableRouting={true} />
+      <NewsCategory enableRouting={true} defaultCategory="언론보도" />
 
       <div css={news_wrap}>
         {newsItems.map((news, index) => (

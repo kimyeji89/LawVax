@@ -13,7 +13,10 @@ function FieldList({ title, children }) {
 
   return (
     <div css={field_wrap(isOpen)}>
-      <div css={field_list_wrap} onClick={toggleAccordion}>
+      <div
+        css={isOpen ? field_list_wrap_open : field_list_wrap}
+        onClick={toggleAccordion}
+      >
         <span css={item_title}>{title}</span>
         {isOpen ? (
           <img src={closeIcon} alt="close" />
@@ -41,6 +44,11 @@ const field_list_wrap = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const field_list_wrap_open = css`
+  ${field_list_wrap};
+  border-bottom: 1px solid #c2c7cd;
 `;
 
 const item_title = css`
