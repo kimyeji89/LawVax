@@ -91,6 +91,9 @@ const profile_container = css`
   @media (min-width: 765px) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 const sec_member = css`

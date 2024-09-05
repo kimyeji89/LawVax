@@ -13,7 +13,7 @@ import profileData from "@data/profileData.json";
 
 function FieldDetail() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const initialVisibleCount = 2;
+  const initialVisibleCount = window.innerWidth >= 1280 ? 4 : 2;
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
   const totalProfiles = profileData.length;
 
@@ -211,10 +211,11 @@ const nav = css`
 
 const nav_list = css`
   display: flex;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: center;
+  gap: 40px;
 
   @media (max-width: 430px) {
+    justify-content: space-between;
     gap: 10px;
   }
 `;

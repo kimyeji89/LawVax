@@ -1,15 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-
+import { Link } from "react-router-dom";
 function ProfileCard({ data }) {
   return (
-    <div css={card_wrap}>
+    <Link to="/professional/detail" css={card_wrap}>
       <img src={data.image} alt="profile" />
       <div>
-        <p css={career}>{data.job}</p>
         <p css={pro_name}>{data.name}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -26,14 +25,8 @@ const card_wrap = css`
   }
 `;
 
-const career = css`
-  font-size: 8px;
-  font-weight: 500;
-  color: var(--mono-gray-txt-light);
-  padding-bottom: 4px;
-`;
-
 const pro_name = css`
+  margin-top: 12px;
   font-size: 16px;
   font-weight: 500;
   min-width: 42px;

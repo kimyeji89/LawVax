@@ -26,12 +26,9 @@ const item_wrap = css`
 
 const card_img = css`
   width: 100%;
-  height: 160px;
+  min-height: 16px;
   margin: 0 0 14px 0;
-
-  @media (min-width: 760px) {
-    height: 400px;
-  }
+  object-fit: cover;
 `;
 
 const item_title = css`

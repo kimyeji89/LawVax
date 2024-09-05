@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
 
 function ProfileList({ children }) {
   return (
-    <Link to="/professional/detail" css={list_wrap}>
+    <div to="/professional/detail" css={list_wrap}>
       {children}
-    </Link>
+    </div>
   );
 }
 

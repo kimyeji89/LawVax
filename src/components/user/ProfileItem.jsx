@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import profileImg from "@images/member-profile.png";
-
+import { Link } from "react-router-dom";
 function Profile({ profile }) {
   return (
-    <div css={profile_wrap}>
+    <Link to="/professional/detail" css={profile_wrap}>
       <img src={profile.image} css={profile_img} alt="profile" />
 
       <div css={member_info}>
@@ -22,7 +21,7 @@ function Profile({ profile }) {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
