@@ -48,7 +48,7 @@ function LawNewsDetail() {
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
       </StyledTitleWrap>
 
-      <NewsCategory />
+      <NewsCategory enableRouting={true} />
 
       <div css={news_wrap}>
         <div css={news_content}>
