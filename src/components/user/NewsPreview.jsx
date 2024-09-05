@@ -46,7 +46,7 @@ const item_text = css`
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
-  color: #666666;
+  color: var(--mono-gray-icon);
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -60,5 +60,5 @@ const item_date = css`
   font-weight: 400;
   line-height: 24px;
   padding: 24px 0;
-  color: #a2a9b1;
+  color: var(--mono-gray-txt-normal);
 `;

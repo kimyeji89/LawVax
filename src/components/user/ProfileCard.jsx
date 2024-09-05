@@ -38,5 +38,5 @@ const pro_name = css`
   font-size: 16px;
   font-weight: 500;
   min-width: 42px;
-  color: #222222;
+  color: var(--mono-black-title-2);
 `;

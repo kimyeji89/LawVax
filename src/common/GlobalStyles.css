@@ -139,10 +139,12 @@ table {
   /* mono color */
   --mono-white: #ffffff;
   --mono-black-title: #000000;
+  --mono-black-title-2: #222222;
   --mono-gray-icon: #666666;
   --mono-gray-txt-light: #999999;
   --mono-gray-txt-dark: #333333;
   --mono-gray-txt-input: #6e6e6f;
+  --mono-gray-txt-normal: #a2a9b1;
   --mono-gray-line-1: #d9d9d9;
   --mono-gray-line-2: #d5d5d5;
   --mono-gray-line-3: #e0e0e0;
