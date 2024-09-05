@@ -66,7 +66,7 @@ function AsideMenuBtn({ title, num, selected, link }) {
     <Link to={link}>
       <li
         css={asideMenuBtn}
-        id={title === "전체보기" && "all"}
+        id={title === "전체보기" ? "all" : ""}
         className={selected ? "asideMenuBtns selected" : "asideMenuBtns"}
         onClick={handleStyle}
       >
