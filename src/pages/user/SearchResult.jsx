@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import TitleSub from "@userComponents/TitleSub";
 import ProfileItem from "@userComponents/ProfileItem";
-import MoreBtn from "@userComponents/MoreBtn";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import profileData from "@data/profileData.json";
 import NewsPreview from "@userComponents/NewsPreview";
 import newsData from "@data/newsData.json";
@@ -36,7 +36,7 @@ function SearchResult() {
         </div>
 
         {totalProfiles > 6 && (
-          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+          <ToggleContentBtn onClick={handleMoreClick} isExpanded={isExpanded} />
         )}
       </section>
 

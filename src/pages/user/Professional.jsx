@@ -6,7 +6,7 @@ import SearchBar from "@userComponents/SearchBar";
 import ProfileCard from "../../components/user/ProfileCard";
 import profileData from "@data/profileData.json";
 import { useState } from "react";
-import MoreBtn from "@userComponents/MoreBtn";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import { SlideProfessional } from "../../components/user/SlideProfessional";
 
 function Professional() {
@@ -42,7 +42,7 @@ function Professional() {
 
       <div css={btn_wrap}>
         {totalProfiles > 6 && (
-          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+          <ToggleContentBtn onClick={handleMoreClick} isExpanded={isExpanded} />
         )}
       </div>
     </div>

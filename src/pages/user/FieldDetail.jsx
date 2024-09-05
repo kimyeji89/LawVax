@@ -5,7 +5,7 @@ import Title from "@components/user/Title";
 import { StyledTitleWrap } from "./NewsLetter";
 import ProfileItem from "@userComponents/ProfileItem";
 import ProfileList from "@userComponents//ProfileList";
-import MoreBtn from "@userComponents/MoreBtn";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import SlideNewsLetter from "@userComponents/SlideNewsLetter";
 import workImg from "@images/field/field-work.png";
 import bulletIcon from "@images/field/bullet-point.svg";
@@ -183,7 +183,7 @@ function FieldDetail() {
         </ProfileList>
 
         {totalProfiles > 2 && (
-          <MoreBtn onClick={handleMoreClick} isExpanded={isExpanded} />
+          <ToggleContentBtn onClick={handleMoreClick} isExpanded={isExpanded} />
         )}
       </section>
 

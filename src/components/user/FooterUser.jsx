@@ -102,7 +102,6 @@ const text = css`
   gap: 24px;
   line-height: 24px;
   color: var(--mono-white);
-  // font-size: 14px;
 
   span {
     color: var(--mono-white);

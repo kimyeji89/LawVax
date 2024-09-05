@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import MoreBtn from "@userComponents/MoreBtn";
+import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import { useState } from "react";
 
 function ProfileSection({ id, title, data }) {
@@ -34,7 +34,7 @@ function ProfileSection({ id, title, data }) {
       </ul>
 
       {data.length > 4 ? (
-        <MoreBtn isExpanded={isExpanded} onClick={handleMoreClick} />
+        <ToggleContentBtn isExpanded={isExpanded} onClick={handleMoreClick} />
       ) : (
         <div css={line}></div>
       )}

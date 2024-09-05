@@ -48,7 +48,7 @@ function LawNewsDetail() {
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
       </StyledTitleWrap>
 
-      <NewsCategory />
+      <NewsCategory enableRouting={true} />
 
       <div css={news_wrap}>
         <div css={news_content}>
@@ -120,7 +120,6 @@ function LawNewsDetail() {
         {newsItems.map((news, index) => (
           <NewsItem
             key={index}
-            imgSrc={news.image}
             title={news.title}
             date={news.date}
             link={news.link}
