@@ -5,7 +5,7 @@ import profileImg from "@images/member-profile.png";
 function Profile({ profile }) {
   return (
     <div css={profile_wrap}>
-      <img src={profileImg} css={profile_img} />
+      <img src={profile.image} css={profile_img} alt="profile" />
 
       <div css={member_info}>
         <p css={member_name}>

@@ -50,6 +50,7 @@ function NewsCategory({ onCategoryChange, enableRouting = false }) {
     </div>
   );
 }
+
 export default NewsCategory;
 
 const news_list = css`

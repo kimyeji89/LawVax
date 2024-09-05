@@ -175,7 +175,7 @@ function FieldDetail() {
       </section>
 
       <section id="주요 구성원" css={members}>
-        <h1>주요구성원</h1>
+        <h1>주요 구성원</h1>
         <ProfileList>
           {profileData.slice(0, visibleCount).map((profile, index) => (
             <ProfileItem key={index} profile={profile} />
