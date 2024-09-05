@@ -28,6 +28,7 @@ const field_item = css`
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+  color: #000000;
 
   @media (max-width: 390px) {
     width: 134px;
