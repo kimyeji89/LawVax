@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
 import Title from "@userComponents/Title";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 import SearchBar from "@userComponents/SearchBar";
 import ProfileItem from "@userComponents/ProfileItem";
 import profileData from "@data/profileData.json";

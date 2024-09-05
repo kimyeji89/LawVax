@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import MoreBtn from "./MoreBtn";
+import MoreBtn from "@userComponents/MoreBtn";
 function TitleSub({ title, showMore, link }) {
   return (
     <div css={title_wrap}>

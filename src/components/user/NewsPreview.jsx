@@ -18,16 +18,6 @@ const item_wrap = css`
   margin: 0 0 24px 0;
 `;
 
-const card_img = css`
-  width: 100%;
-  height: 160px;
-  margin: 0 0 14px 0;
-
-  @media (min-width: 760px) {
-    height: 400px;
-  }
-`;
-
 const item_title = css`
   font-size: 20px;
   font-weight: 500;

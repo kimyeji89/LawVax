@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 import NewsCategory from "@userComponents/NewsCategory";
 import NewsItem from "@userComponents/NewsItem";
 import newsImg1 from "@images/news/news-card-1.png";

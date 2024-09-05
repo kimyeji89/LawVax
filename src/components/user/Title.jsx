@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import MoreBtn from "./MoreBtn";
+import MoreBtn from "@userComponents/MoreBtn";
 
 function Title({ titleFirst, title, subTitle, showMore, link }) {
   return (

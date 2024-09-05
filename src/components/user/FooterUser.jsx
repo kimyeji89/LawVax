@@ -9,10 +9,10 @@ function FooterUser() {
     <div css={footer_wrap}>
       <div css={footer_container}>
         <div css={icon_container}>
-          <img src={lawLogo} css={logo} />
+          <img src={lawLogo} css={logo} alt="law" />
           <div css={sns_icons}>
-            <img src={blogLogo} />
-            <img src={instagramLogo} />
+            <img src={blogLogo} alt="blog" />
+            <img src={instagramLogo} alt="instagram" />
           </div>
         </div>
         <hr css={hr} />

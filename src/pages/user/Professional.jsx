@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
 import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 import SearchBar from "@userComponents/SearchBar";
 import ProfileCard from "@userComponents/ProfileCard";
 import profileData from "@data/profileData.json";
-import { useState } from "react";
 import ToggleContentBtn from "@userComponents/ToggleContentBtn";
-// import { SlideProfessional } from "../../components/user/SlideProfessional";
 
 function Professional() {
   const [isExpanded, setIsExpanded] = useState(false);

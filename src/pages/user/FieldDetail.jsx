@@ -2,9 +2,9 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
 import ProfileItem from "@userComponents/ProfileItem";
-import ProfileList from "@userComponents//ProfileList";
+import ProfileList from "@userComponents/ProfileList";
 import ToggleContentBtn from "@userComponents/ToggleContentBtn";
 import SlideNewsLetter from "@userComponents/SlideNewsLetter";
 import workImg from "@images/field/field-work.png";

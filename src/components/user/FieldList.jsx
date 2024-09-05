@@ -15,7 +15,11 @@ function FieldList({ title, children }) {
     <div css={field_wrap(isOpen)}>
       <div css={field_list_wrap} onClick={toggleAccordion}>
         <span css={item_title}>{title}</span>
-        {isOpen ? <img src={closeIcon} /> : <img src={openIcon} />}
+        {isOpen ? (
+          <img src={closeIcon} alt="close" />
+        ) : (
+          <img src={openIcon} alt="open" />
+        )}
       </div>
       {isOpen && <div css={field_item_wrap}>{children}</div>}
     </div>

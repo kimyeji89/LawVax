@@ -288,7 +288,7 @@ const nav = css`
 
   ul {
     padding: 24px 16px;
-    background-color: var(--mono-gray-bg-4);
+    border-bottom: 2px solid var(--mono-gray-bg-4);
     display: flex;
     justify-content: space-between;
   }
