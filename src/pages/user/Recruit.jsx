@@ -51,7 +51,7 @@ function Recruit() {
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
       </StyledTitleWrap>
 
-      <NewsCategory enableRouting={true} />
+      <NewsCategory enableRouting={true} defaultCategory="인재영입" />
 
       <div css={news_wrap}>
         {newsItems.map((news, index) => (

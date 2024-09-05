@@ -243,7 +243,7 @@ const overlay = css`
 `;
 
 const overlay_contents = css`
-  padding: 0 8px;
+  padding: 0 16px;
 `;
 
 const search_wrap = css`
@@ -331,12 +331,11 @@ const button_container = css`
 `;
 
 const circleButton = css`
-  width: 56px;
+  width: 53px;
   height: 32px;
   font-size: 16px;
   padding: 0;
-
-  border: 2px solid var(--point-color-2);
+  box-shadow: 0 0 0 2px var(--point-color-2) inset;
   border-radius: 20px;
   background-color: var(--mono-white);
   color: var(--point-color-2);
@@ -359,12 +358,12 @@ const circleButton = css`
 `;
 
 const circleButton_active = css`
-  width: 54px;
+  width: 53px;
   height: 32px;
   font-size: 16px;
   padding: 0;
 
-  border: 2px solid var(--point-color-2);
+  box-shadow: 0 0 0 2px var(--point-color-2) inset;
   border-radius: 20px;
   background-color: var(--point-color-2);
   color: var(--mono-white);
@@ -431,8 +430,9 @@ const map_search = css`
 `;
 
 const map_search_inner = css`
-  height: 24px;
-  padding: 10px 16px;
+  height: 100%;
+  padding: 12px 16px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -447,10 +447,19 @@ const map_search_inner = css`
     flex-grow: 1;
     border: 0;
     font-size: 16px;
+    max-width: calc(100% - 76px);
   }
 
   input::placeholder {
     color: var(--mono-gray-txt-light);
+  }
+
+  @media (max-width: 429px) {
+    gap: 8px;
+    input {
+      font-size: 14px;
+      max-width: calc(100% - 80px);
+    }
   }
 `;
 

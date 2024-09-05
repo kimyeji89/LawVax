@@ -68,10 +68,10 @@ const card_date = css`
 const card_link = css`
   font-size: 14px;
   line-height: 24px;
-  text-decoration: underline var(--mono-gray-txt-light);
 
   a {
     color: var(--mono-gray-txt-light);
+    text-decoration: underline;
   }
 `;
 

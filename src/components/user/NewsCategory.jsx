@@ -3,8 +3,12 @@ import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-function NewsCategory({ onCategoryChange, enableRouting = false }) {
-  const [activeCategory, setActiveCategory] = useState("법인소식");
+function NewsCategory({
+  onCategoryChange,
+  enableRouting = false,
+  defaultCategory = "법인소식",
+}) {
+  const [activeCategory, setActiveCategory] = useState(defaultCategory);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,11 +19,10 @@ function NewsCategory({ onCategoryChange, enableRouting = false }) {
       "/recruit": "인재영입",
     };
 
-    const currentCategory = pathToCategory[location.pathname];
-    if (currentCategory) {
-      setActiveCategory(currentCategory);
-    }
-  }, [location.pathname]);
+    const currentCategory =
+      pathToCategory[location.pathname] || defaultCategory;
+    setActiveCategory(currentCategory);
+  }, [location.pathname, defaultCategory]);
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);

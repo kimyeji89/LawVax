@@ -13,33 +13,34 @@ import { ReactComponent as Share } from "@images/share-2.svg";
 import { ReactComponent as Printer } from "@images/printer.svg";
 import { ReactComponent as List } from "@images/list.svg";
 import { Link } from "react-router-dom";
+import newsItems from "@data/newsItems.json";
 
-const newsItems = [
-  {
-    image: newsImg2,
-    title: `"경영진 책임 강화 추세…기업 위한 '법률 백신'될 것"`,
-    date: "2024.06.25",
-    link: "/lawNews/detail",
-  },
-  {
-    image: newsImg3,
-    title: `뉴스핌 창간 21주년 기념·제12회 서울이코노믹포럼 참석 인사`,
-    date: "2024.06.26",
-    link: "/lawNews/detail",
-  },
-  {
-    image: newsImg4,
-    title: `AI 활용 극대화할 “데이터 관리·인사이트·보안” 혁신 전략 제시…”DISS 2024” 3월 21일 개최`,
-    date: "2024.06.27",
-    link: "/lawNews/detail",
-  },
-  {
-    image: newsImg5,
-    title: `기업감사 시장 뛰어든 로백스…"엄격한 내부통제 더 중요해져"`,
-    date: "2024.06.27",
-    link: "/lawNews/detail",
-  },
-];
+// const newsItems = [
+//   {
+//     image: newsImg2,
+//     title: `"경영진 책임 강화 추세…기업 위한 '법률 백신'될 것"`,
+//     date: "2024.06.25",
+//     link: "/lawNews/detail",
+//   },
+//   {
+//     image: newsImg3,
+//     title: `뉴스핌 창간 21주년 기념·제12회 서울이코노믹포럼 참석 인사`,
+//     date: "2024.06.26",
+//     link: "/lawNews/detail",
+//   },
+//   {
+//     image: newsImg4,
+//     title: `AI 활용 극대화할 “데이터 관리·인사이트·보안” 혁신 전략 제시…”DISS 2024” 3월 21일 개최`,
+//     date: "2024.06.27",
+//     link: "/lawNews/detail",
+//   },
+//   {
+//     image: newsImg5,
+//     title: `기업감사 시장 뛰어든 로백스…"엄격한 내부통제 더 중요해져"`,
+//     date: "2024.06.27",
+//     link: "/lawNews/detail",
+//   },
+// ];
 
 function LawNewsDetail() {
   return (
@@ -115,9 +116,9 @@ function LawNewsDetail() {
         </div>
 
         <div css={news_more}>
-          <p>관련된 소식</p>
+          <p css={title}>관련된 소식</p>
         </div>
-        {newsItems.map((news, index) => (
+        {newsItems.slice(0, -1).map((news, index) => (
           <NewsItem
             key={index}
             title={news.title}
@@ -131,6 +132,12 @@ function LawNewsDetail() {
 }
 
 export default LawNewsDetail;
+
+const title = css`
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+`;
 
 const news_wrap = css`
   padding: 0 16px;
