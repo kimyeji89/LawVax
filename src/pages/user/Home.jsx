@@ -147,7 +147,7 @@ function Home() {
         <div css={share_btn_wrap}>
           <button css={share_btn}>
             <ShareIcon alt="share" />
-            공유하기
+            <p>공유하기</p>
           </button>
         </div>
 
@@ -484,7 +484,24 @@ const share_btn = css`
   color: var(--point-color-2);
   background-color: var(--mono-white);
   cursor: pointer;
-  margin-right: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 0;
+
+  svg {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  p {
+    min-width: 56px;
+    font-size: 16px;
+    color: var(--point-color-2);
+  }
+
+  @media (max-width: 300px) {
+    font-size: 13px;
+  }
 `;
 
 const map_des = css`
