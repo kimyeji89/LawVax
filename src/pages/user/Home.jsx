@@ -87,7 +87,7 @@ function Home() {
           showMore
           link="/lawNews"
         />
-        <NewsCategory handleCate={handleCate} />
+        <NewsCategory onCategoryChange={handleCate} />
         <div css={new_list_wrap}>
           <div css={slideWrapper}>
             {newsCate === "법인소식" && (
