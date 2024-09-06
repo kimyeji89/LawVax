@@ -12,7 +12,7 @@ export default function AsideMenu({ level }) {
         <ul css={menuCtn}>
           <AsideMenuBtn
             title="전체보기"
-            num={"1253"}
+            num={"1,253"}
             selected={checkLocation([
               "/admin/super/post",
               "/admin/general/post",
@@ -37,9 +37,12 @@ export default function AsideMenu({ level }) {
         </ul>
         <span css={divider}></span>
         <ul css={menuCtn}>
-          {level === "super" && (
+          {checkLocation(["/admin/general/post/my"]) === true ? (
+            ""
+          ) : (
             <AsideMenuBtn title="소식" num={"00"} selected={false} />
           )}
+
           <AsideMenuBtn title="언론보도" num={"00"} selected={false} />
           <AsideMenuBtn title="인재영입" num={"00"} selected={false} />
           <AsideMenuBtn
