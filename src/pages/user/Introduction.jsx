@@ -77,12 +77,20 @@ const title_under = css`
   color: #f1f0f0;
   padding: 0 14px;
 
-  @media (max-width: 420px) {
+  @media (max-width: 430px) {
     font-size: 38px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 400px) {
     font-size: 34px;
+  }
+
+  @media (max-width: 355px) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 335px) {
+    font-size: 30px;
   }
 `;
 
@@ -98,6 +106,14 @@ const gradient = css`
     #fafafa 0%,
     rgba(250, 250, 250, 0) 100%
   );
+
+  @media (max-width: 400px) {
+    top: 355px;
+  }
+
+  @media (max-width: 335px) {
+    top: 345px;
+  }
 `;
 
 const card_list = css`
