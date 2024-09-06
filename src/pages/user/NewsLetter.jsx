@@ -2,34 +2,10 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import NewsSlide from "../../components/user/NewsSlide";
-import SlideCard from "../../components/user/SlideCard";
-import { slideData } from "./Home";
-import NewsItem from "../../components/user/NewsItem";
-import Pagination from "./Pagination";
-
-const newsItems = [
-  {
-    title: `AI 활용 극대화할 “데이터 관리·인사이트·보안” 혁신 전략 제시…”DISS 2024” 3월 21일 개최`,
-    date: "2024.06.24",
-    link: "/newsLetter",
-  },
-  {
-    title: `기업감사 시장 뛰어든 로백스…"엄격한 내부통제 더 중요해져"`,
-    date: "2024.06.25",
-    link: "/newsLetter",
-  },
-  {
-    title: `김후곤 "KT에 준법경영 자리잡도록 역할을 충실히 하겠다"`,
-    date: "2024.06.26",
-    link: "/newsLetter",
-  },
-  {
-    title: `김후곤 "KT에 준법경영 자리잡도록 역할을 충실히 하겠다"`,
-    date: "2024.06.27",
-    link: "/newsLetter",
-  },
-];
+import NewsItem from "@userComponents/NewsItem";
+import Pagination from "@userComponents/Pagination";
+import SlideNewsLetter from "@userComponents/SlideNewsLetter";
+import newsItems from "@data/newsItems.json";
 
 function NewLetter() {
   return (
@@ -48,29 +24,21 @@ function NewLetter() {
       </StyledTitleWrap>
 
       <div css={content_wrap}>
-        <NewsSlide>
-          {slideData.map((slide, index) => (
-            <SlideCard
+        <SlideNewsLetter />
+        <div css={innerCtn}>
+          <hr css={divide_line} />
+
+          {newsItems.map((news, index) => (
+            <NewsItem
               key={index}
-              category={slide.category}
-              title={slide.title}
-              date={slide.date}
+              title={news.title}
+              date={news.date}
+              link={news.link}
             />
           ))}
-        </NewsSlide>
 
-        <hr css={divide_line} />
-
-        {newsItems.map((news, index) => (
-          <NewsItem
-            key={index}
-            title={news.title}
-            date={news.date}
-            link={news.link}
-          />
-        ))}
-
-        <Pagination />
+          <Pagination />
+        </div>
       </div>
     </>
   );
@@ -83,7 +51,11 @@ export const StyledTitleWrap = styled.div`
 `;
 
 const content_wrap = css`
-  padding: 0 16px;
+  padding-left: 16px;
+`;
+
+const innerCtn = css`
+  padding-right: 16px;
 `;
 
 const divide_line = css`

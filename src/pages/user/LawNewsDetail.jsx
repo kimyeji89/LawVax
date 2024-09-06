@@ -1,44 +1,46 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
-import NewsCategory from "../../components/user/NewsCategory";
-import NewsItem from "../../components/user/NewsItem";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
+import NewsCategory from "@userComponents/NewsCategory";
+import NewsItem from "@userComponents/NewsItem";
 import newsImg1 from "@images/news/news-card-1.png";
 import newsImg2 from "@images/news/news-card-2.png";
 import newsImg3 from "@images/news/news-card-3.png";
 import newsImg4 from "@images/news/news-card-4.png";
 import newsImg5 from "@images/news/news-card-5.png";
-import shareIcon from "@images/share-2.svg";
-import printerIcon from "@images/printer.svg";
-import listIcon from "@images/list.svg";
+import { ReactComponent as Share } from "@images/share-2.svg";
+import { ReactComponent as Printer } from "@images/printer.svg";
+import { ReactComponent as List } from "@images/list.svg";
+import { Link } from "react-router-dom";
+import newsItems from "@data/newsItems.json";
 
-const newsItems = [
-  {
-    image: newsImg2,
-    title: `"경영진 책임 강화 추세…기업 위한 '법률 백신'될 것"`,
-    date: "2024.06.25",
-    link: "/lawNews/detail",
-  },
-  {
-    image: newsImg3,
-    title: `뉴스핌 창간 21주년 기념·제12회 서울이코노믹포럼 참석 인사`,
-    date: "2024.06.26",
-    link: "/lawNews/detail",
-  },
-  {
-    image: newsImg4,
-    title: `AI 활용 극대화할 “데이터 관리·인사이트·보안” 혁신 전략 제시…”DISS 2024” 3월 21일 개최`,
-    date: "2024.06.27",
-    link: "/lawNews/detail",
-  },
-  {
-    image: newsImg5,
-    title: `기업감사 시장 뛰어든 로백스…"엄격한 내부통제 더 중요해져"`,
-    date: "2024.06.27",
-    link: "/lawNews/detail",
-  },
-];
+// const newsItems = [
+//   {
+//     image: newsImg2,
+//     title: `"경영진 책임 강화 추세…기업 위한 '법률 백신'될 것"`,
+//     date: "2024.06.25",
+//     link: "/lawNews/detail",
+//   },
+//   {
+//     image: newsImg3,
+//     title: `뉴스핌 창간 21주년 기념·제12회 서울이코노믹포럼 참석 인사`,
+//     date: "2024.06.26",
+//     link: "/lawNews/detail",
+//   },
+//   {
+//     image: newsImg4,
+//     title: `AI 활용 극대화할 “데이터 관리·인사이트·보안” 혁신 전략 제시…”DISS 2024” 3월 21일 개최`,
+//     date: "2024.06.27",
+//     link: "/lawNews/detail",
+//   },
+//   {
+//     image: newsImg5,
+//     title: `기업감사 시장 뛰어든 로백스…"엄격한 내부통제 더 중요해져"`,
+//     date: "2024.06.27",
+//     link: "/lawNews/detail",
+//   },
+// ];
 
 function LawNewsDetail() {
   return (
@@ -47,15 +49,15 @@ function LawNewsDetail() {
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
       </StyledTitleWrap>
 
-      <NewsCategory />
+      <NewsCategory enableRouting={true} />
 
       <div css={news_wrap}>
         <div css={news_content}>
           <h1>[소식]글로벌 항공우주산업 학회 세미나 개최</h1>
           <div css={news_sub}>
             <span>2024.06.24</span>
-            <img src={shareIcon} alt="share icon" />
-            <img src={printerIcon} alt="printer icon" />
+            <Share alt="share icon" />
+            <Printer alt="printer icon" />
           </div>
 
           <div css={news_img_wrap}>
@@ -106,18 +108,19 @@ function LawNewsDetail() {
         <div css={view_list_wrap}>
           <div></div>
           <div css={view_list}>
-            <img src={listIcon} alt="list icon" />
-            <span>목록보기</span>
+            <List alt="list icon" />
+            <Link to={"/lawNews"}>
+              <span>목록보기</span>
+            </Link>
           </div>
         </div>
 
         <div css={news_more}>
-          <p>관련된 소식</p>
+          <p css={title}>관련된 소식</p>
         </div>
-        {newsItems.map((news, index) => (
+        {newsItems.slice(0, -1).map((news, index) => (
           <NewsItem
             key={index}
-            imgSrc={news.image}
             title={news.title}
             date={news.date}
             link={news.link}
@@ -129,6 +132,12 @@ function LawNewsDetail() {
 }
 
 export default LawNewsDetail;
+
+const title = css`
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+`;
 
 const news_wrap = css`
   padding: 0 16px;
@@ -213,6 +222,7 @@ const view_list = css`
 
   span {
     color: var(--mono-gray-icon);
+    text-decoration: underline;
   }
 `;
 

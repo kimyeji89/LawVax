@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Title from "@components/user/Title";
-import { StyledTitleWrap } from "./NewsLetter";
-import NewsCategory from "../../components/user/NewsCategory";
-import Pagination from "./Pagination";
+import { StyledTitleWrap } from "@userPages/NewsLetter";
+import NewsCategory from "@userComponents/NewsCategory";
+import Pagination from "@userComponents/Pagination";
 import newsImg1 from "@images/news/news-card-1.png";
 import newsImg2 from "@images/news/news-card-2.png";
 import newsImg3 from "@images/news/news-card-3.png";
 import newsImg4 from "@images/news/news-card-4.png";
 import newsImg5 from "@images/news/news-card-5.png";
-import NewsItem from "../../components/user/NewsItem";
+import NewsItem from "@userComponents/NewsItem";
 
 const newsItems = [
   {
@@ -51,7 +51,7 @@ function LawNews() {
         <Title subTitle={"About Us"} titleFirst="N" title="EWS" />
       </StyledTitleWrap>
 
-      <NewsCategory />
+      <NewsCategory enableRouting={true} />
 
       <div css={news_wrap}>
         {newsItems.map((news, index) => (

@@ -23,7 +23,6 @@ const slide_card = css`
   width: 218px;
   height: 224px;
   border: 2px solid var(--mono-gray-line-1);
-  margin-right: 16px;
   padding: 22px 14px;
 
   display: flex;
@@ -69,10 +68,10 @@ const card_date = css`
 const card_link = css`
   font-size: 14px;
   line-height: 24px;
-  text-decoration: underline var(--mono-gray-txt-light);
 
   a {
     color: var(--mono-gray-txt-light);
+    text-decoration: underline;
   }
 `;
 
